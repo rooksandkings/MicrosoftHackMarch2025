@@ -1,0 +1,14 @@
+name: mckinsey-scraper
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - python=3.10
+  - pip=23.1.2
+  - pip:
+    - requests==2.31.0
+    - beautifulsoup4==4.12.2
+    - SQLAlchemy==2.0.27
+    - python-dotenv==1.0.0
+    - lxml==5.1.0
+    - fake-useragent==1.4.0 
