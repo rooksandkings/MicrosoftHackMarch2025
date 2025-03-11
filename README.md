@@ -5,8 +5,10 @@ A Python web scraper for extracting articles from McKinsey's search results and 
 ## Features
 
 - Scrapes search results from McKinsey's website using the search query "change management"
+- Uses Selenium WebDriver to render JavaScript content for reliable scraping
 - Extracts article details including title, URL, description, publication date, and article type
-- Stores data in a SQLite database using SQLAlchemy ORM
+- Can scrape the full content of individual articles including metadata
+- Stores data in SQLite databases using SQLAlchemy ORM
 - Provides a command-line interface for easy interaction
 - Includes test mode for initial deployment (first page only)
 - Handles pagination for scraping all available search result pages
@@ -16,6 +18,7 @@ A Python web scraper for extracting articles from McKinsey's search results and 
 ## Prerequisites
 
 - Python 3.8 or higher
+- Chrome or Chromium browser (for Selenium WebDriver)
 - Required Python packages (see `requirements.txt`)
 - Alternatively, Anaconda or Miniconda for conda environment setup
 
@@ -49,7 +52,7 @@ conda activate mckinsey-scraper
 
 ## Usage
 
-### Running the scraper
+### Running the search results scraper
 
 To run the scraper in test mode (first page only):
 
@@ -69,9 +72,29 @@ To use a different search query:
 python cli.py scrape --query "digital transformation"
 ```
 
+### Scraping article content
+
+After scraping search results, you can extract the full content of each article:
+
+```bash
+python cli.py scrape-content
+```
+
+By default, this will scrape up to 5 articles. To scrape more:
+
+```bash
+python cli.py scrape-content --limit 10
+```
+
+To scrape all available articles:
+
+```bash
+python cli.py scrape-content --limit 0
+```
+
 ### Viewing statistics
 
-To see how many articles are in the database:
+To see statistics for both databases:
 
 ```bash
 python cli.py stats
@@ -91,23 +114,45 @@ To specify a limit and offset:
 python cli.py list --limit 20 --offset 10
 ```
 
-### Exporting to CSV
+### Listing article content
 
-To export all articles to a CSV file:
+To list the 5 most recently scraped article contents:
+
+```bash
+python cli.py list-content
+```
+
+To specify a limit and offset:
+
+```bash
+python cli.py list-content --limit 10 --offset 5
+```
+
+### Exporting data
+
+To export search results to a CSV file:
 
 ```bash
 python cli.py export
 ```
 
+To export article content to a CSV file:
+
+```bash
+python cli.py export-content
+```
+
 To specify a different output filename:
 
 ```bash
-python cli.py export --filename output.csv
+python cli.py export --filename custom_filename.csv
+python cli.py export-content --filename content_export.csv
 ```
 
 ## Project Structure
 
-- `mckinsey_scraper.py` - Main scraper implementation
+- `mckinsey_scraper.py` - Main scraper implementation with Selenium WebDriver
+- `article_scraper.py` - Module for scraping individual article content
 - `database_utils.py` - Database utility functions
 - `cli.py` - Command-line interface
 - `requirements.txt` - Project dependencies
@@ -116,7 +161,7 @@ python cli.py export --filename output.csv
 
 ## Database Schema
 
-The scraper stores articles in a SQLite database with the following schema:
+### Search Results Database (mckinsey_articles.db)
 
 | Column         | Type      | Description                       |
 |----------------|-----------|-----------------------------------|
@@ -127,6 +172,82 @@ The scraper stores articles in a SQLite database with the following schema:
 | date_published | String    | Publication date                  |
 | article_type   | String    | Type of article                   |
 | scraped_at     | DateTime  | When the article was scraped      |
+
+### Article Content Database (mckinsey_articles_content.db)
+
+| Column           | Type      | Description                       |
+|------------------|-----------|-----------------------------------|
+| id               | Integer   | Primary key                       |
+| article_id       | Integer   | Foreign key to articles table     |
+| title            | String    | Article title                     |
+| url              | String    | Article URL (unique)              |
+| full_content     | Text      | Full article text content         |
+| html_content     | Text      | HTML content of the article       |
+| article_metadata | Text      | JSON string with article metadata |
+| scraped_at       | DateTime  | When the content was scraped      |
+
+## Troubleshooting
+
+### Chrome WebDriver Issues
+
+1. **Driver Not Found**: If you get an error about the Chrome driver not being found:
+
+   ```
+   webdriver_manager.core.driver_cache.DriverCacheError: There is no such driver by url https://chromedriver.storage.googleapis.com/LATEST_RELEASE_
+   ```
+
+   Install Chrome browser or update to a supported version:
+   
+   ```bash
+   # On Ubuntu/Debian
+   sudo apt update
+   sudo apt install chromium-browser
+   
+   # On Windows
+   # Download the latest Chrome from https://www.google.com/chrome/
+   ```
+
+2. **Headless Mode Issues**: If the scraper can't render pages properly in headless mode, try disabling it by modifying the `create_webdriver()` function in `mckinsey_scraper.py`:
+
+   ```python
+   # Change this line:
+   options.add_argument("--headless")
+   
+   # To:
+   # options.add_argument("--headless")  # Commented out to disable headless mode
+   ```
+
+3. **Permission Issues**: If you encounter permission issues with ChromeDriver:
+   
+   ```bash
+   # On Linux/Mac
+   chmod +x /path/to/chromedriver
+   ```
+
+### CSS Selector Issues
+
+If the scraper isn't finding any results, the CSS selectors might need adjustment. Try:
+
+1. Run in non-headless mode to see the page structure
+2. Inspect the page manually to identify correct selectors
+3. Update the selectors in `parse_articles()` function
+
+### Rate Limiting
+
+If you're getting blocked by McKinsey's website:
+
+1. Increase the delay between requests:
+   
+   ```python
+   # In mckinsey_scraper.py, find:
+   time.sleep(random.uniform(3, 7))
+   
+   # Change to:
+   time.sleep(random.uniform(5, 10))
+   ```
+
+2. Use a proxy or VPN service
+3. Reduce the number of pages scraped at once
 
 ## License
 
