@@ -133,9 +133,18 @@ def main():
     elif args.command == 'export-content':
         logger.info(f"Exporting article content to CSV: {args.filename}")
         try:
-            from article_scraper import export_content_to_csv
-            count = export_content_to_csv(args.filename)
-            logger.info(f"Successfully exported {count} articles to {args.filename}")
+            from database_utils import export_content_to_csv
+            result = export_content_to_csv(args.filename)
+            
+            # Check if result is boolean or numeric
+            if isinstance(result, bool):
+                if result:
+                    logger.info(f"Successfully exported articles to {args.filename}")
+                else:
+                    logger.warning(f"No articles were exported to {args.filename}")
+            else:
+                # Result is a count
+                logger.info(f"Successfully exported {result} articles to {args.filename}")
         except Exception as e:
             logger.error(f"Error exporting content to CSV: {e}")
     

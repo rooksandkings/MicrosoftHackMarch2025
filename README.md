@@ -186,6 +186,10 @@ python cli.py export-content --filename content_export.csv
 | article_metadata | Text      | JSON string with article metadata |
 | scraped_at       | DateTime  | When the content was scraped      |
 
+## Recent Updates
+
+- **Content Formatting Fix**: Fixed an issue where publication date and author bylines were improperly formatted in article content. The scraper now correctly adds proper spacing between the year and "by" text in author attributions (e.g., "2024 by" is now correctly formatted as "2024 by").
+
 ## Troubleshooting
 
 ### Chrome WebDriver Issues
@@ -248,6 +252,14 @@ If you're getting blocked by McKinsey's website:
 
 2. Use a proxy or VPN service
 3. Reduce the number of pages scraped at once
+
+### Content Formatting Issues
+
+If you notice issues with content formatting in the exported CSV:
+
+1. Check the exported CSV for proper spacing between dates and author bylines
+2. The scraper includes regex to fix common formatting issues like missing spaces between year and "by" text
+3. If new formatting issues arise, they can be addressed in the `extract_article_content()` function in `article_scraper.py`
 
 ## License
 

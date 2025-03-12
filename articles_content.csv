@@ -1,4 +1,50 @@
-article_id,title,url,content,author,published_date,word_count,scraped_at
-1,Navigating network modernization: Change management best practices,https://www.mckinsey.com/capabilities/mckinsey-digital/our-insights/tech-forward/navigating-network-modernization-change-management-best-practices,PAYWALL DETECTED: Content not accessible,,,5,2025-03-12 01:02:07.699922
-2,Changing change management,https://www.mckinsey.com/featured-insights/leadership/changing-change-management,PAYWALL DETECTED: Content not accessible,,,5,2025-03-12 01:02:11.169323
-3,Change management: lessons from Japan,https://www.mckinsey.com/capabilities/people-and-organizational-performance/our-insights/the-organization-blog/change-management-lessons-from-japan,PAYWALL DETECTED: Content not accessible,,,5,2025-03-12 01:02:13.142985
+Article ID,Title,URL,Authors,Full Content,Article Metadata,Scraped At
+1,Navigating network modernization: Change management best practices,https://www.mckinsey.com/capabilities/mckinsey-digital/our-insights/tech-forward/navigating-network-modernization-change-management-best-practices,"Ritesh Agarwal, Ashish Gupta, Pankaj Sachdeva, and Jill Sharabura","## Navigating network modernization: Change management best practices
+
+March 12, 2024by Ritesh Agarwal, Ashish Gupta, Pankaj Sachdeva, and Jill Sharabura
+
+Updating network architecture to best meet a company’s current needs can have dramatic effects. Modern network practices offer benefits and competitive advantages, such as accelerated time to market and enhanced customer experience through seamless and reliable interactions with cloud-native applications.
+
+Consider one global technology conglomerate that undertook a network transformation, shifting from a legacy networking model to a microservices-based architecture. By embracing microservices and modern network principles, the conglomerate achieved a substantial reduction in deployment times for new services. This acceleration empowered the conglomerate to swiftly roll out innovations to the market and seize new business opportunities.
+
+In a recent blog post, we wrote about how companies can make this delicate shift to cloud-native networks to ensure their networks are serving them in today’s business landscape, which is marked by cybersecurity concerns, data expansion, and cloud migration, among other trends. In this post, we dig into some of the challenges of aligning network architectures with cloud-native principles and the change management practices that can help ensure that challenges don’t get in the way of modernization efforts.
+
+## Understanding what can thwart modernization efforts
+
+Companies often initiate programs to move to cloud-native networks, but they don’t always complete them. In our experience, several hurdles can cause momentum to slow or stall:
+
+Security concerns about the new network architecture. Many teams assume that being able to physically connect and disconnect devices allows for higher security. This is false. Internet-based connections offer more resilience compared with physical connections, and security protocols and network monitoring can allow companies to achieve, at the minimum, the same level of control as they have on a physical network.
+
+Slow progress on network design. The transition phase of integrating existing firewalls and network configurations with the cloud-native network and its more agile development principles can be challenging. Sometimes this redesign can cause organizations to lose momentum; however, if they can overcome this one-time push, less effort will be required in the long term.
+
+Insufficient talent to configure and integrate new network principles. Integrating new network principles often requires drastically different skill sets than what organizations typically have available. To address this, companies will want to consider reskilling their current workforce, as opposed to relying on a purely external workforce, for the integration effort.
+
+## Five best practices that can guide a successful transition
+
+By taking the following steps, companies can increase the chances that the transition gains traction and sticks, allowing them to achieve agility, innovation, and resilience in cloud-native applications.
+
+## Conduct an assessment and develop a strategy
+
+Companies should commence with a thorough assessment of their existing network infrastructure, gaining a deep understanding of its strengths, weaknesses, and alignment with cloud-native objectives. In undertaking this assessment, companies often discover that their existing network infrastructure is not adequately aligned with cloud-native objectives, lacking the scalability, agility, and security required for modern applications. With this knowledge in hand, they can develop a robust modernization strategy that resonates with their overarching organizational goals and seamlessly integrates with their application landscape. To ensure successful capacity allocation, the assessment should also take stock of available talent and skills as well as the effort required to change the underlying network infrastructure.
+
+## Empower talent through training and mindset change
+
+Companies should invest in enhancing their network engineering team’s expertise in cloud-native concepts and tools, offering comprehensive training that encompasses cloud networking, microservices communication, container orchestration, and the implementation of security best practices. The extent of training required will depend on the specific needs of the network engineering team and the organization’s overall modernization goals, but organizations should expect to invest in significant training to bridge the gap between their existing expertise and the required cloud-native knowledge. Factors to consider include the team’s experience, project complexity, cloud strategy, and internal training resources. Implementing training may require a phased approach, starting with foundational concepts and progressing to deeper training as the project progresses. The training should also include programs to change the underlying mindset of the network organization, including workshops dedicated to understanding the reservations of the existing organization and highlighting the benefits of the new technology setup.
+
+## Run small-scale pilot projects
+
+Modernization journeys can begin with modest pilot projects. These focused initiatives allow organizations to test and validate network modernization approaches in a controlled environment. Pilot projects yield invaluable insights, shedding light on challenges, successes, and optimization strategies. The lessons learned from these pilots serve as a guide for the broader modernization landscape and the effort required to ensure successful planning.
+
+Organizations will likely want to avoid using pilots for mission-critical projects with a high risk of failure that could significantly affect business operations, complex projects with a long timeline that may not be suitable for a pilot-first approach, and nonessential projects that do not directly contribute to the overall modernization goals and may divert resources from initiatives that are more vital. Instead, they could focus on conducting pilot projects to evaluate new technologies or approaches in a controlled environment, testing complex multiteam or multisystem projects to identify potential challenges, and validating critical aspects of the overall modernization strategy to ensure alignment with organizational goals.
+
+## Cultivate collaboration
+
+Organizations should strive to foster a culture of collaboration in a holistic approach that unites network engineers, application developers, and security teams. Regular communication and collaborative decision making are instrumental in producing an elevated outcome. To make the required mindset change, the collaboration exercise—which should extend into the compliance and risk functions—should consider the journey of the organization and learning journey of the individual employees. The company may need to update and adopt policies and security guidelines to reflect that physical control of the entire network is neither required nor advisable. By taking this approach, organizations ensure that network modernization seamlessly harmonizes with other facets of application development and security protocols.
+
+## Evolve continuously
+
+Network modernization is an ongoing evolution, demanding continuing evaluation and enhancement. Organizations should establish a robust feedback loop that encompasses vigilant monitoring, input from stakeholders, and periodic reviews. These reviews can include annual comprehensive assessments of performance, security, and alignment with evolving needs as well as monthly or quarterly check-ins to monitor key metrics, identify issues, and make proactive adjustments. Organizations will also inevitably need to conduct spontaneous reviews in reaction to security incidents or major network changes. Continuous improvement can help organizations ensure the network remains attuned to ever-evolving business demands and the rapid pace of technological advancements.
+
+Applications drive business innovation, and the network enables this transformation. Embracing the shift toward microservices, containerization, and cloud-native architectures is not just a technical decision but also a strategic imperative. Network modernization paves the way for accelerated business outcomes, and strong change management in this effort is essential in positioning organizations to thrive in the dynamic landscape of the digital age.
+
+Ritesh Agarwal is a partner in McKinsey’s New York office, Ashish Gupta is a senior expert in the Mumbai office, Pankaj Sachdeva is a senior partner in the Philadelphia office, and Jill Sharabura is a solution leader for cloud delivery in the Atlanta office.","{""word_count"": 1194, ""reading_time_minutes"": 6}",2025-03-11 23:17:47.617616

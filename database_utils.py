@@ -47,7 +47,7 @@ class ArticleContent(Base):
     url = Column(String(500))
     html_content = Column(Text, nullable=True)
     full_content = Column(Text, nullable=True)
-    authors = Column(Text, nullable=True)  # Added authors field
+    authors = Column(Text, nullable=True)
     article_metadata = Column(Text, nullable=True)  # JSON-serialized metadata
     processed = Column(Boolean, default=False)
     scraped_at = Column(DateTime, default=datetime.now)
