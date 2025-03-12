@@ -9,6 +9,11 @@ import argparse
 import sys
 from datetime import datetime
 import time
+from database_utils import export_to_csv, export_content_to_csv
+from article_scraper import scrape_article_content
+from mckinsey_scraper import create_webdriver  # Assuming this function exists
+import csv
+from mckinsey_scraper import get_session, Article
 
 # Set up logging
 logging.basicConfig(
@@ -34,6 +39,29 @@ def create_parser():
     # Process command
     process_parser = subparsers.add_parser('process', help='Process articles')
     process_parser.add_argument('--count', type=int, default=10, help='Number of articles to process')
+    
+    # Add export command
+    export_parser = subparsers.add_parser('export', help='Export search results to CSV')
+    export_parser.add_argument('--filename', default='mckinsey_articles.csv',
+                              help='Output CSV filename (default: mckinsey_articles.csv)')
+    
+    # Add export-content command
+    export_content_parser = subparsers.add_parser('export-content', help='Export article content to CSV')
+    export_content_parser.add_argument('--filename', default='mckinsey_articles_content.csv',
+                                      help='Output CSV filename (default: mckinsey_articles_content.csv)')
+    
+    # Add scrape-content command
+    scrape_content_parser = subparsers.add_parser('scrape-content', 
+                                               help='Scrape full content of articles')
+    scrape_content_parser.add_argument('--limit', type=int, default=5,
+                                    help='Maximum number of articles to scrape (0 for unlimited)')
+    
+    # Export command
+    export_parser = subparsers.add_parser('export', help='Export articles to CSV')
+    export_parser.add_argument('--output', '-o', default='mckinsey_articles.csv', 
+                              help='Output CSV file path (default: mckinsey_articles.csv)')
+    export_parser.add_argument('--limit', type=int, default=0, 
+                              help='Limit number of articles to export (0 for all)')
     
     return parser
 
@@ -69,5 +97,73 @@ def main():
         logger.info(f"Processing up to {args.count} articles")
         # Process articles code here
         
+    elif args.command == 'export':
+        logger.info(f"Exporting articles to CSV: {args.output}")
+        
+        # Get articles from database
+        with get_session() as session:
+            query = session.query(Article)
+            
+            if args.limit > 0:
+                query = query.limit(args.limit)
+                
+            articles = query.all()
+        
+        # Write to CSV
+        with open(args.output, 'w', newline='', encoding='utf-8') as csvfile:
+            fieldnames = ['id', 'title', 'url', 'description', 'date_published', 
+                         'article_type', 'content', 'scraped_at']
+            writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
+            
+            writer.writeheader()
+            for article in articles:
+                writer.writerow({
+                    'id': article.id,
+                    'title': article.title,
+                    'url': article.url,
+                    'description': article.description,
+                    'date_published': article.date_published,
+                    'article_type': article.article_type,
+                    'content': article.content,
+                    'scraped_at': article.scraped_at
+                })
+        
+        logger.info(f"Exported {len(articles)} articles to {args.output}")
+    
+    elif args.command == 'export-content':
+        logger.info(f"Exporting article content to CSV: {args.filename}")
+        try:
+            from article_scraper import export_content_to_csv
+            count = export_content_to_csv(args.filename)
+            logger.info(f"Successfully exported {count} articles to {args.filename}")
+        except Exception as e:
+            logger.error(f"Error exporting content to CSV: {e}")
+    
+    elif args.command == 'scrape-content':
+        logger.info(f"Scraping content for up to {args.limit} articles")
+        driver = None
+        try:
+            # Create a WebDriver instance
+            logger.info("Creating WebDriver for article content scraping")
+            driver = create_webdriver()
+            if not driver:
+                logger.error("Failed to create WebDriver")
+                return
+            
+            # Scrape article content
+            limit = args.limit if args.limit > 0 else None
+            count = scrape_article_content(driver, limit)
+            logger.info(f"Successfully scraped content for {count} articles")
+        except Exception as e:
+            logger.error(f"Error scraping article content: {e}")
+        finally:
+            # Clean up resources
+            if driver:
+                try:
+                    driver.quit()
+                    logger.info("WebDriver closed")
+                except Exception as e:
+                    logger.warning(f"Error closing WebDriver: {e}")
+
 if __name__ == '__main__':
     main() 
