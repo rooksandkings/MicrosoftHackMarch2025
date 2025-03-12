@@ -16,6 +16,8 @@ from sqlalchemy import create_engine, Column, Integer, String, Text, DateTime
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 from datetime import datetime
+import threading
+from queue import Queue
 
 # Selenium imports
 from selenium import webdriver
@@ -555,178 +557,259 @@ def get_total_results_and_pages(html_content):
     return total_results, total_pages
 
 
-def scrape_mckinsey_search(query, test_mode=True, max_pages=5):
+class ScrapeWorker(threading.Thread):
+    """Worker thread that keeps a WebDriver alive for multiple tasks."""
+    
+    def __init__(self, task_queue, result_queue, worker_id):
+        """
+        Initialize a scrape worker.
+        
+        Args:
+            task_queue (Queue): Queue of (query, page) tasks to process
+            result_queue (Queue): Queue to store results
+            worker_id (int): Unique ID for this worker
+        """
+        super().__init__()
+        self.task_queue = task_queue
+        self.result_queue = result_queue
+        self.worker_id = worker_id
+        self.driver = None
+        self.cookie_handled = False
+        self.daemon = True  # Make threads daemon so they exit when main thread exits
+        
+    def run(self):
+        """Process tasks from the queue until it's empty."""
+        try:
+            logger.info(f"Worker {self.worker_id} starting")
+            
+            # Create a WebDriver for this worker
+            self.driver = create_webdriver()
+            if not self.driver:
+                logger.error(f"Worker {self.worker_id} failed to create WebDriver")
+                return
+                
+            # Process tasks until the queue is empty
+            while not self.task_queue.empty():
+                try:
+                    # Get a task from the queue with a timeout
+                    query, page, results_per_page = self.task_queue.get(timeout=1)
+                    
+                    # Process the task
+                    try:
+                        self.scrape_page(query, page, results_per_page)
+                    except Exception as e:
+                        logger.error(f"Worker {self.worker_id} error scraping page {page}: {e}")
+                    finally:
+                        # Mark the task as done
+                        self.task_queue.task_done()
+                except Exception:
+                    # Queue.get timeout or other issue
+                    break
+                    
+        except Exception as e:
+            logger.error(f"Worker {self.worker_id} encountered an error: {e}")
+        finally:
+            # Clean up resources with a timeout
+            if self.driver:
+                try:
+                    # Use a more aggressive timeout for quitting
+                    self.driver.set_page_load_timeout(2)
+                    self.driver.set_script_timeout(2)
+                    
+                    # Start a timer for quitting
+                    quit_start = time.time()
+                    self.driver.quit()
+                    quit_time = time.time() - quit_start
+                    logger.info(f"Worker {self.worker_id} closed WebDriver in {quit_time:.2f}s")
+                except Exception as e:
+                    logger.warning(f"Worker {self.worker_id} failed to close WebDriver: {e}")
+                    # Force close if quit fails
+                    try:
+                        self.driver.close()
+                    except:
+                        pass
+                self.driver = None  # Release reference
+    
+    def scrape_page(self, query, page, results_per_page):
+        """
+        Scrape a single page of search results and store articles immediately.
+        
+        Args:
+            query (str): Search query
+            page (int): Page number to scrape
+            results_per_page (int): Number of results per page
+        """
+        start_index = (page - 1) * results_per_page + 1
+        
+        logger.info(f"Worker {self.worker_id} scraping page {page} (start={start_index}) for query: {query}")
+        
+        # Set up the search parameters
+        params = {
+            "q": query,
+            "pageFilter": "all",
+            "sort": "default",
+            "start": start_index
+        }
+        
+        # Build the full URL with parameters
+        query_string = '&'.join([f"{k}={v}" for k, v in params.items()])
+        full_url = f"{BASE_URL}?{query_string}"
+        
+        # Navigate to the search page
+        self.driver.get(full_url)
+        
+        # Handle cookie popup if needed
+        if not self.cookie_handled:
+            try:
+                # Use a short timeout for the cookie popup
+                cookie_button_selectors = [
+                    "#onetrust-accept-btn-handler",
+                    "button.accept-cookies-button",
+                    "button.accept-all-cookies"
+                ]
+                
+                # Try each selector with a shorter timeout
+                for selector in cookie_button_selectors:
+                    try:
+                        WebDriverWait(self.driver, 1).until(
+                            EC.element_to_be_clickable((By.CSS_SELECTOR, selector))
+                        )
+                        cookie_button = self.driver.find_element(By.CSS_SELECTOR, selector)
+                        logger.info(f"Worker {self.worker_id} found cookie consent button")
+                        cookie_button.click()
+                        time.sleep(1)
+                        self.cookie_handled = True
+                        break
+                    except Exception:
+                        continue
+            except Exception as e:
+                logger.warning(f"Worker {self.worker_id} error handling cookie popup: {e}")
+        
+        # Wait for search results
+        try:
+            # Wait for any search result item to appear
+            WebDriverWait(self.driver, 10).until(
+                EC.presence_of_element_located((By.CSS_SELECTOR, ".item, .search-result, .searchResult"))
+            )
+            
+            # Wait for multiple results
+            def has_multiple_results(driver):
+                items = driver.find_elements(By.CSS_SELECTOR, ".item, .search-result, .searchResult")
+                return len(items) >= 3
+            
+            WebDriverWait(self.driver, 5).until(has_multiple_results)
+            logger.info(f"Worker {self.worker_id} search results loaded")
+        except Exception as e:
+            logger.warning(f"Worker {self.worker_id} timeout waiting for results: {e}")
+        
+        # Get page content
+        html_content = self.driver.page_source
+        
+        # Check for template placeholders
+        if "{{" in html_content and "}}" in html_content:
+            logger.info(f"Worker {self.worker_id} waiting for templates to resolve...")
+            
+            max_wait_seconds = 8
+            start_time = time.time()
+            
+            while time.time() - start_time < max_wait_seconds:
+                time.sleep(0.5)
+                html_content = self.driver.page_source
+                if "{{" not in html_content:
+                    break
+        
+        # Parse the search results
+        articles = parse_articles(html_content)
+        
+        # Store articles immediately instead of just putting in queue
+        if articles:
+            logger.info(f"Worker {self.worker_id} found {len(articles)} articles on page {page}")
+            
+            # Store articles in database immediately
+            new_articles = store_articles(articles)
+            
+            # Report success
+            self.result_queue.put((page, new_articles))
+            logger.info(f"Worker {self.worker_id} stored {new_articles} new articles from page {page}")
+        else:
+            logger.info(f"Worker {self.worker_id} no articles found on page {page}")
+            self.result_queue.put((page, 0))
+
+def scrape_mckinsey_search_parallel(query, test_mode=True, max_pages=5, max_workers=3):
     """
-    Scrape McKinsey search results for a given query using a single WebDriver session.
+    Scrape McKinsey search results in parallel using persistent workers
+    with immediate storage per page.
     
     Args:
         query (str): Search query
         test_mode (bool): If True, only scrape the first page
-        max_pages (int): Maximum number of pages to scrape if not in test mode
+        max_pages (int): Maximum number of pages to scrape
+        max_workers (int): Maximum number of parallel workers
         
     Returns:
         int: Number of articles stored
     """
-    driver = None
     try:
+        if test_mode:
+            max_pages = 1
+            
+        # Adjust max_workers based on max_pages
+        max_workers = min(max_workers, max_pages)
+        
+        logger.info(f"Starting parallel scraping for query '{query}' with {max_workers} workers")
+        
+        # Create task queue and result queue
+        task_queue = Queue()
+        result_queue = Queue()
+        
+        # Add tasks to the queue
+        results_per_page = 10
+        for page in range(1, max_pages + 1):
+            task_queue.put((query, page, results_per_page))
+            
+        # Create and start worker threads
+        workers = []
+        for i in range(max_workers):
+            worker = ScrapeWorker(task_queue, result_queue, i+1)
+            workers.append(worker)
+            worker.start()
+            # Smaller delay between starting workers
+            time.sleep(0.1)
+            
+        # Wait for all tasks to be processed with a timeout
+        task_queue.join()
+        
+        # Wait for all workers to finish with a timeout
+        for worker in workers:
+            worker.join(timeout=3)  # Only wait max 3 seconds per worker
+            
+        # Calculate total articles stored
         total_articles = 0
-        results_per_page = 10  # McKinsey shows 10 results per page
         
-        # Create a single WebDriver instance for the entire session
-        logger.info(f"Creating WebDriver for scraping search results for: {query}")
-        driver = create_webdriver()
-        if not driver:
-            logger.error("Failed to create WebDriver")
-            return 0
-            
-        # Handle cookie consent once at the beginning
-        cookie_handled = False
+        # Get results from the queue with a timeout
+        start_time = time.time()
+        max_wait_time = 3  # Max seconds to wait for queue processing
         
-        # Iterate through pages
-        for page in range(1, max_pages + 1 if not test_mode else 2):
-            start_index = (page - 1) * results_per_page + 1
-            
-            # Set up the search parameters
-            params = {
-                "q": query,
-                "pageFilter": "all",
-                "sort": "default",
-                "start": start_index
-            }
-            
-            # Build the full URL with parameters
-            query_string = '&'.join([f"{k}={v}" for k, v in params.items()])
-            full_url = f"{BASE_URL}?{query_string}"
-            
-            logger.info(f"Scraping page {page} (start={start_index}) for query: {query}")
-            logger.info(f"Navigating to: {full_url}")
-            
-            # Navigate to the search page
-            driver.get(full_url)
-            
-            # Handle cookie popup once if needed
-            if not cookie_handled:
-                try:
-                    logger.info("Checking for cookie consent popup...")
-                    # Wait for cookie popup with various possible selectors
-                    cookie_button_selectors = [
-                        "#onetrust-accept-btn-handler",  # This worked previously
-                        "button.accept-cookies-button",
-                        "button.accept-all-cookies",
-                        "button.accept_all",
-                        "button[id*='cookie'][id*='accept']",
-                        "button[class*='cookie'][class*='accept']",
-                        "button[aria-label*='Accept']",
-                        "button[aria-label*='accept all']",
-                        "button[data-test-id*='accept-all']",
-                        ".cookie-banner .accept",
-                        "#accept-all-cookies",
-                        "#truste-consent-button",
-                        "[aria-label='Accept cookies']"
-                    ]
-                    
-                    # Try each selector with a shorter timeout
-                    for selector in cookie_button_selectors:
-                        try:
-                            WebDriverWait(driver, 2).until(
-                                EC.element_to_be_clickable((By.CSS_SELECTOR, selector))
-                            )
-                            cookie_button = driver.find_element(By.CSS_SELECTOR, selector)
-                            logger.info(f"Found cookie consent button with selector: {selector}")
-                            cookie_button.click()
-                            logger.info("Clicked cookie consent button")
-                            time.sleep(2)  # Wait longer for the popup to disappear
-                            cookie_handled = True
-                            break
-                        except Exception as e:
-                            continue
-                            
-                except Exception as e:
-                    logger.warning(f"Error handling cookie popup: {e}")
-            
-            # Wait for page to load and JavaScript to execute
-            logger.info("Waiting for page to load and JavaScript to execute...")
-            time.sleep(8)  # Wait for initial page load
-            
-            # Wait for search results explicitly
+        while not result_queue.empty() and (time.time() - start_time < max_wait_time):
             try:
-                logger.info("Waiting for search results to appear...")
-                WebDriverWait(driver, 20).until(
-                    EC.presence_of_element_located((By.CSS_SELECTOR, ".search-results, .results, .items, .searchResults"))
-                )
-                logger.info("Search results elements detected")
-            except Exception as e:
-                logger.warning(f"Timeout waiting for search results: {e}")
-            
-            # Check if we see template placeholders
-            html_content = driver.page_source
-            if "{{" in html_content and "}}" in html_content:
-                logger.info("Detected template placeholders, waiting for actual content...")
-                # Wait longer for JavaScript to replace templates
-                for i in range(10):
-                    time.sleep(2)
-                    html_content = driver.page_source
-                    if "{{" not in html_content:
-                        logger.info("Templates have been replaced with actual content.")
-                        break
-            
-            # Get page title for debugging
-            logger.info(f"Page title: {driver.title}")
-            
-            # Save HTML for debugging on first page
-            if page == 1:
-                with open('mckinsey_search_debug.html', 'w', encoding='utf-8') as f:
-                    f.write(html_content)
-                logger.info("Wrote HTML to mckinsey_search_debug.html for debugging")
-            
-            # Parse the search results
-            articles = parse_articles(html_content)
-            
-            if not articles:
-                logger.info(f"No articles found on page {page}. Stopping pagination.")
+                page, new_articles = result_queue.get(timeout=0.5)
+                total_articles += new_articles
+            except:
+                # Timeout on queue get
                 break
             
-            # Store the articles in the database
-            new_articles = store_articles(articles)
-            total_articles += new_articles
-            
-            logger.info(f"Stored {new_articles} new articles from page {page}")
-            
-            # Break after first page if in test mode
-            if test_mode:
-                logger.info("Test mode: Only scraping first page")
-                break
-                
-            # If we got fewer results than expected, we might be on the last page
-            if len(articles) < results_per_page:
-                logger.info(f"Only found {len(articles)} articles on page {page}. Likely the last page.")
-                break
-            
-            # Add a delay between pages to avoid overloading the server
-            if page < max_pages:
-                delay = random.uniform(3, 5)
-                logger.info(f"Waiting {delay:.2f} seconds before fetching next page...")
-                time.sleep(delay)
-        
+        logger.info(f"All pages processed. Total new articles stored: {total_articles}")
         return total_articles
         
     except Exception as e:
-        logger.error(f"Error in scrape_mckinsey_search: {e}")
+        logger.error(f"Error in parallel scraping: {e}")
         return 0
-    finally:
-        # Always quit the driver to clean up resources
-        if driver:
-            try:
-                driver.quit()
-                logger.info("WebDriver closed")
-            except Exception as e:
-                logger.warning(f"Error closing WebDriver: {e}")
 
 
 if __name__ == "__main__":
     logger.info("Starting McKinsey search scraper with Selenium WebDriver")
     
     # Initial deployment - test mode (first page only)
-    article_count = scrape_mckinsey_search(SEARCH_QUERY, test_mode=True)
+    article_count = scrape_mckinsey_search_parallel(SEARCH_QUERY, test_mode=True)
     
     logger.info(f"Scraping completed. Stored {article_count} articles.") 
