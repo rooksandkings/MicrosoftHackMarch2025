@@ -282,7 +282,7 @@ def export_to_csv(filename='mckinsey_articles.csv'):
         logger.error(f"Error exporting articles to CSV: {e}")
         return False
 
-def export_content_to_csv(filename='mckinsey_articles_content.csv'):
+def export_content_to_csv(filename='articles_content.csv'):
     """
     Export all article contents to a CSV file.
     

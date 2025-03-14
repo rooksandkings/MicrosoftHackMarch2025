@@ -10,7 +10,7 @@ import sys
 from datetime import datetime
 import time
 from database_utils import export_to_csv, export_content_to_csv
-from article_scraper import scrape_article_content
+from article_scraper import scrape_article_content, scrape_multiple_articles
 from mckinsey_scraper import create_webdriver  # Assuming this function exists
 import csv
 from mckinsey_scraper import get_session, Article
@@ -47,8 +47,8 @@ def create_parser():
     
     # Add export-content command
     export_content_parser = subparsers.add_parser('export-content', help='Export article content to CSV')
-    export_content_parser.add_argument('--filename', default='mckinsey_articles_content.csv',
-                                      help='Output CSV filename (default: mckinsey_articles_content.csv)')
+    export_content_parser.add_argument('--filename', default='articles_content.csv',
+                                      help='Output CSV filename (default: articles_content.csv)')
     
     # Add scrape-content command
     scrape_content_parser = subparsers.add_parser('scrape-content', 
@@ -161,7 +161,10 @@ def main():
             
             # Scrape article content
             limit = args.limit if args.limit > 0 else None
-            count = scrape_article_content(driver, limit)
+            
+            # Use the multiple article scraper instead of the single article one
+            count = scrape_multiple_articles(driver, limit)
+            
             logger.info(f"Successfully scraped content for {count} articles")
         except Exception as e:
             logger.error(f"Error scraping article content: {e}")

@@ -87,6 +87,53 @@ def handle_cookie_consent(driver):
         logger.warning(f"Error handling cookie consent: {e}")
         return False
 
+def scrape_multiple_articles(driver, limit=None):
+    """
+    Scrape content for multiple articles up to the specified limit.
+    
+    Args:
+        driver: Selenium WebDriver instance
+        limit (int, optional): Maximum number of articles to scrape, None for all
+        
+    Returns:
+        int: Number of articles successfully scraped
+    """
+    try:
+        # Get unscrapped articles
+        unscrapped_articles = get_unscrapped_articles(limit)
+        
+        if not unscrapped_articles:
+            logger.info("No articles found that need content scraping")
+            return 0
+            
+        logger.info(f"Found {len(unscrapped_articles)} articles to scrape")
+        
+        # Track success count
+        success_count = 0
+        
+        # Process each article
+        for i, article in enumerate(unscrapped_articles):
+            logger.info(f"Processing article {i+1}/{len(unscrapped_articles)}: {article['title']}")
+            
+            # Add random delay between requests (1-3 seconds)
+            if i > 0:
+                delay = random.uniform(1, 3)
+                logger.info(f"Waiting {delay:.1f} seconds before next article...")
+                time.sleep(delay)
+                
+            # Scrape the article content
+            success = scrape_article_content(driver, article)
+            
+            if success:
+                success_count += 1
+                
+        logger.info(f"Successfully scraped content for {success_count} out of {len(unscrapped_articles)} articles")
+        return success_count
+        
+    except Exception as e:
+        logger.error(f"Error scraping multiple articles: {e}")
+        return 0
+
 def extract_article_metadata(soup):
     """
     Extract metadata like authors and publication date from McKinsey articles.
@@ -122,42 +169,61 @@ def extract_article_metadata(soup):
     except Exception as e:
         logger.warning(f"Error extracting publication date: {e}")
     
-    # Extract authors - McKinsey specific patterns
+    # Extract authors - McKinsey specific patterns - FIX: Enhanced pattern matching
     try:
-        # Based on CSV analysis, the most reliable pattern is "Month Day, Yearby Author1, Author2"
-        paragraphs = soup.find_all('p')[:3]  # Check first few paragraphs
-        for p in paragraphs:
-            text = p.text.strip()
-            # Pattern: Date followed by "by" with or without space
-            date_by_match = re.search(r'(January|February|March|April|May|June|July|August|September|October|November|December)[^,]*,?\s*\d{4}(?:\s*by\s*|\s+by\s+)(.*?)(\.|$)', text, re.IGNORECASE)
-            if date_by_match:
-                author_text = date_by_match.group(2).strip()
-                if author_text and len(author_text) < 200:
-                    # Split multiple authors
-                    if ',' in author_text or ' and ' in author_text.lower():
-                        author_list = re.split(r',\s*|\s+and\s+', author_text)
-                        authors.extend([a.strip() for a in author_list if a.strip()])
-                    else:
-                        authors.append(author_text)
-                break
-                
-        # If no authors found via date pattern, try structured elements
-        if not authors:
-            # Check for meta tags
-            meta_author = soup.find('meta', {'name': 'author'})
-            if meta_author and meta_author.get('content'):
-                authors.append(meta_author.get('content'))
-            
-            # Check author sections
-            author_selectors = ['.author', '.byline', '.article-author', '.article-byline', '[rel="author"]']
-            for selector in author_selectors:
-                author_elems = soup.select(selector)
-                for elem in author_elems:
-                    author_text = elem.text.strip()
-                    if author_text and len(author_text) < 50:
+        # First try byline elements which are most reliable
+        byline_selectors = ['.byline', '.author', '.article-author', '[itemprop="author"]', '.article-byline']
+        for selector in byline_selectors:
+            author_elements = soup.select(selector)
+            if author_elements:
+                for element in author_elements:
+                    author_text = element.text.strip()
+                    if author_text and len(author_text) < 100:
+                        # Clean up "by" prefix if present
                         if author_text.lower().startswith('by '):
                             author_text = author_text[3:].strip()
                         authors.append(author_text)
+                break
+        
+        # If no authors found via elements, try meta tags
+        if not authors:
+            meta_author = soup.find('meta', {'name': 'author'})
+            if meta_author and meta_author.get('content'):
+                authors.append(meta_author.get('content'))
+        
+        # If still no authors, try looking in text paragraphs
+        if not authors:
+            # Look for patterns in the first few paragraphs
+            paragraphs = soup.find_all('p')[:5]
+            
+            for p in paragraphs:
+                text = p.text.strip()
+                
+                # McKinsey often puts authors right after the publication date
+                # Pattern: "Month Day, Year by Author1, Author2, and Author3"
+                date_by_match = re.search(r'(January|February|March|April|May|June|July|August|September|October|November|December)\s+\d{1,2},?\s+\d{4}\s*by\s+(.*?)(\.|$)', text, re.IGNORECASE)
+                if date_by_match:
+                    author_text = date_by_match.group(2).strip()
+                    if author_text and len(author_text) < 200:
+                        # Split multiple authors on commas or "and"
+                        if ',' in author_text or ' and ' in author_text.lower():
+                            author_list = re.split(r',\s*|\s+and\s+', author_text)
+                            authors.extend([a.strip() for a in author_list if a.strip()])
+                        else:
+                            authors.append(author_text)
+                    break
+                
+                # Also look for "by Author" or "by Author1, Author2" without date
+                by_author_match = re.search(r'\bby\s+(.*?)(\.|$)', text, re.IGNORECASE)
+                if by_author_match and not authors:
+                    author_text = by_author_match.group(1).strip()
+                    if author_text and len(author_text) < 100:
+                        if ',' in author_text or ' and ' in author_text.lower():
+                            author_list = re.split(r',\s*|\s+and\s+', author_text)
+                            authors.extend([a.strip() for a in author_list if a.strip()])
+                        else:
+                            authors.append(author_text)
+                    break
     except Exception as e:
         logger.warning(f"Error extracting authors: {e}")
     
@@ -166,6 +232,9 @@ def extract_article_metadata(soup):
         # Remove duplicates while preserving order
         seen = set()
         authors = [a for a in authors if not (a.lower() in seen or seen.add(a.lower()))]
+        
+        # Store authors in metadata
+        metadata['authors'] = authors
         
     return metadata, authors
 
@@ -312,7 +381,7 @@ def store_article_content(article_id, title, url, full_content, metadata):
                 title=title,
                 url=url,
                 full_content=full_content,
-                authors=authors_str,
+                authors=authors_str,  # Store authors as string
                 article_metadata=metadata_json,
                 processed=True,
                 scraped_at=datetime.now()
@@ -320,7 +389,7 @@ def store_article_content(article_id, title, url, full_content, metadata):
             session.add(article_content)
             session.commit()
             
-            logger.info(f"Stored article content for article ID {article_id}")
+            logger.info(f"Stored article content for article ID {article_id} with authors: {authors_str}")
             return True
             
     except Exception as e:
@@ -466,7 +535,7 @@ def scrape_article_content(driver, article):
         logger.error(f"Error scraping article content: {e}")
         return False
 
-def export_content_to_csv(filename='mckinsey_articles_content.csv'):
+def export_content_to_csv(filename='articles_content.csv'):
     """
     Export all article contents to a CSV file.
     """

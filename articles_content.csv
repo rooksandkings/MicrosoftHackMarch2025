@@ -1,9 +1,33 @@
 Article ID,Title,URL,Authors,Full Content,Article Metadata,Scraped At
-1,Navigating network modernization: Change management best practices,https://www.mckinsey.com/capabilities/mckinsey-digital/our-insights/tech-forward/navigating-network-modernization-change-management-best-practices,"Ritesh Agarwal, Ashish Gupta, Pankaj Sachdeva, and Jill Sharabura","## Navigating network modernization: Change management best practices
+500,"“Having developers who understand how that business works, who can go in and analyze the data coming out of their systems and put in new capabilities or fixes, just pays for itself tenfold.”",https://www.mckinsey.com/featured-insights/quote-of-the-day/february-7-2023,,"## McKinsey quote of the day
 
-March 12, 2024by Ritesh Agarwal, Ashish Gupta, Pankaj Sachdeva, and Jill Sharabura
+## “Having developers who understand how that business works, who can go in and analyze the data coming out of their systems and put in new capabilities or fixes, just pays for itself tenfold.”
 
-Updating network architecture to best meet a company’s current needs can have dramatic effects. Modern network practices offer benefits and competitive advantages, such as accelerated time to market and enhanced customer experience through seamless and reliable interactions with cloud-native applications.
+Casey Santos, the CIO of Asurion, on hiring good developers in “Focusing on developer experience and embedded security for cloud”","{""word_count"": 60, ""reading_time_minutes"": 1}",2025-03-14 11:43:13.639718
+10,On the cusp of change: North American wealth management in 2030,https://www.mckinsey.com/industries/financial-services/our-insights/banking-matters/on-the-cusp-of-change-north-american-wealth-management-in-2030,,"## On the cusp of change: North American wealth management in 2030
+
+Brings a unique perspective to help clients anticipate the changing needs of consumers in financial services and adjacent markets
+
+Works with global asset and wealth managers, banks, and insurers on strategic and operational challenges and organizational opportunities
+
+Advises wealth managers, asset managers, and insurers, focusing on strategy, distribution, and productivity improvements
+
+Leads McKinsey’s strategy work for North America and coleads it globally, offering advisory support to a wide range of financial institutions
+
+Provides counsel to global leaders in leading global financial institutions with a focus on using data analytics to drive decision making
+
+Guides clients to drive sustainable, long-term growth at the intersection of Insurance, Retirement, and Wealth & Asset Management
+
+January 3, 2020Recent decades have witnessed meaningful changes to the North American wealth management industry’s structure and dynamics. The first decade of the 2000s saw the further democratization of trading due to increased access through technology, and the current decade has seen the convergence of banking and investing and the rise of fee-based managed accounts. These seismic shifts raise the question of what the next decade will bring—and how we might describe the 2020s from the perspective of 2030.","{""word_count"": 202, ""reading_time_minutes"": 1}",2025-03-14 11:45:19.591335
+1,Navigating network modernization: Change management best practices,https://www.mckinsey.com/capabilities/mckinsey-digital/our-insights/tech-forward/navigating-network-modernization-change-management-best-practices,,"## Navigating network modernization: Change management best practices
+
+Partner in McKinsey’s New York office
+
+Senior expert in the Mumbai office
+
+Solution leader for cloud delivery in the Atlanta office
+
+March 12, 2024Updating network architecture to best meet a company’s current needs can have dramatic effects. Modern network practices offer benefits and competitive advantages, such as accelerated time to market and enhanced customer experience through seamless and reliable interactions with cloud-native applications.
 
 Consider one global technology conglomerate that undertook a network transformation, shifting from a legacy networking model to a microservices-based architecture. By embracing microservices and modern network principles, the conglomerate achieved a substantial reduction in deployment times for new services. This acceleration empowered the conglomerate to swiftly roll out innovations to the market and seize new business opportunities.
 
@@ -47,4 +71,746 @@ Network modernization is an ongoing evolution, demanding continuing evaluation a
 
 Applications drive business innovation, and the network enables this transformation. Embracing the shift toward microservices, containerization, and cloud-native architectures is not just a technical decision but also a strategic imperative. Network modernization paves the way for accelerated business outcomes, and strong change management in this effort is essential in positioning organizations to thrive in the dynamic landscape of the digital age.
 
-Ritesh Agarwal is a partner in McKinsey’s New York office, Ashish Gupta is a senior expert in the Mumbai office, Pankaj Sachdeva is a senior partner in the Philadelphia office, and Jill Sharabura is a solution leader for cloud delivery in the Atlanta office.","{""word_count"": 1194, ""reading_time_minutes"": 6}",2025-03-11 23:17:47.617616
+Ritesh Agarwal is a partner in McKinsey’s New York office, Ashish Gupta is a senior expert in the Mumbai office, Pankaj Sachdeva is a senior partner in the Philadelphia office, and Jill Sharabura is a solution leader for cloud delivery in the Atlanta office.","{""word_count"": 1205, ""reading_time_minutes"": 6}",2025-03-14 11:52:11.452973
+2,Changing change management,https://www.mckinsey.com/featured-insights/leadership/changing-change-management,,"## Changing change management
+
+Change management as it is traditionally applied is outdated. We know, for example, that 70 percent of change programs fail to achieve their goals, largely due to employee resistance and lack of management support. We also know that when people are truly invested in change it is 30 percent more likely to stick. While companies have been obsessing about how to use digital to improve their customer-facing businesses, the application of digital tools to promote and accelerate internal change has received far less scrutiny. However, applying new digital tools can make change more meaningful—and durable—both for the individuals who are experiencing it and for those who are implementing it.
+
+The advent of digital change tools comes at just the right time. Organizations today must simultaneously deliver rapid results and sustainable growth in an increasingly competitive environment. They are being forced to adapt and change to an unprecedented degree: leaders have to make decisions more quickly; managers have to react more rapidly to opportunities and threats; employees on the front line have to be more flexible and collaborative. Mastering the art of changing quickly is now a critical competitive advantage.
+
+For many organizations, a five-year strategic plan—or even a three-year one—is a thing of the past. Organizations that once enjoyed the luxury of time to test and roll out new initiatives must now do so in a compressed period while competing with tens or hundreds of existing (and often incomplete) initiatives. In this dynamic and fast-paced environment, competitive advantage will accrue to companies with the ability to set new priorities and implement new processes quicker than their rivals.
+
+## The power of digital to drive change
+
+Large companies are increasingly engaged in multiple simultaneous change programs, often involving scores of people across numerous geographies. While traditional workshops and training courses have their place, they are not effective at scale and are slow moving.
+
+B2C companies have unlocked powerful digital tools to enhance the customer journey and shift consumer behavior. Wearable technology, adaptive interfaces, and integration into social platforms are all areas where B2C companies have innovated to make change more personal and responsive. Some of these same digital tools and techniques can be applied with great effectiveness to change-management techniques within an organization. Digital dashboards and personalized messages, for example, can build faster, more effective support for new behaviors or processes in environments where management capacity to engage deeply and frequently with every employee is constrained by time and geography.
+
+Digitizing five areas in particular can help make internal change efforts more effective and enduring.
+
+## 1. Provide just-in-time feedback
+
+The best feedback processes are designed to offer the right information when the recipient can actually act on it. Just-in-time feedback gives recipients the opportunity to make adjustments to their behavior and to witness the effects of these adjustments on performance.
+
+Consider the experience of a beverage company experiencing sustained share losses and stagnant market growth in a highly competitive market in Africa. The challenge was to motivate 1,000-plus sales representatives to sell with greater urgency and effectiveness. A simple SMS message system was implemented to keep the widely distributed sales reps, often on the road for weeks at a time, plugged into the organization. Each rep received two to three daily SMS messages with personalized performance information, along with customer and market insights. For example, one message might offer feedback on which outlets had placed orders below target; another would alert the rep to a situation that indicated a need for increased orders, such as special events or popular brands that were trending in the area. Within days of implementing the system, cross-selling and upselling rates increased to more than 50 percent
+from 4 percent, and within the first year, the solution delivered a $25 million increase in gross margin, which helped to swing a 1.5 percent market-share loss into a 1 percent gain.
+
+## 2. Personalize the experience
+
+Personalization is about filtering information in a way that is uniquely relevant to the user and showing each individual’s role in and contribution to a greater group goal. An easy-to-use system can be an effective motivator and engender positive peer pressure.
+
+This worked brilliantly for a rail yard looking to reduce the idle time of its engines and cars by up to 10 percent. It implemented a system that presented only the most relevant information to each worker at that moment, such as details on the status of a train under that worker’s supervision, the precise whereabouts of each of the trains in the yard, or alerts indicating which train to work on. Providing such specific and relevant information helped workers clarify priorities, increase accountability, and reduce delays.
+
+## 3. Sidestep hierarchy
+
+Creating direct connections among people across the organization allows them to sidestep cumbersome hierarchal protocols and shorten the time it takes to get things done. It also fosters more direct and instant connections that allow employees to share important information, find answers quickly, and get help and advice from people they trust.
+
+In the rail-yard example, a new digital communications platform was introduced to connect relevant parties right away, bypassing middlemen and ensuring that issues get resolved quickly and efficiently. For example, if the person in charge of the rail yard has a question about the status of an incoming train, he or she need only log into the system and tap the train icon to pose the question directly to the individuals working on that train. Previously, all calls and queries had to be routed through a central source. This ability to bridge organizational divides is a core advantage in increasing agility, collaboration, and effectiveness.
+
+## 4. Build empathy, community, and shared purpose
+
+In increasingly global organizations, communities involved in change efforts are often physically distant from one another. Providing an outlet for colleagues to share and see all the information related to a task, including progress updates and informal commentary, can create an important esprit de corps.
+
+Specific tools are necessary to achieve this level of connectivity and commitment. Those that we have seen work well include shared dashboards, visualizations of activity across the team, “gamification” to bolster competition, and online forums where people can easily speak to one another (for example, linking a Twitter-like feed to a work flow or creating forums tied to leaderboards so people can easily discuss how to move up in the rankings).
+
+This approach worked particularly well with a leading global bank aiming to reduce critical job vacancies. The sourcing team made the HR process a shared experience, showing all stakeholders the end-to-end view—dashboards identifying vacancies; hiring requisitions made and approved; candidates identified, tested, and interviewed; offers made and accepted; and hire letters issued. This transparency and openness built a shared commitment to getting results, a greater willingness to deliver on one’s own step in the process, and a greater willingness to help one another beyond functional boundaries.
+
+## 5. Demonstrate progress
+
+Organizational change is like turning a ship: the people at the front can see the change but the people at the back may not notice for a while. Digital change tools are helpful in this case to communicate progress so that people can see what is happening in real time. More sophisticated tools can also show individual contributions toward the common goal. We have seen how this type of communication makes the change feel more urgent and real, which in turn creates momentum that can help push an organization to a tipping point where a new way of doing things becomes the way things are done.
+
+Digital tools and platforms, if correctly applied, offer a powerful new way to accelerate and amplify the ability of an organization to change. However, let’s be clear: the tool should not drive the solution. Each company should have a clear view of the new behavior it wants to reinforce and find a digital solution to support it. The best solutions are tightly focused on a specific task and are rolled out only after successful pilots are completed. The chances of success increase
+when management actively encourages feedback from users and incorporates it to give them a sense of ownership in the process.
+
+## How relevant and useful is this article for you?
+
+## About the author(s)
+
+Boris Ewenstein is a principal in McKinsey’s Johannesburg office, where Wesley Smith is a consultant and Ashvin Sologar is an associate principal.
+
+## Explore a career with us
+
+## Related Articles
+
+## Putting digital process innovation at the center of organizational change
+
+## What ‘digital’ really means
+
+## Raising your Digital Quotient","{""publication_date"": ""July 1, 2015"", ""word_count"": 1429, ""reading_time_minutes"": 7}",2025-03-14 11:52:17.668704
+3,Change management: lessons from Japan,https://www.mckinsey.com/capabilities/people-and-organizational-performance/our-insights/the-organization-blog/change-management-lessons-from-japan,,"## Change management: lessons from Japan
+
+Advises leading companies on a broad range of strategic, operations, and organizational topics
+
+Supports large Japanese companies in the consumer goods, retail, energy, manufacturing, and services sectors by driving growth through globalization, strategic planning, performance transformation, new business development, sales and marketing, and organizational and talent development.
+
+Co-leads McKinsey's Asia Life Sciences practice, coordinating the firm's activity in the pharmaceutical, medical technology, payor, and provider sectors
+
+August 6, 2018When it comes to evolution, “it is not the strongest or the most intelligent who will survive but those who can best manage change,” maintained naturalist Charles Darwin.
+
+So it is with modernizing and changing operating models within organizations. This can often be met with resistance by employees and exasperated further by cultural influences. In Japan, consensus building is a strong part of the culture and change management programs fail primarily from employee resistance at the second level beneath the CEO and teams.
+
+To combat this, one newly installed CEO – brought in to make changes at a Japanese consumer products company – immediately formed a team that would reach Level 2 employees. He handpicked younger people more likely to change and adapt and did not include disinterested veteran leaders.
+
+Two significant things happened. First, the CEO spent considerable time educating the new team on the journey ahead, explaining how the organization would function so they could envision the company’s future. Second, by handpicking a younger team, the message to company veterans was that something important was happening, and leaders who accepted these new changes would be part of the company’s success.
+
+A few core elements helped this organization achieve the right results:
+
+• Inspirational and effective change leaders.
+
+• A “change story” with real meaning to convince leaders and employees to be open to new ways of working.
+
+• The chance to change mindsets and behaviors.
+
+• The need to orchestrate change via an expanding and self-sustaining wave throughout the organization.
+
+Our experience supporting change efforts in Japanese organizations suggests we find success when more attention is paid to culturally attuned principles, as in the above example. For similarly consensus-oriented organizations, here are four practical ways to drive change.
+
+• Define the end state in detail and provide a roadmap much earlier. While a western company would launch a transformation based on a vision and engage the broader organization to define it, leaders at consensus-oriented organizations need a detailed description of the new model on which to engage and establish a fresh consensus early on. “Building a plane as we fly” is never an easy mission, but it is a nonstarter in these organizations.
+
+• Engage the front line very early and create opportunities to endorse change. Spend time in the field – on the factory floor, with the sales force, etc. – to define the details of the new model; anticipate issues; and permit the sharing of frustrations, aspirations, and other emotional reactions. Identify and support champions of change in the front line from the start. Do not assume that “immediate followers” in the second level of the organization will spontaneously follow the guidance from the top.
+
+• Map the organizational network and tackle change blockers. Organizational network mapping, which analyzes the networks that employees rely on in their work, is used frequently to identify and empower change agents. Identifying and mapping potential “blockers” is not difficult and even more important for a successful change. Actions can be taken to convert or neutralize change blockers early in the process.
+
+• Expose top management extensively, broadly and directly. Town hall meetings, Q&A sessions and other opportunities that expose top management to large audiences prove the most effective ways to sell change to employees. These events sacrifice intimacy, but they also break through an organization’s vertical walls, override internal factions and convey a call to action that directly engages each member of the organization.
+
+Establishing a purposeful team upfront helps sustain change and embeds the new procedural and cultural elements in the new model. In this context, the so-called “third generation” of leaders – those roughly 35-45 years in age who realize they have a future to build, not a legacy to protect – is becoming an important source of change energy because they’re more risk-seeking.
+
+Staying culturally attuned promises to make a big difference in whether organizations in Japan or elsewhere succeed in their change management mission.
+
+## Learn more about our People & Organizational Performance Practice","{""word_count"": 742, ""reading_time_minutes"": 4}",2025-03-14 11:52:23.087409
+4,The psychology of change management,https://www.mckinsey.com/capabilities/people-and-organizational-performance/our-insights/the-psychology-of-change-management,,"## The psychology of change management
+
+Over the past 15 or so years, programs to improve corporate organizational performance have become increasingly common. Yet they are notoriously difficult to carry out. Success depends on persuading hundreds or thousands of groups and individuals to change the way they work, a transformation people will accept only if they can be persuaded to think differently about their jobs. In effect, CEOs must alter the mind-sets of their employees—no easy task.
+
+CEOs could make things easier for themselves if, before embarking on complex performance-improvement programs, they determined the extent of the change required to achieve the business outcomes they seek. Broadly speaking, they can choose among three levels of change. On the most straightforward level, companies act directly to achieve outcomes, without having to change the way people work; one example would be divesting noncore assets to focus on the core business. On the next level of complexity, employees may need to adjust their practices or to adopt new ones in line with their existing mind-sets in order to reach, say, a new bottom-line target. An already ""lean"" company might, for instance, encourage its staff to look for new ways to reduce waste, or a company committed to innovation might form relationships with academics to increase the flow of ideas into the organization and hence the flow of new products into the market.
+
+But what if the only way a business can reach its higher performance goals is to change the way its people behave across the board? Suppose that it can become more competitive only by changing its culture fundamentally—from being reactive to proactive, hierarchical to collegial, or introspective to externally focused, for instance. Since the collective culture of an organization, strictly speaking, is an aggregate of what is common to all of its group and individual mind-sets, such a transformation entails changing the minds of hundreds or thousands of people. This is the third and deepest level: cultural change.
+
+In such cases, CEOs will likely turn for help to psychology. Although breakthroughs have been made in explaining why people think and behave as they do, these insights have in general been applied to business only piecemeal and haven’t had a widespread effect. Recently, however, several companies have found that linking all of the major discoveries together in programs to improve performance has brought about startling changes in the behavior of employees—changes rooted in new mind-sets. Performance-improvement programs that apply all of these ideas in combination can be just as chaotic and hard to lead as those that don’t. But they have a stronger chance of effecting long-term changes in business practice and thus of sustaining better outcomes.
+
+## Four conditions for changing mind-sets
+
+Employees will alter their mind-sets only if they see the point of the change and agree with it—at least enough to give it a try. The surrounding structures (reward and recognition systems, for example) must be in tune with the new behavior. Employees must have the skills to do what it requires. Finally, they must see people they respect modeling it actively. Each of these conditions is realized independently; together they add up to a way of changing the behavior of people in organizations by changing attitudes about what can and should happen at work.
+
+## A purpose to believe in
+
+In 1957 the Stanford social psychologist Leon Festinger published his theory of cognitive dissonance, the distressing mental state that arises when people find that their beliefs are inconsistent with their actions—agnostic priests would be an extreme example. Festinger observed in the subjects of his experimentation a deep-seated need to eliminate cognitive dissonance by changing either their actions or their beliefs.
+
+The implication of this finding for an organization is that if its people believe in its overall purpose, they will be happy to change their individual behavior to serve that purpose—indeed, they will suffer from cognitive dissonance if they don’t. But to feel comfortable about change and to carry it out with enthusiasm, people must understand the role of their actions in the unfolding drama of the company’s fortunes and believe that it is worthwhile for them to play a part. It isn’t enough to tell employees that they will have to do things differently. Anyone leading a major change program must take the time to think through its ""story""—what makes it worth undertaking—and to explain that story to all of the people involved in making change happen, so that their contributions make sense to them as individuals.
+
+## Reinforcement systems
+
+B. F. Skinner is best known for his experiments with rats during the late 1920s and the 1930s. He found that he could motivate a rat to complete the boring task of negotiating a maze by providing the right incentive—corn at the maze’s center—and by punishing the rat with an electric shock each time it took a wrong turn.
+
+Skinner’s theories of conditioning and positive reinforcement were taken up by psychologists interested in what motivates people in organizations. Organizational designers broadly agree that reporting structures, management and operational processes, and measurement procedures—setting targets, measuring performance, and granting financial and nonfinancial rewards—must be consistent with the behavior that people are asked to embrace. When a company’s goals for new behavior are not reinforced, employees are less likely to adopt it consistently; if managers are urged to spend more time coaching junior staff, for instance, but coaching doesn’t figure in the performance scorecards of managers, they are not likely to bother.
+
+Some disciples of Skinner suggest that positive-reinforcement ""loops"" have a constant effect: once established, you can leave them be. Over time, however, Skinner’s rats became bored with corn and began to ignore the electric shocks. In our experience, a similar phenomenon often prevents organizations from sustaining higher performance: structures and processes that initially reinforce or condition the new behavior do not guarantee that it will endure. They need to be supported by changes that complement the other three conditions for changing mind-sets.
+
+## The skills required for change
+
+Many change programs make the error of exhorting employees to behave differently without teaching them how to adapt general instructions to their individual situation. The company may urge them to be ""customer-centric,"" for example, but if it paid little attention to customers in the past, they will have no idea how to interpret this principle or won’t know what a successful outcome would look like.
+
+How can adults best be equipped with the skills they need to make relevant changes in behavior? First, give them time. During the 1980s, David Kolb, a specialist in adult learning, developed his four-phase adult-learning cycle. Kolb showed that adults can’t learn merely by listening to instructions; they must also absorb the new information, use it experimentally, and integrate it with their existing knowledge. In practice, this means that you can’t teach everything there is to know about a subject in one session. Much better to break down the formal teaching into chunks, with time in between for the learners to reflect, experiment, and apply the new principles. Large-scale change happens only in steps.
+
+Second, as the organizational psychologist Chris Argyris showed, people assimilate information more thoroughly if they go on to describe to others how they will apply what they have learned to their own circumstances. The reason, in part, is that human beings use different areas of the brain for learning and for teaching.11.These insights into what Argyris called 'double-loop learning' were further developed by Noel Tichy into the 'teachable point of view' used at GE’s Crotonville training center and at Ford Motor. In double-loop learning, the 'framing system' (mind-set) that underlies an individual’s actions can be altered through examination and questioning. In 'single-loop learning,' goals, values, frameworks, and mind-sets are taken for granted and learning occurs within the system.
+
+## Consistent role models
+
+Most clinical work confirms the idea that consistent role models, whom the famous pediatrician Benjamin Spock regarded as decisive for the development of children, are as important in changing the behavior of adults as the three other conditions combined. In any organization, people model their behavior on ""significant others"": those they see in positions of influence. Within a single organization, people in different functions or levels choose different role models—a founding partner, perhaps, or a trade union representative, or the highest-earning sales rep. So to change behavior consistently throughout an organization, it isn’t enough to ensure that people at the top are in line with the new ways of working; role models at every level must ""walk the talk.""
+
+The way role models deal with their tasks can vary, but the underlying values informing their behavior must be consistent. In a company that encourages entrepreneurial decision making at low levels, one middle manager might try to coach junior employees to know how to spot a promising new venture; another might leave this up to them. Both, however, would be acting in line with the entrepreneurial principle, whereas a boss who demanded a lengthy business case to justify each $50 expenditure would not be. But organizations trying to change their value systems can’t tolerate as much variance in their role models’ behavior. If entrepreneurial decision making were a new value, both of these middle managers might have to act in roughly the same way in order to encourage their subordinates to make bold decisions.
+
+Behavior in organizations is deeply affected not only by role models but also by the groups with which people identify. Role modeling by individuals must therefore be confirmed by the groups that surround them if it is to have a permanent or deep influence. (Most teenagers could tell you a lot about this.) Say that a well-respected senior leader is waxing lyrical about making the culture less bureaucratic and even conforming to the new regime by making fewer requests for information. If the sales reps in the company canteen spend every lunchtime complaining that ""we’ve heard this a thousand times before and nothing happened,"" individuals will feel less pressure to change their behavior. Change must be meaningful to key groups at each level of the organization.
+
+## Putting the approach into practice
+
+The case of a retail bank shows how these four conditions can coalesce to change mind-sets and behavior and thereby improve performance. But though we have grouped the actions of the bank under the four conditions, it didn’t apply them in a neat sequence. As in any change program, there was much disruption and risk. Nonetheless, basing the program on four proven principles gave the CEO confidence that it would eventually succeed.
+
+A few years ago, this CEO took the helm of a large European retail bank that employed more than 30,000 people. He set several targets: doubling the economic profit of the bank, reducing its cost-to-income ratio to 49 percent (from 56), and increasing its annual revenue growth from the current 1 to 2 percent to 5 to 7 percent—all within four years. But retail banking is almost a commodity business. No financial-engineering shortcuts or superficial changes in practice could win a competitive edge for the bank. It could meet these performance goals, the CEO realized, only by galvanizing its people to deliver far better customer outcomes at a much lower cost. That meant changing the culture of the bank by transforming it from a bureaucracy into a federation of entrepreneurs: managers would be rewarded for taking charge of problems and deciding, quickly, how to fix them.
+
+## People want to develop
+
+Workshops that draw on transpersonal psychology, a progressive branch of the discipline, can speed up cultural change and make it more enduring.11.Transpersonal psychology developed in the 1960s, when Abraham Maslow, Stanislav Grof, and others began integrating the classical Asian traditions of Zen Buddhism, Taoism, and yoga into their theories and the practice of humanistic psychology. To develop the workshops described here, the authors have also drawn on ideas from cognitive, behavioral, and gestalt psychology; neuroscience and quantum physics; emotional intelligence; and adult learning.   Transpersonal psychology suggests that the innate desire to develop and grow infuses human beings with energy. Employees will not put sustained effort into a new kind of behavior if they have only a rational understanding of why it matters to the company; it must mean something much deeper to them, something that they know will have an effect on their personal growth.
+
+Giving them an emotional connection to the new behavior can trigger that shift in perspective. The workshops help to change behavior by establishing these connections and thus giving change a personal meaning for participants. When large numbers of managers go through such transformational workshops within a brief time frame, small group by small group, the graduates create a critical mass of individuals who willingly embrace the new behavior and culture so that both are more likely to be sustained.
+
+The format and off-site setting of such workshops generally resemble those of other corporate get-togethers, but their content is unusual. Facilitators experienced in applying the principles of adult learning and transpersonal psychology to business use conversations, role-playing, and reflection to help participants tap into their rational and subconscious hopes for the future. These hopes may contrast uncomfortably with the current work of the participants—both what they do and how they do it. The contrast can unlock a deeply felt need for change.
+
+An international energy company, for example, had tried for years to make ""people development"" a core value and discipline. It was succeeding only among the few managers who already believed that they should serve as coaches and counselors. Many managers saw themselves as bosses rather than teachers. To get the 1,000 most senior managers to adopt a ""coaching"" mind-set (and some other positive cultural attributes), the company put them all, 30 at a time, through a three-day transformational workshop, starting with the executive team.
+
+The rational case for the importance of people development to the company’s strategy and operations was easily stated. Creating an emotional connection between the managers and the new behavior was harder. The workshop leaders asked people to discuss, in pairs, the following question: ""When were you mentored in your career?"" Participants had good memories of the defining moments of mentoring that had helped them achieve their current positions. They remembered the people who had the courage and interest to give them the hard feedback or encouragement they needed. Then the facilitators asked, ""Whom have you mentored? How does it feel to help others develop?"" These questions too prompted memories that evoked strong positive emotions.
+
+But transpersonal psychologists think that getting individuals to have an emotional response to a required new form of behavior isn’t enough to persuade them to adopt it permanently. It must also help to satisfy their innate appetite to grow. When they view the new behavior’s meaning from this completely different perspective—not as the fulfillment of an external requirement but rather as a way of satisfying a personal need—they are unlikely ever to give it up.
+
+The facilitators stepped up to this level of meaning when they asked the energy company’s managers, ""When you leave this company, what do you want people to say about you?"" Given the opportunity to think about this question, few were content to answer, ""I made the company richer."" Many hoped to be remembered for the difference they had made to other people’s lives, for caring enough to help their colleagues grow. Many also realized that a big gap separated what they would like to hear, on the one hand, and what their coworkers would actually say, on the other. Often those closest to retirement, with the most to offer as mentors, felt this gap the hardest. They realized that developing other employees would satisfy their own personal aspirations, not just the company’s.
+
+After every manager had been through the workshop, the group ranked leadership development as the second most powerfully experienced value at work (exhibit). Eighteen months previously, leadership development had received no votes. The proportion of employees who said that they had received good feedback and coaching rose to 80 percent, from 30, while 75 percent said that the behavior of their managers had changed significantly. The new values would have failed to take hold if in addition to giving employees an emotional connection to behavioral change the company hadn’t implanted the other three conditions necessary to achieve it: appropriate skills, supporting structures, and role models. The workshops helped to promote all of these conditions as well.
+
+## The story of change
+
+First, the CEO developed these insights into a story that would make sense to all of the bank’s employees, top to bottom, and would persuade them to change their behavior in line with the new principles. His principal technique was dialogue-based planning, a refinement of double-loop learning (see sidebar, ""People want to develop,"" for a different technique). First, he drafted a top-level story of the way he perceived the bank’s position and refined the story with the help of his executive directors. Each of them in turn developed a chapter of the story relevant to his or her direct reports; the human-resources director, for example, explained how she would improve the system for identifying potential highfliers and redraw their career paths so that they would spend less time in low-impact jobs. Every director assigned responsibility for each ""deliverable"" in the story to one member of his or her team. Each team member then had to develop a performance scorecard setting out what he or she would do differently to meet the new goals.
+
+The directors and the CEO then met again to retell their chapters and to get feedback from one another. Each director shared the amended version with his or her subordinates, who in turn retold the relevant part of the story to their own direct reports, and so on down five levels of the organization to the branch managers. At each retelling, the emphasis was on making the story meaningful to the people listening to it and to the groups to which they belonged.
+
+At every level, information flowed upstream as well as down. Part of the story told by the director of retail operations, for example, was the customers’ desire for faster banking processes. One thing slowing them down, according to the staff of the branches, was the document imagers, which broke down, on average, every three days. Ordering a new imager thus became a detail in each branch manager’s story, and the branch staff could translate the top-level story—""our customers want faster operations""—into a practical result that also made their lives easier. At each level of the organization, an employee heard the relevant version of the proposed changes from his or her immediate boss, the person widely regarded as the most effective communications channel.22.For example, an individual’s boss was consistently rated as the most effective communications channel in a UK survey of HR professionals (Internal Communication, The Work Foundation, December 2002).
+
+How could the CEO know that people really bought into his story? The secret, he felt, was to ensure that it described how life would be better for all of the bank’s stakeholders, not just investors and analysts.
+
+## Reinforcing systems
+
+The most dramatic structural change at the bank was eliminating 20 percent of its managerial jobs. The hypothesis, later proved correct, was that doing so would remove a swath of useless activity, without any falloff in performance. All of the bank’s managerial jobs were terminated, and managers were invited to apply for the remaining 80 percent. Applicants knew that they had succeeded if they were invited to a dialogue-based planning session—another way of signaling the importance of the process. Unsuccessful candidates left the bank. The goal was not, primarily, to improve the bank’s cost-to-income ratio; on the contrary, the cost of laying them off was quite high. Rather, since fewer managers now had to make the same number of decisions, this move was intended to force the survivors to make them more quickly.
+
+Simultaneously, the bank’s performance-management process was sharpened. Under the old system, managers were rated from 1 to 5 each year and remunerated accordingly. On average, 84 percent of them got a rating of 3 or more, though the performance of the bank was hardly as good as those results would imply. It injected reality into the process by introducing rankings within cohorts. To reveal the true relative performance of the bank’s employees, a manager assessing ten people, say, could rank no more than three as top performers and had to put at least one person in the lowest level. The ten directors evaluated the top 50 managers in meetings chaired by the CEO. The bonus for gaining the first rank was increased to 20 percent, from 10. Managers in the lowest rank, who would formerly have received a bonus of 5 percent, got none at all. Those who consistently ranked in the lowest level were asked to leave.
+
+## Skills for change
+
+There was more drama to come. After four months of developing the new strategy with the ten directors, the CEO realized that only five of them were committed to change and equipped to see it through. To ensure that his bank had the right skills to change its practices and culture, he replaced the other five with new directors, three of them outsiders.
+
+Meanwhile, the top 50 managers spent two days at a skill-development center where their leadership abilities—in coaching and decision making, for example—were assessed, and each drew up a personal plan to develop those talents. The company began to assess the performance of its people not just on whether they ""made the numbers"" but also on the leadership dimension. One manager who had consistently won high bonuses was known to be hell to work for, a fact acknowledged by the new measurement scheme: he was paid the lowest sum appropriate to his post. This news, which traveled fast on the grapevine, underlined the message that leadership really counted.
+
+## Consistent role models
+
+Dialogue-based planning ensured that leaders at each level of the organization were ""singing from the same song sheet."" Their planning sessions were high-profile events where they themselves started modeling the new type of behavior that the bank wanted its staff to adopt. The CEO’s enthusiasm also inspired employees to behave differently. He convinced them that although change would take a long time and would be very hard to achieve, his passion for improving the life of everyone involved with the bank was heartfelt.
+
+Both messages came through strongly in the way he reshaped his executive team. The five departing directors left just as the most disruptive changes were starting, and the work of the remaining five became even more intense during the six months it took to find replacements. It would have caused far less chaos to search for them while leaving the old team in place—and in the dark—but the CEO’s conscience told him not to do so. Besides showing other managers that there was nothing soft about the change program, his approach demonstrated his integrity and his respect for the needs of all of the bank’s people, even those he didn’t want to keep in the long term. In such a large-scale change in behavior, the leader’s character and integrity matter enormously.
+
+## The outcome
+
+The bank, which is now two years into its four-year improvement timetable, is about halfway toward meeting its targets for reducing its cost-to-income ratio and increasing its revenue and economic profit. This achievement is a sure sign that behavior is heading in the intended direction throughout the bank. Does it prove that mind-sets too are changing? No numerical evidence is available, but from close observation we can see that the culture really has evolved. The bank isn’t a comfortable place to work, but the focus on performance is far stronger, functional silos are being broken down, and people treat every task with far more urgency. A small but indicative example: average queuing times in branches have dropped by over 30 percent, largely because branch managers can count on their employees to work a more flexible shift system by making the most of part-time work and temporary cover. The imagers are working as well.
+
+It is neither easy nor straightforward to improve a company’s performance through a comprehensive program to change the behavior of employees by changing their mind-sets. No company should try to do so without first exhausting less disruptive alternatives for attaining the business outcome it desires. Sometimes tactical moves will be enough; sometimes new practices can be introduced without completely rethinking the corporate culture. But if the only way for a company to reach a higher plane of performance is to alter the way its people think and act, it will need to create the four conditions for achieving sustained change.
+
+## How relevant and useful is this article for you?
+
+## About the author(s)
+
+Emily Lawson is an associate principal and Colin Price is a director in McKinsey’s London office.
+
+## Explore a career with us","{""publication_date"": ""June 1, 2003"", ""word_count"": 4162, ""reading_time_minutes"": 21}",2025-03-14 11:52:28.207067
+5,The irrational side of change management,https://www.mckinsey.com/capabilities/people-and-organizational-performance/our-insights/the-irrational-side-of-change-management,,"## The irrational side of change management
+
+In 1996, John Kotter published Leading Change. Considered by many to be the seminal work in the field of change management, Kotter’s research revealed that only 30 percent of change programs succeed. Since the book’s release, literally thousands of books and journal articles have been published on the topic, and courses dedicated to managing change are now part of many major MBA programs. Yet in 2008, a McKinsey survey of 3,199 executives around the world found, as Kotter did, that only one transformation in three succeeds. Other studies over the past ten years reveal remarkably similar results. It seems that, despite prolific output, the field of change management hasn’t led to more successful change programs.
+
+It also hasn’t helped that most academics and practitioners now agree on the building blocks for influencing employee attitudes and management behavior. McKinsey’s Emily Lawson and Colin Price provided a holistic perspective in “The psychology of change management,” which suggests that four basic conditions are necessary before employees will change their behavior: a) a compelling story, because employees must see the point of the change and agree with it; b) role modeling, because they must also see the CEO and colleagues they admire behaving in the new way; c) reinforcing mechanisms, because systems, processes, and incentives must be in line with the new behavior; and d) capability building, because employees must have the skills required to make the desired changes.
+
+This prescription is well grounded in the field of psychology and is entirely rational. One of its merits is its intuitive appeal: many managers feel that, once revealed, it is simply good common sense. And this, we believe, is precisely where things go wrong. The prescription is right, but rational managers who attempt to put the four conditions in place by applying “common sense” typically misdirect time and energy, create messages that miss the mark, and experience frustrating unintended consequences from their efforts to influence change. Why? Because when they implement the prescription, they disregard certain, sometimes irrational—but predictable—elements of human nature.
+
+In our research and by working with companies attempting change, we have identified nine insights into how human nature gets in the way of successfully applying the four conditions required for behavioral change. As we describe these insights, we’ll show how various companies have, either by conscious awareness or simple luck, overcome or leveraged counterintuitive sides of human behavior in making change happen.
+
+## Creating a compelling story
+
+Change-management thinking extols the virtues of creating a compelling change story, communicating it to employees, and following it up with ongoing communications and involvement. This is good advice, but in practice there are three pitfalls to achieving the desired impact.
+
+1. What motivates you doesn’t motivate most of your employees. We see two types of change stories consistently told in organizations. The first is the “good to great” story: something along the lines of, “Our historical advantage has been eroded by intense competition and changing customer needs; if we change, we can regain our leadership position.” The second is the turnaround story: “We’re performing below industry standard and must change dramatically to survive. We can become a top-quartile performer in our industry by exploiting our current assets and earning the right to grow.”
+
+These stories both seem intuitively rational, yet they too often fail to have the impact that change leaders desire. Research by a number of leading thinkers in the social sciences, such as Danah Zohar, has shown that when managers and employees are asked what motivates them the most in their work they are equally split among five forms of impact—impact on society (for instance, building the community and stewarding resources), impact on the customer (for example, providing superior service), impact on the company and its shareholders, impact on the working team (for example, creating a caring environment), and impact on “me” personally (my development, paycheck, and bonus).
+
+This finding has profound implications for leaders. What the leader cares about (and typically bases at least 80 percent of his or her message to others on) does not tap into roughly 80 percent of the workforce’s primary motivators for putting extra energy into the change program. Change leaders need to be able to tell a change story that covers all five things that motivate employees. In doing so, they can unleash tremendous amounts of energy that would otherwise remain latent in the organization.
+
+Consider a cost reduction program at a large US financial-services company. The program started with a change story that ticked the conventional boxes related to the company’s competitive position and future. Three months into the program, management was frustrated with employee resistance. The change team worked together to recast the story to include an element related to society (to deliver affordable housing, for example), customers (fewer errors, more competitive prices), the company (expenses are growing faster than revenues, which is not sustainable), working teams (less duplication, more delegation), and individuals (more attractive jobs).
+
+This relatively simple shift in approach lifted employee motivation measures from 35.4 percent to 57.1 percent in a month, and the program went on to achieve 10 percent efficiency improvements in the first year—a run rate far above initial expectations.
+
+2. You’re better off letting them write their own story.  Well-intentioned leaders invest significant time in communicating their change story. Road shows, town halls, and Web sites are but a few of the many approaches typically used. Certainly the story (told in five ways) needs to get out there, but the insight we are offering is that much of the energy invested in communicating it would be better spent listening, not telling.
+
+In a famous behavioral experiment, half the participants are randomly assigned a lottery ticket number while the others are asked to write down any number they would like on a blank ticket. Just before drawing the winning number, the researchers offer to buy back the tickets from their holders. The result: no matter what geography or demographic environment the experiment has taken place in, researchers have always found that they have to pay at least five times more to those who came up with their own number.
+
+This reveals something about human nature: when we choose for ourselves, we are far more committed to the outcome (almost by a factor of five to one). Conventional approaches to change management underestimate this impact. The rational thinker sees it as a waste of time to let others discover for themselves what he or she already knows—why not just tell them and be done with it? Unfortunately this approach steals from others the energy needed to drive change that comes through a sense of ownership of the answer.
+
+At BP, to develop a comprehensive training program for frontline leaders, a decision was made to involve every key constituency in the design of the program, giving them a sense of “writing their own lottery ticket.” It took a year and a half to complete the design using this model but was well worth it: now in implementation, the program is the highest rated of its kind at BP. More than 250 active senior managers from across the business willingly teach the course, and, most important, managers who have been through the training program are consistently ranked higher in perfor-mance than those who haven’t, both by their bosses and by the employees who report to them.
+
+3. It takes a story with both + and – to create real energy. The “deficit based” approach—which identifies the problem, analyzes what’s wrong and how to fix it, plans, and then takes action—has become the model predominantly taught in business schools and is presumably the default change model in most organizations. Research has shown, however, that a story focused on what’s wrong invokes blame and creates fatigue and resistance, doing little to engage people’s passion and experience.
+
+This has led to the rise of the “constructionist based” approach to change, where the change process is based on discovery (discovering the best of what is), dreaming (imagining what might be), designing (talking about what should be), and destiny (creating what will be). The problem with this approach is that an overemphasis on the positive can lead to watered-down aspirations and impact. The reason is that, as humans, we are more willing to take risks to avoid losing what we’ve got than we are to gain something more. Some anxiety is useful when it comes to spurring behavioral change.
+
+We believe the field of change management has drawn an artificial divide between deficit-based and constructionist-based approaches and stories. While it is impossible to prescribe generally how the divide should be split between positive and negative messages (as it will be specific to the context of any given change program), we strongly advise managers not to swing the pendulum too far in one direction or another. Consider Jack Welch, former CEO at GE, who took questions of “what’s wrong here?” (poorly performing businesses, silo-driven behavior, and so forth) head-on, as well as “imagining what might be” (number one or two in every business, openness, and accountability).
+
+## Role modeling
+
+Conventional change management suggests leaders should take actions that role model the desired change and mobilize a group of influence leaders to drive change deep into the organization. Unfortunately, this does not necessarily deliver the desired impact.
+
+4. Leaders believe mistakenly that they already “are the change.” Most senior executives understand and generally buy into Gandhi’s famous aphorism, “Be the change you want to see in the world.” They commit themselves to personally role modeling the desired behaviors. And then, in practice, nothing significant changes.
+
+The reason for this is that most executives don’t count themselves among the ones who need to change. How many executives when asked privately will say no to the question, “Are you customer focused?” and yes to the question “Are you a bureaucrat?” Of course, none. The fact is that human beings consistently think they are better than they are—a phenomenon referred to in psychology as a self-serving bias. Consider that 94 percent of men rank themselves in the top half according to male athletic ability. Whereas conventional change-management approaches surmise that top team role modeling is a matter of will or skill, the truth is that the real bottleneck to role modeling is knowing what to change at a personal level.
+
+Typically, insight into what to change can be created by concrete 360-degree feedback techniques, either via surveys, conversations, or both. Look at Amgen CEO Kevin Sharer’s approach of asking each of his top 75, “What should I do differently?” and then sharing his development needs and commitment publicly with them. Consider the top team of a national insurance company who routinely employed what they called the circle of fire during their change program: every participant receives feedback live—directly from their colleagues—in relation to being the change, such as “What makes you great?” and “What holds you back?”
+
+5. “Influence leaders” aren’t a panacea for making change happen. Almost all change-management literature places importance on identifying and mobilizing those in the organization who either by role or personality (or both) have disproportionate influence over how others think and behave. We believe this is sound and timeless advice. However, we have observed that the role of influence leaders has gradually shifted—from being perceived as a helpful element of a broader set of interventions, to a panacea for making change happen.
+
+Our experiences working with change programs suggest that success depends less on how persuasive a few selected leaders are and more on how receptive the “society” is to the idea. In practice it is often unexpected members of the rank and file who feel compelled to step up and make a difference in driving change. That’s why we warn against overinvesting in influence leaders and advocate that change leaders’ attention should be balanced across the right application of all four conditions for change, to ensure they reinforce each other in ways that maximize the probability of the change spark taking off like wildfire across the organization.
+
+## Reinforcing mechanisms
+
+Conventional change management emphasizes the importance of reinforcing and embedding desired changes in structures, processes, systems, target setting, and incentives. We agree. To be effective, however, these mechanisms must take into account that people don’t always behave rationally.
+
+6. Money is the most expensive way to motivate people. Companies that try to link the objectives of change programs to the compensation of staff find that it rarely enhances their motivation for change to the extent desired. The reason for this is as practical as it is psychological in nature. The reality is that in the vast majority of companies, it is exceedingly difficult to incorporate a meaningful link to the change program within compensation systems that are based on a vast array of metrics. Moreover, many studies have found that for human beings satisfaction equals perception minus expectation (an equation often accompanied by the commentary, “reality has nothing to do with it”).
+
+The beauty of this equation for change managers is that small, unexpected rewards can have disproportionate effects on employees’ satisfaction with a change program. Gordon M. Bethune, while turning around Continental Airlines, sent an unexpected $65 check to every employee when Continental made it to the top five for on-time airlines. John McFarlane, former CEO of ANZ Bank, sent a bottle of champagne to every employee for Christmas with a card thanking them for their work on the company’s “Perform, Grow, and Break-out” change program. Most change managers would refer to these as merely token gestures and argue that their impact is limited and shortlived. Employees on the receiving end beg to differ. Indeed, they consistently report back that the rewards have a disproportionately positive impact on change motivation that lasts for months, if not years.
+
+7. The process and the outcome have got to be fair. Employees will go against their own self-interest if the situation violates other notions they have about fairness and justice. Consider a bank, which, as part of a major change program, created new risk-adjusted return on capital (RAROC) models and delivered the resulting new pricing schedules to the front line along with new and appropriate sales incentives. The result: customer attrition (not only of the unprofitable ones) and price overrides went through the roof and significant value was destroyed by the effort. What went wrong? Because the frontline bankers perceived the changes as unfair to the customer, a significant number of them vocally bad-mouthed the bank’s policies to customers and used price overrides to show their good faith, even though it meant they were less likely to achieve individual sales goals.
+
+In making any changes to company structures, processes, systems, and incentives, change managers should pay what might strike them as an unreasonable amount of attention to employees’ sense of the fairness of the change process and its intended outcome. Particular care should be taken where changes affect how employees interact with one another (such as head count reductions and talent-management processes) and with customers (sales stimulation programs, call center redesigns, and pricing). Ironically, in the pricing example described above, the outcome was inherently fair (customers are being asked to pay commensurate to the risk the bank is taking on), and therefore the downward spiral described could have been avoided (and has been by other banks adopting RAROC-based pricing) by carefully tending to employees’ perceptions of fairness in the communications and training surrounding the changes.
+
+## Recommended reading
+
+John P. Kotter, Leading Change, Boston: Harvard Business Press, 1996.
+
+Danah Zohar, Rewiring the Corporate Brain: Using the New Science to Rethink How We Structure and Lead Organizations, San Francisco: Berrett-Koehler, 1997.
+
+Richard Barrett, Liberating the Corporate Soul: Building a Visionary Organization, Woburn, MA: Butterworth-Heinemann, 1998.
+
+Don Edward Beck and Christopher C. Cowan, Spiral Dynamics: Mastering Values, Leadership, and Change, Oxford, UK: Blackwell Publishing, 1996.
+
+Ellen J. Langer, “The illusion of control,” in Judgment under Uncertainty: Heuristics and Biases, eds. Daniel Kahneman, Paul Slovic, and Amos Tversky, Cambridge, UK: Cambridge University Press, 1982. This chapter describes the lottery ticket study mentioned previously.
+
+Andreas Priestland and Robert Hanig, “Developing first-level leaders,” Harvard Business Review, 2005, Volume 83, Number 6, pp. 112–20.
+
+Bernard J. Mohr and Jane Magruder Watkins, The Essentials of Appreciative Inquiry: A Roadmap for Creating Positive Futures, Waltham, MA: Pegasus, 2002. The juxtaposition of the deficit-based and constructionist-based approaches to change is described in this work.
+
+Daniel Kahneman and Amos Tversky, “Choices, values, and frames,” American Psychologist, 1984, Volume 39, Number 4, pp. 341–50. In this article, Kahneman and Tversky propose evidence that humans are “irrational” loss avoiders.
+
+Brad M. Barber and Terrance Odean, “Boys will be boys: Gender, overconfidence, and common stock investment,” Quarterly Journal of Economics, 2001, Volume 116, Number 1, pp. 261–92.
+
+Michael Ross and Fiore Sicoly, “Egocentric biases and availability and attribution,” Journal of Personality and Social Psychology, 1979, Volume 37, pp. 322–36.
+
+Dan Ariely, Predictably Irrational: The Hidden Forces that Shape Our Decisions, New York: Harper Collins, 2008.
+
+Fred Nickols, “Change management books,” April 2, 2006. This list, compiled by Nickols, aggregates highly recommended books on change management.
+
+## Capability building
+
+Change-management literature emphasizes the importance of building the skills and talent needed for the desired change. Though hard to argue with, in practice there are two insights that demand attention in order to succeed.
+
+8. Employees are what they think, feel, and believe in. As managers attempt to drive performance by changing the way employees behave, they all too often neglect the thoughts, feelings, and beliefs that, in turn, drive behavior. Consider a bank that through a benchmarking exercise discovered that its sales per banker were lagging behind those of the competition. After finding that bankers spent too little time with customers and too much time on paperwork, the bank set about reengineering the loan-origination process in order to maximize customer-facing time. Unfortunately, six months later, the levels of improvement were far lower than envisioned.
+
+A further investigation, with an eye to the bankers’ mind-sets rather than their behaviors, revealed that they simply found customer interactions uncomfortable and therefore preferred paperwork. This feeling was driven by a combination of introverted personalities, poor interpersonal skills, and a feeling of inferiority when dealing with customers who (by and large) have more money and education than the bankers do. Finally, most bankers were loath to think of themselves as salespeople—a notion they perceived as better suited to employees on used-car lots than in bank branches.
+
+Armed with these root-cause insights, training for bankers was expanded to include elements related to personality types, emotional intelligence, and vocational identity (recasting “sales” as the more noble pursuit of “helping customers discover and fulfill their unarticulated needs”). This enhancement not only put the program back on track within six months but also ultimately delivered sustainable sales lifts in excess of original targets.
+
+9. Good intentions aren’t enough. Good skill-building programs usually take into account that people learn better by doing than by listening. These programs are replete with interactive simulations and role plays, and commitments are made by participants regarding what they will “practice” back in the workplace. But come Monday morning, very few keep their commitments.
+
+This lack of follow-through is usually not due to ill intent: it is because nothing formal has been done to lower the barriers to practicing new skills. The time and energy required to do something additional, or even to do something in a new way, simply don’t exist in the busy day-to-day schedules of most employees. This failure to create the space for practice back in the workplace dooms most training programs to deliver returns that are far below their potential.
+
+We advocate a number of enhancements to traditional training approaches in order to hardwire day-to-day practice into capability-building processes. First, training should not be a one-off event. Instead, a “field and forum” approach should be taken, in which classroom training is spread over a series of learning forums and fieldwork is assigned in between. Second, we suggest creating fieldwork assignments that link directly to the day jobs of participants, requiring them to put into practice new mind-sets and skills in ways that are hardwired into their responsibilities. These assignments should have quantifiable, outcome-based measures that indicate levels of competence gained and certification that recognizes and rewards the skills attained.
+
+In the same way that the field of economics has been transformed by an understanding of uniquely human social, cognitive, and emotional biases, so too is the practice of change management in need of a transformation through an improved understanding of how humans interpret their environment and choose to act. While sustained impact can be measured only over numbers of years, our early results when applying these insights give us the confidence to broadly share our thinking.
+
+## How relevant and useful is this article for you?
+
+## About the author(s)
+
+Carolyn Aiken (now Carolyn Dewar) is a principal in McKinsey’s Toronto office, and Scott Keller is a principal in the Chicago office.
+
+After publication of this article, the author's name changed to Carolyn Dewar.
+
+## Explore a career with us
+
+## Related Articles
+
+## The four building blocks of change
+
+## Build a change platform, not a change program
+
+## Changing change management","{""publication_date"": ""April 1, 2009"", ""word_count"": 3540, ""reading_time_minutes"": 18}",2025-03-14 11:52:34.952500
+6,Change management will be critical to implementing generative AI,https://www.mckinsey.com/featured-insights/lifting-europes-ambition/videos-and-podcasts/change-management-will-be-critical-to-implementing-generative-ai,,"## Change management will be critical to implementing generative AI
+
+The big conversation I wish was happening more among the organizations currently exploring gen AI is how to make the change stick and scale. At the end of the day, when you look at many of the companies right now, they're in exploration mode, which is correct, since this is new. They're throwing out some proofs of concept (POCs) to find the value, and what it will take to achieve. The big question revolves around the end intervention. What change will be needed in the organization to unlock the benefits? What do humans need to do differently to accept, adopt, and scale gen AI? I see more effort needed on that front in many organizations.
+
+Similarly, on the technology side, one piece is about proving what the technology can do. And for those who really want to adopt and scale, another piece involves putting those foundations in place. Do you have the machine learning operations (MLOps) needed to productionize many, many, many models at scale? Do you have the data foundation necessary to really fuel the models and unlock the opportunities at that scale? I think those are the two conversations I would love to see taking place more across Europe.
+
+## How relevant and useful is this article for you?
+
+## About the author(s)
+
+Louise Herring is a partner in McKinsey’s London office.
+
+Comments and opinions expressed by interviewees are their own and do not represent or reflect the opinions, policies, or positions of McKinsey & Company or have its endorsement.
+
+## Explore a career with us
+
+## Related Articles
+
+## Lifting Europe’s Ambition on generative AI
+
+## Leveraging generative AI in Europe: The opportunities and challenges","{""publication_date"": ""October 17, 2023"", ""word_count"": 288, ""reading_time_minutes"": 1}",2025-03-14 11:52:41.144371
+7,Personalizing change management in the smartphone era,https://www.mckinsey.com/capabilities/people-and-organizational-performance/our-insights/personalizing-change-management-in-the-smartphone-era,,"## Personalizing change management in the smartphone era
+
+CEOs know that making organizational change stick requires convincing big groups of geographically dispersed people to think, act, and approach their work differently. And this is devilishly hard, as human beings are motivated by many things, have different fears and aspirations, feel varying levels of empowerment and commitment, and tend to be reluctant to change in the first place. Undifferentiated approaches that don’t carefully consider employees’ mindsets will fall flat and may even breed cynicism that saps morale and undermines progress.
+
+The good news is that when it comes to personalization, senior executives have plenty of inspiration, courtesy of analytical pioneers such as Instagram, Netflix, and Spotify, all adept at tailoring products to meet individualized preferences via apps and other easy-to-use digital platforms. A large global manufacturer’s ongoing experiment in tech-infused mass personalization shows how this thinking can be applied to organizational change. The company’s experience suggests how smart combinations of digital technology, analytics, and behavioral science can make change more inclusive and persuasive—and help employees unleash their enthusiasm in ways not possible otherwise. The key is to use the available tools to better understand people and meet them where they are—a guiding principle that’s equally relevant for implementing long-term change and for leading a remote workforce through the current disruptions caused by the COVID-19 pandemic.
+
+## Get focused
+
+## Most Popular Insights
+
+## How relevant and useful is this article for you?
+
+## Most Popular Insights
+
+• Superagency in the workplace: Empowering people to unlock AI’s full potential
+
+• McKinsey Quarterly: 60th birthday edition
+
+• M&A Annual Report: Is the wave finally arriving?
+
+• Women in the Workplace 2024: The 10th-anniversary report
+
+• The critical role of strategic workforce planning in the age of AI
+
+For a few years, the manufacturer had tried with limited success to implement cultural changes across a key region’s 7,000-strong workforce—for example, by promoting behaviors it hoped would break down silos, empower and motivate frontline workers, and bolster performance. Now the CEO wanted a fresh start. An assessment highlighted places where the company’s organizational health was poor or needed strengthening. From these areas, senior leaders focused on three management practices: operational discipline, inspirational forms of leadership, and the use of rewards and recognition to better motivate employees.
+
+Undifferentiated approaches to change that don’t consider employees’ mindsets will fall flat and may even breed cynicism.
+
+The company then formed a team to translate these broad cultural goals into specific mindsets and behaviors that would both generate the desired organizational outcomes and also help employees better understand how they personally contributed to the improvement. For example, the manufacturer wanted employees to think of operational discipline as everyone’s job. One tangible way to promote this would be to encourage shop-floor operators and supervisors to consciously review the company’s “golden rules of safety” before every shift. Likewise, the company sought to instill a mindset of valuing continuous improvement and celebrating small victories. One way of doing this would be to encourage people to speak up immediately when they saw a colleague do something positive (a motivational take on the mantra “if you see something, say something”).
+
+## Clear the roadblocks
+
+The team now had a discrete set of behaviors they wanted to encourage. But they knew that to do so effectively, they needed to meet people where they were—they couldn’t simply tell people to change. The team needed to address any mindsets or beliefs that could act as barriers. Lessons from organizational psychology and behavioral science helped identify a range of potential roadblocks, and an assessment survey of employees and subsequent analysis to spot patterns in the data helped the manufacturer isolate the most prevalent roadblocks to tackle. While the roadblocks themselves touched upon several factors (for example, employees’ beliefs about whether a given behavior is part of their job or conflicts with their personal values) the roadblocks broadly fell into three types (exhibit): “I’m not allowed,” “I can’t,” and “I won’t.”
+
+Company leaders quickly saw how roadblocks could prevent employees from adopting beneficial behaviors. For example, the manufacturer had long encouraged supervisors to take “gemba walks”—visits to the shop floor that help spot production issues and encourage useful conversations with frontline workers. Yet the analysis showed that many supervisors didn’t prioritize the walks or make time for them, in part because they thought the culture didn’t truly support them using their time this way and also because they worried they’d be bombarded during the walks by new problems they couldn’t handle.
+
+## Make it personal—at scale
+
+To address the roadblocks most effectively—and advance the transformation’s broader goals—the team ran a pilot project involving 500 employees. The goal: serve up a rich mix of daily content (videos, text-based messages, and short quizzes) all designed to encourage employees to embrace the changes personally. The content was delivered via mobile-phone app in order to make the most of employees’ existing preferences and habits; moreover, the app’s content was tailored for both frontline operators and supervisors, as well as for different shop-floor locations inside the facility. Crucially, the app’s algorithm paired the tips, reminders, and suggestions it delivered to employees with the roadblocks they reported experiencing. Periodic web-based quizzes provided data that showed the degree to which employees experienced the roadblocks, and gauged progress overcoming them. The result was, essentially, a customized development plan that supported a range of personalized interventions and that could be optimized in real time.
+
+A supervisor we’ll call Heloisa,1All the personal data the company used as part of the change program were anonymized to protect employees’ privacy and to help ensure their candor in responding to surveys. for instance, reported having difficulty finding the time to give feedback to her team of operators. When she opened the app, she was prompted to watch a short video of her colleagues discussing how important they felt it was to receive feedback. Then, a few days later, Heloisa received a push notification explaining practical approaches for delivering quick, effective feedback. Meanwhile, a frontline operator we’ll call Juan was resisting giving feedback because he felt that doing so would hurt his relationship with his coworkers. When he accessed the platform, among the content bits he received were messages to help him realize the importance of constructive feedback in establishing a safe and efficient workplace.
+
+Six weeks into the change program, Ana reported a significant shift in how frequently she recognized others—a testament to the skills she developed through coaching.
+
+In addition to clearing roadblocks, the platform helps employees reach the program’s broader cultural goals. A supervisor we’ll call Ana, for instance, wasn’t recognizing the small, daily victories of her colleagues, largely because she didn’t feel she had the skills to do so. When she engaged with the platform, she received bite-size exercises and coaching to help build this capability. Six weeks into the change program, Ana reported a significant shift in how frequently she recognized others—a testament to the skills she developed through the coaching and an improvement directly linked to a management practice (“rewards and recognition”) that the company was prioritizing.
+
+## Manage for impact
+
+The team manages the app in conjunction with the same centralized “transformation office” that leads the broader change effort. This gives senior executives an integrated view of where things are progressing or lagging. Dashboards show where participation rates on a module are down, or where employees aren’t retaining certain information, allowing the company to make adjustments in real time.
+
+During the launch of the pilot, for example, the data suggested that some employees weren’t answering questions candidly; they were simply choosing the most optimistic-sounding responses to survey questions. The team updated the algorithm so that if users appeared to be answering questions in a pattern, a pop-up message reminded them that their responses were always anonymous and unlinked to the company’s HR systems (a vital message, and one that was communicated continually and in other forms). Responses to the roadblock assessment quickly became more realistic, which both confirmed the challenge ahead and gave the team confidence that employees increasingly trusted the effort and took it seriously.
+
+Adding communal aspects to the app—the ability to post user-generated images, videos, and messages within the content feed, as well as sharing, tagging, and “like” functionality—encouraged more employees to interact with the platform and helped spur enthusiasm for the pilot. And, as more employees shared their stories, posted photos, and called out good behavior, it also reinforced the program’s goals (after all, people are more likely to follow through on behavior change when they commit to it publicly). Simple gamification, including the addition of “badges” for social posts, helped too. Indeed, as word of the platform spread and people became curious, employees who weren’t part of the pilot wanted in, and what was meant to be a test for 500 employees quickly expanded to allow all 7,000 employees to participate.
+
+As word spread and people became curious, employees who weren’t part of the pilot wanted in.
+
+The results of the three-month pilot have been encouraging, and the company is now rolling out the effort more broadly. Overall attainment scores suggest an average individual improvement of 10 percent against the three management practices the company is prioritizing. Improvements in some areas were rapid—with scores rising about 5 percent every two weeks over the span of the pilot. Meanwhile, the manufacturing unit involved in the effort enjoyed a 6 percent increase in production, an encouraging result that company leaders attribute to a combination of the pilot along with a focused effort to reinforce lean-management principles.
+
+Importantly, employees inside the manufacturing unit report that the work feels different, as momentum for the program grows. Night-shift workers have demonstrated particular enthusiasm. Whereas before, change efforts might have seemed mystifying or incomplete to them—motivational posters appearing in the workspace overnight, companywide mass communications from leaders they rarely saw—now the goals of the program made sense. The platform has also improved their level of recognition in the company and their connectedness to the day shift, which is helping break down the silo mentality that worked against the company’s operational and safety goals.
+
+Change is hard, and change is intensely personal. When we know what’s expected of us, see how our unique efforts contribute to the whole, and are encouraged to treat change as a personal journey, we are more likely to be energized by the prospect of change than fearful of it. As the manufacturer’s experience suggests, smart combinations of technology, analytics, and behavioral science can help catalyze change at scale in ways that aren’t possible otherwise.
+
+## How relevant and useful is this article for you?
+
+## About the author(s)
+
+Alexander DiLeonardo is a partner in McKinsey’s London office, David Mendelsohn is a specialist in the New York office, Nikil Selvam is a consultant in the Waltham office, and Alexandra Wood is a consultant in the New Jersey office.
+
+The authors wish to thank the many contributions that Nick Rosemarino made to this article, and also to thank Vijay Agarwal, Deepankar Agrawal, Anita Baggio, Aditya Chauhan, Adam Clover, Sourabh Gupta, Taylor Lauricella, Ursula Lehnert, Ran Li Phelps, Vikram Rajpoot, Pru Rowe, Bill Schaninger, Riddhi Shah, Iyad Sheikh, Stephanie Smallets, and Yihang Yan for their collaboration.
+
+## Explore a career with us
+
+## Related Articles
+
+## Organizational health: A fast track to performance improvement
+
+## Want a better decision? Plan a better meeting
+
+## Getting personal about change","{""publication_date"": ""May 14, 2020"", ""word_count"": 1902, ""reading_time_minutes"": 10}",2025-03-14 11:52:47.902518
+8,All I ever needed to know about change management I learned at engineering school,https://www.mckinsey.com/capabilities/people-and-organizational-performance/our-insights/all-i-ever-needed-to-know-about-change-management-i-learned-at-engineering-school,how things work,"## All I ever needed to know about change management I learned at engineering school
+
+I have always been fascinated by how things work. As a child, I would follow my father around the yard, helping him with various projects. How, I wondered, did the load in the wheelbarrow always balance? Why could I move a big rock with a crowbar, but not without? How does cement dry underwater?
+
+It is hardly surprising that when I came of age, I followed in my father’s footsteps once more, this time to engineering school. Here I learned the precise formulae that govern the forces of nature. Boring to some, for me these axioms held a special magic, because understanding them conferred great power—the power to harness the forces of nature for the works of man.
+
+I have strayed from my professional roots. Over the past decade at McKinsey, I have helped clients design and execute major change programs, and led research projects on frontline change, operational improvement, and company-wide transformation. I have borrowed many good ideas from the literature on personal and organizational change. Often, however, it has left me wondering how change really works.
+
+I am a mechanical engineer. We mechanical engineers tease our civil engineering colleagues that they only have to figure out how to make things stand up or fall down. Mechanical engineers have to figure out how to make things go round and round—a skill of a higher order. Making change always seemed to me like mechanical engineering, but a lot of the literature reads as if it were written by civil engineers.
+
+You can read books on the four, five, or six things you have to do to make a great company stand rather than fall, as though the corporation were a civil structure that you could make stand up, and leave it at that. These static, normative models are admittedly helpful, presenting as they do a vision of what ""good"" looks like, and identifying some of the changes that can bring it about. But they do not really capture the dynamic characteristics of change. They will not bring to life what happens when a dynamic system gets out of balance, when momentum falters, when the best-laid plans yield unexpected results. They won’t explain, in other words, how you get change to go round and round.
+
+My colleagues and others tell me that business leaders like the static, normative way of thinking. This article, then, may not be for everyone. But there may be a few other poor souls who, like me, got hooked early on understanding the basic laws that govern action. So I decided to write down the five basic premises I consider as I help clients design their change programs—ideas I think of as natural laws of organizational change.
+
+These laws are inspired by the power of scientific thinking. Unlike scientific laws, however, they have not been conclusively proven through controlled experiments. They represent a personal perspective developed through reading and research, as well as through trial and observation in the daily routine of client service. They are: the law of constituent balance, the law of leverage, the law of momentum, the law of feedback and adjustment, and the law of leadership.
+
+## The law of constituent balance
+
+The need for major change is often driven by an imbalance between a company’s constituent stakeholders: shareholders, employees, customers, communities, and management. This basic law answers the question ""Why change?""
+
+Nature consists of ecosystems in balance—structures in which different species live interdependently. When an ecosystem is knocked out of balance for whatever reason, a period of often violent flux follows, during which scarce resources are dynamically redistributed and the system arrives at a new balance that better reflects the new environment. Similarly, when constituent interests are out of balance in a large corporation, a power struggle erupts. The gloves come off as shareholder groups rebel against complacent management, or customers punish a company for poor quality. The mentality of scarcity is at play.
+
+Where possible, this imbalance should be exploited to create the conditions for change. However, if a winning formula, once found, is to be sustained, the system must eventually be brought back into balance. High performance can be maintained only when a mentality of surplus has been restored: when customers are satisfied, talent and investment flow in, and management, employees, and shareholders feel adequately rewarded. The evolution of constituent balance during the change provides clues as to which forces can be harnessed at different times to drive the change forward.
+
+Early capitalist models emphasized the claims of owners and customers. More recently, democratic pluralist societies have substituted shareholders for owners and added employees and communities to create the four-stakeholder model that many modern corporations have in their credo. What always gets left out of the model, but should not be forgotten, is that a fifth group, management, weighs heavily in the balance of power. What value has an analysis of Iraq that does not consider Saddam Hussein?
+
+## The law of leverage
+
+Maximize the return on effort by changing the things that will produce the greatest results. This law helps me understand what to change.
+
+Archimedes deduced over 2,000 years ago that force could be multiplied by applying it to a lever at a particular distance from a fulcrum. ""Give me a lever,"" he said, ""and I will move the world."" Finding the right levers—and pushing them hard enough—is as critical in change management as it is in mechanics.
+
+My experience has been that our instinct is to make more changes than are necessary, without applying enough insight into which changes really matter. Too often, we are simply anxious to make something happen. How can we identify the important changes, and resist acting on secondary problems?
+
+Much of the literature on change implies that a high-performing company needs to do everything remarkably well—and, in recommending across-the-board reengineering, seems to take for granted that low-performing companies must be doing everything badly. In fact, high-performing companies do many things imperfectly; they just do the important things—or enough of the important things—well. Meanwhile, underperforming companies often do many important things fairly well, but not with enough intensity.
+
+Indeed, once analysis has confirmed which levers should be pulled, extraordinary tenacity will be required to pull them hard enough to drive changes uncompromisingly over the 60 percent threshold. Doing something 60 percent of the way is often enough; doing something 40 percent of the way, on the other hand, is often no better than doing nothing at all. That 20 percent swing makes all the difference. All of this means you have to examine a company very broadly before determining what really needs changing, and what merely needs intensifying. Your eventual path of action will be narrow, but to exploit the law of leverage you must begin with a wide field of vision.
+
+Unfortunately, most of us start out blind in at least one eye. As an engineer, I found isolating the economic drivers of performance straightforward, but it was not until I worked alongside a firm specializing in cultural change that I came to understand the power of changing people’s beliefs. Some CEOs have acute antennae for cultural symptoms; others see only business results. You need to learn to see in a number of dimensions, and to integrate what you see into a coherent picture.
+
+Tools can help, but few tools offer a complete paradigm. Recently, I have found that looking carefully at three types of levers has sharpened my vision. First, take aim at the direct economic levers: driving down costs and increasing revenues. Then, understand how levers that focus the organization—structures, processes, targets—affect performance indirectly. Finally, examine the performance context: levers such as vision, values, and power base.11.See Roger Dickhout, Michael Denham, and Norman Blackwell, ""Designing change programs that won’t cost you your job,"" The McKinsey Quarterly, 1995 Number 4, pp. 100–116, for more on this.
+
+Acting on a path narrower than your field of vision calls for self-control and detachment—a detachment that must paradoxically be combined with an intense performance orientation and an impatience for results. As we have seen, you can do a lot of things fairly well and still not achieve the performance you aspire to; fortunately, you can also do a lot of things wrong as long as you get the important things right and drive hard enough on these to make the difference. Seek the fewest changes for the greatest result.
+
+## The law of momentum
+
+Liberate the energy to drive the change.
+
+""We have to get this place in gear."" ""The challenge now is to keep moving forward."" ""We are running out of steam. How do we get restarted?"" Experienced change leaders struggle with these basic problems. Change is work. Work requires energy. Where is the energy to come from?
+
+The first law of thermodynamics states that energy can be neither created nor destroyed. Consequently, the energy required to change a system from one state to another must come either from within a closed system as energy changes its form (from light to heat, say, or pressure to temperature), or from beyond the boundaries of the closed system.
+
+So too with major change. Energy can be introduced from outside—as with pressure from shareholders or new management—or the system’s own potential energy can be transformed into kinetic energy. Potential energy is released by raising the aspirations and shaping the beliefs of pivotal members of the organization, and by liberating available capacity and capability to work on the change.
+
+As with mechanical engineering, the horsepower of the engine must be matched to the task, or the task scaled to the horsepower of the engine. Consequently, the law of leverage, which focuses energy on the key changes, is especially critical during takeoff, when energy may be scarce.
+
+Energy limits can also be managed by offsetting endothermic, energy-consuming change initiatives with exothermic, energy-liberating ones. A frontline focus on customer satisfaction, directly exposing a company to the demands of its customers, will unleash a massive surge of energy across the whole organization. On the other hand, cost reduction, while it may be a critical ingredient of a change program, often consumes energy by arousing fear at the same time as it removes capacity. Focusing sharply and quickly on cost opportunities and avoiding enervating rounds of organizational downsizing can minimize the energy required, but the sort of spontaneous combustion that can be generated by customer satisfaction efforts is unlikely to materialize.
+
+Similar to the exothermic/endothermic balance is the balance between push and pull that a skilled change agent will exploit to get change going. Major change will inevitably call for new behaviors. The change agent instinctively gives the system a push by building new tools to enable these behaviors. Simultaneously, he or she must create a pull, or demand for these tools, by putting in place new targets and measures that will focus the organization on the desired behaviors, in turn causing it to reach for these tools.
+
+If it is to drive continuing change, a change effort must build sources of energy as well as producing results. Accomplishing a transformation from low to high performance can take several episodes over a number of years. To power these episodes, a company must discover a pattern of change that builds momentum within an episode and that promotes the shared vision, confidence, leadership capacity, and capabilities that will make the next episode possible.
+
+The particular strategy will vary with the situation. Eliminating a layer of change-resistant management and reorganizing into segment-focused business units can liberate the energy needed to engage new management in the task of improving performance. When this kind of approach reaches its limitations, however, new blood may be required before the next episode can be launched. But the general law remains: you must achieve results and build energy for more change. If you do not go forward, you will slip back.
+
+## The law of feedback and adjustment
+
+Learn how your organization responds to change, and adjust the program accordingly.
+
+The laws of leverage and momentum offer insight into harnessing the underlying physics of your business system. But there are limits to the predictability of change. Acting on the bottlenecks to improvement will create new bottlenecks. Moreover, the forces driving the change will ebb and flow. Competitors may become stronger, raising customers’ expectations and redefining performance levels; shareholders may win more control; management may gain or lose courage. Change may itself create opportunity.
+
+In mechanical engineering, control theory dictates that a closed-loop control system is required to monitor a transformation process when response characteristics are sensitive to environmental conditions. In a closed-loop system, transducers measure the input and output of the system and compare the actual output to the expected output. Then the input can be iteratively adjusted until the desired result is achieved.
+
+In the same way, however complete the field of vision in a major change situation, or however sophisticated the strategies to generate momentum, some changes are bound to work out less well than others. In change efforts, leadership actions combine with the communication of the aspiration for change and its specific objectives to create an ""input."" Project structures, targets, and milestones provide a framework for measuring actual against expected ""output"" so that leadership actions can be modified accordingly. Thus early actions, while producing results and increasing energy, also serve as a dynamic diagnostic. You will learn at least as much by watching your organization’s response to change as by analyzing its current state.
+
+Change leaders also establish other, less formal networks and processes to gauge progress and reset priorities for action. These make it possible to identify when an organization is running out of steam, or, conversely, when it has the confidence to take on a bigger challenge. Being dynamically responsive to change as it progresses also allows you to take advantage of timing. An obvious need to restructure work practices, for example, may be impossible to address in a tight market with an entrenched union leadership. If prices fall and union leadership changes, however, an opportunity may arise to broaden the change program in mid-stream.
+
+## The law of leadership
+
+Leadership is the catalyst of change.
+
+In chemistry, small amounts of catalyst intensify and accelerate reactions in much larger masses. Indeed, in many chemical reactions, all the ingredients may be in place, but if the catalyst is absent, nothing will happen. Similarly, the four basic mechanisms of change—exploiting the imbalance between constituents, focusing on the high-leverage opportunities, generating momentum by liberating energy, feeding back and adjusting—are always intensified and accelerated by the personal example of a change leader. Without it, the change may be stillborn. Ultimately, leadership is the scarce resource.
+
+The aspirations and preferences of the primary protagonist have a big impact on the way change unfolds. Notwithstanding the need for a broad field of vision, leaders do come with approaches they are most comfortable with. There is no such thing as a perfect leader. If change is to have credibility within an organization, it must be congruent with the actions of its leader.
+
+Establish a small team at the top—think two to three, not one, not ten—to initiate and guide the change. These people must be role models for leaders down the line. Propel the vision, engaging the down-the-line leaders in the process of change through targets and objectives. Align coalitions: satisfy mutual interests where possible, but don’t be afraid to use your power if you have to (change, like everything else, has a dark side). Set expectations very high; the organization may not know what excellent performance looks like. Create new symbols by celebrating success and destroying vestiges of the old culture. These are the critical catalyzing activities in the process of change.
+
+Well, for me, that’s how things work. There are obviously many specifics that need to be considered in any change process—industry dynamics, functional knowledge, the characteristics of the organization in question—and particular strategies must be devised to exploit them. But I find that no matter whether it is a resource or a consumer business, an Indian or a Canadian company, a total organizational change or a plant turnaround, these basic laws seem to hold. It’s easy to get lost in the nuts and bolts of performance imperatives, personalities, and processes. By stepping back to first principles, you can rise above minutiae to identify the crucial actions it will take to transform your company.
+
+## How relevant and useful is this article for you?
+
+## About the author(s)
+
+Roger Dickhout is a principal in McKinsey’s Toronto office.
+
+I would like to acknowledge Steve Dichter’s contribution to the thinking in this article, and particularly his idea that change is governed by a set of principles.
+
+## Explore a career with us
+
+## Related Articles
+
+## Helping employees embrace change","{""publication_date"": ""May 1, 1997"", ""authors"": [""how things work""], ""word_count"": 2803, ""reading_time_minutes"": 14}",2025-03-14 11:52:54.391274
+9,Five principles to manage change in the military,https://www.mckinsey.com/industries/public-sector/our-insights/five-principles-to-manage-change-in-the-military,"about $65 billion between 2012, 2015","## Five principles to manage change in the military
+
+Defense spending has been under pressure for some time now in the developed world. After climbing dramatically for the better part of a decade in the aftermath of September 11, 2001, defense spending began to fall in many countries after the global financial crisis of 2008. European members of the North Atlantic Treaty Organization were the first to make cuts, with total spending falling by $37 billion from the high-water mark in 2008 through 2012, and
+a further $4 billion in cuts between 2012 and 2015 is expected. Even the United States, where spending continued to rise until 2011, plans to reduce spending by about $65 billion between 2012 and 2015. The pressure of trying to squeeze more military capability from declining defense dollars has been with us for a number of years and seems likely to continue.
+
+It’s not that hard for reasonable people to agree on a set of steps that militaries must take to cope with the tremendous pressures they face today. In the United States, for example, in June 2013, a bipartisan group of defense analysts agreed on an agenda of changes for the US Department of Defense. In Europe, many militaries have long agreed in principle to the pooling and sharing of equipment.
+
+However, acting on the agenda is much harder, especially in today’s complex environment. The initiatives that militaries are contemplating—intensive, programmatic, cross-discipline, and often cross-service changes to fundamental processes such as procurement, logistics, and maintenance—are not minor adjustments. The changes these initiatives entail are transformational, not incremental, and require major shifts in mind-sets, behaviors, and capabilities.
+
+Successfully implementing this type of transformational change is not easy; indeed, the majority of transformation programs in both the public and private sector fail. Our recent survey of almost 1,000 leaders and senior employees in more than 30 US government agencies found that only 40 percent believed that their transformation programs succeeded.
+
+However, our experience with large-scale transformation programs in defense organizations around the world has taught us five lessons that can help contribute to the success of a defense transformation.
+
+Start at the sharp end. Defense leaders are concerned first and foremost with preparing, deploying, and sustaining forces to deliver operational effect. Change programs in defense that start with operational effectiveness create stronger engagement and are more likely to succeed than those focused primarily on cost reduction. The United Kingdom’s work on end-to-end logistics serves as a good example. Rather than focusing primarily on cost reduction, the program set out to deliver a number of important operational improvements. These included reducing the deployed footprint, improving supply-chain performance, and increasing platform availability. By proposing to deliver a superior operational solution, the program secured the full support of operational commanders.
+
+As a result of this work, delivery time to bases in the United Kingdom and Germany decreased from 30 days to 7 days, among other effects. In Afghanistan, customer wait time was reduced by 15 days. In almost all of the areas investigated, the program also delivered a more cost-effective solution. This served to prove that a better solution is usually also a cheaper one, though the converse is not always true. In its annual report and accounts for 2003–04, the UK Ministry of Defence reported that the end-to-end logistics review both improved logistics effectiveness and generated savings for investment in other priorities.
+
+Similarly, in its restructuring as part of the Danish Defence Agreement (Forsvarsforlig) 2005–09, the Danish Defence set out to move from a static, defensive posture to one that could better support expeditionary missions abroad. The Danish Ministry of Defence described the situation and the work it did: “The support structures, the tail, had grown out of proportion, and the operational structures, the teeth, had reached a level of close to irrelevance. The restructuring from scratch entails a change in emphasis in order to bring the priorities from 40 percent operational capabilities and 60 percent support structures to 60 percent operational capabilities and 40 percent support structure.”11.General H. J. Helsø, “Transformation is key to armed forces’ relevance,” Danish Defence, July 2013, forsvaret.dk.  In the process of designing a more deployable force, the Danish military reduced support costs by a third.
+
+Lead through the line. In a typical transformation program, a project team—often working in relative isolation—defines the program’s objectives, designs initiatives, and expects personnel on the ground to implement them. This is a mistake, particularly in military organizations where, in our experience, commanders often prefer to give up budget rather than authority. In contrast, leaders of successful defense transformations empower line personnel, set clear expectations of them, and hold them accountable for the transformation’s success within the established chain of command. The UK’s Defence Logistics Transformation Programme was particularly successful in this regard. Warfighters were embedded into each of the project teams and helped shape the specific recommendations. Suggested changes were then vetted with the appropriate frontline commanders, who were able to quiz their own embedded staff about the suitability of the resulting initiatives. An audit of the program by the UK Office of Government Commerce found “the programme appears to have been notably successful, through a structure of programme boards, in obtaining buy-in at senior levels in the frontline commands whose full involvement in implementing the change will be vital to success.”22.UK Office of Government Commerce Gateway Review 888.  Leading change programs “through the line” in this way capitalizes on the can-do attitude of military culture, empowering officers to hit aggressive targets set through the chain of command.
+
+Resist the urge to reorganize; start with quick wins. When embarking on a transformation program, it can be tempting to focus first on reorganization. But an initial emphasis on roles, responsibilities, and reporting often delivers few results. Leaders of successful defense transformations resist the urge to reorganize; they focus first on securing successes that can make a big difference to the momentum of a program. They specifically aim to achieve quick wins, often through targeted pilots, over the first three to six months. Many of these initial successes can then be turned into transformational change across the organization.
+
+In one example from 2009, a defense ministry conducted a diagnostic to assess the quality of procurement processes, organization structures, and outputs in its defense establishment. The diagnostic also assessed the value received for expenditures and the scale of the opportunity for achieving efficiencies. Detailed analyses of six categories covering approximately one-third of nonequipment purchasing identified the potential for annual savings as 8 to 10 percent. The diagnostic homed in on three root causes of inefficiencies. First, the defense establishment lacked a single point of accountability for each category. No function or individual in the organization had visibility into the cost implications of decisions made at each step of the process. Second, the absence of performance metrics resulted in an insufficient focus on cost efficiency. Third, a series of organizational, process, and budgetary barriers impeded efforts to capture scale benefits. The ministry piloted several initiatives to address these inefficiencies in four nonequipment categories. For each category, it created an integrated category-management team. Based on the success of this effort, it then conducted a major overhaul of the budgeting process and redesigned the purchasing organization by appointing a “lead purchaser” to manage each generic category. By running the pilots first, it was able to point to its success to overcome resistance within the organization.
+
+## Would you like to learn more about our Aerospace & Defense Practice?
+
+Expect (and plan to overcome) resistance to change. B. H. Liddell Hart probably said it best: “The only thing harder than getting a new idea into the military mind is to get an old one out.”33.B. H. Liddell Hart, Thoughts on War, first edition, London, United Kingdom: Faber and Faber, 1944.  Many military leaders would agree that their organizations are highly resistant to change as a result of their size, complexity, and culture. Yet despite a general awareness of this challenge, even seasoned defense leaders underestimate the degree of inertia and resistance to change within their organization. Leaders of successful defense transformations take an end-to-end approach to overcome this inertia in two ways. First, they set a clear vision and ambition for the transformation—one that emphasizes the link to the organization’s overall mission, clarifies why the program is necessary, and outlines a journey over the coming years that resonates within the organization. When the Danish Defence restructured to adjust to a more expeditionary posture, it set an ambitious goal to reduce support costs by a third while maintaining output, a target reached as promised within four years. The savings were required to fund a series of important increases in deployable forces, which served to secure support from operational commanders. Second, leaders of successful transformations provide credible and visible commitment to the transformation from top-level leadership. The United Kingdom’s end-to-end review of air and land logistics, for example, was jointly led by the vice chief of the defense staff and the Ministry of Defence’s second permanent undersecretary.
+
+Invest in building capabilities. Building the right capabilities is a prerequisite to achieving and sustaining change in any organization. Among US government leaders who reported limited success in their change efforts, 75 percent said that the right capabilities were not present. In many defense ministries, leaders rise through the ranks based on a substantial body of excellent work that demonstrates mastery of core military and leadership skills critical to warfighting. But achieving and sustaining change often requires not military but management capabilities in fields such as project management, procurement, and product development. Successful transformation programs first define the core and functional capabilities required and then invest in building these capabilities using programs that follow best-practice adult-learning principles. Such approaches, which are familiar to the military from its combat-skill development, can be six to seven times more effective than conventional training courses. Take project management, for example, where a robust organizational capability can pare as much as 20 percent of costs in about half the defense budget. One defense organization used “learning by doing” programs to train several waves of project managers and leaders. Managers who successfully completed the training designed to build their project-management capabilities were able to cut costs on most projects by between 20 and 35 percent.
+
+These five guidelines are the distilled wisdom of hundreds of military and civilian leaders with whom we’ve been privileged to work. We do not say that this is the sum of all the knowledge on the topic. But we do believe that a transformation that follows these five guidelines stands a higher chance of success.
+
+## How relevant and useful is this article for you?
+
+## About the author(s)
+
+David Chinn and John Dowdy are directors in McKinsey’s London office.
+
+## Explore a career with us
+
+## Related Articles
+
+## Fiscal shock, combat awe
+
+## Preserving combat power when defense budgets are falling
+
+## How militaries learn and adapt: An interview with Major General H. R. McMaster","{""publication_date"": ""December 1, 2014"", ""authors"": [""about $65 billion between 2012"", ""2015""], ""word_count"": 1828, ""reading_time_minutes"": 9}",2025-03-14 11:53:01.049170
+11,How insurance can help combat climate change,https://www.mckinsey.com/industries/financial-services/our-insights/how-insurance-can-help-combat-climate-change,,"## How insurance can help combat climate change
+
+In this episode of the Reimagine Insurance podcast, McKinsey senior partner Kurt Strovink leads a discussion with senior partners Kia Javanmardian and Dickon Pinner and partner Antonio Grimaldi about the impact of climate change on the insurance industry. An edited transcript of their conversation follows.
+
+## How insurance can help combat climate change
+
+Kurt Strovink: Welcome, everybody, to Reimagine Insurance. This is a podcast that focuses on the trends, disruptions, and strategies that are reshaping the insurance industry today. Each of these episodes features different experts on leading topics that we think are important to the way we reimagine insurance.
+
+I’m your host today, Kurt Strovink, and I’ll be leading a conversation with a number of our colleagues to touch on climate change, which we think is an important area for the future of insurance and where insurance can play a leading role in shaping the future of this response for multiple industries.
+
+## Most Popular Insights
+
+## How relevant and useful is this article for you?
+
+## Most Popular Insights
+
+• Superagency in the workplace: Empowering people to unlock AI’s full potential
+
+• McKinsey Quarterly: 60th birthday edition
+
+• M&A Annual Report: Is the wave finally arriving?
+
+• Women in the Workplace 2024: The 10th-anniversary report
+
+• The critical role of strategic workforce planning in the age of AI
+
+I’m pleased to welcome three of McKinsey’s experts to shed light on this topic as part of our conversation. Antonio Grimaldi is a partner out of our London office. Kia Javanmardian, a partner and leader of our North American P&C practice, is from the Chicago office. And Dickon Pinner is a senior partner and global leader of McKinsey’s Sustainability practice.
+
+I propose we have this conversation, if we could, in two broad parts. The first would be around the nature of the risks that we’re seeing in the climate space. The second part would be to really talk about what the insurance industry can, as a category, do.
+
+Maybe we can begin with you, Dickon. You talk to senior executives around the world frequently across different industries. I wonder if you could just give us a sense of the systemic risks overall that you see climate change posing at this point in the business, more generally.
+
+Dickon Pinner: We’ve spent a lot of time now looking at both the physical risk and transition risk posed by climate change. The physical one in particular is, I think, underappreciated in how near term it is, how nonlinear some of the impacts are. Also, as we know, the impacts will be systemic and potentially highly regressive.
+
+As we talk to executives, I think I’ve seen a big switch between the real economy and the capital markets. I would say five years ago, the energy sector and automotive sector were ahead in terms of thinking about this. That has changed markedly in the past 12 to 24 months. If you pull back the cover on capital markets and you look across banking, asset management, and insurance, the lead dog has been the banking sector. I think that has been driven initially by regulation coming out of Europe, particularly the Bank of England, that has made the case that climate change represents an existential threat to the financial system.
+
+We’re also seeing on the private equity side more around opportunity: people are very interested in how to invest and put new money to work into the kind of new green economy. We’re beginning to see that reflected in valuations.
+
+And then insurance within that plays a critical role in terms of transferring and mitigating risk. Within the capital markets, it’s probably a little bit more behind, say, the banking sector, and I’m sure we’ll get into that with a little more detail.
+
+Kurt Strovink: Thank you, Dickon, for that. Kia, you can comment a little bit to the point on insurance and where the industry is today. What are some of the trends? How are insurance executives, in your mind, thinking about this differently now from what they might have a couple years ago?
+
+Kia Javanmardian: The shift has not been at the same pace, depending on what segment you’re in. The brokers and reinsurers are a bit ahead of the broader pack for understandable reasons, primarily as Dickon alluded to. A lot of the historical models won’t be predictive of the future. When you think about the role reinsurance brokerage and reinsurers play, it’s very critical to their business model to have a grasp on that.
+
+When you look at the primary line carriers, it’s been a bit of a tale of two cities. In the US, for those with a heavy presence in California, climate change has come, and they’re seeing it with wildfires year over year, and they’re feeling it acutely because the indications of the rate they need is far greater than what they’re able to take in the state, as an example. You’re seeing a subsegment really feel that and thinking through: how do I diversify, and how do I think about prevention and mitigation?
+
+The broader industry on the primary line, I think, acknowledges it. There’s a bit of difference in opinion on “Can I just price this in over time?” versus “Do I need to make a more proactive stance?” And I think the jury is a bit out in terms of where the industry is leaning on that dimension.
+
+Kurt Strovink: Let’s talk a little bit more in a detailed way just about the kind of reactions that we’re seeing across the insurance industry. Antonio, obviously this has happened in a number of different ways, but I’m wondering if you could comment on some of the functional areas where you see some innovation beginning to happen—for example, underwriting.
+
+Traditional models and, more broadly, past loss experience will not be predictive of the future, and that needs to be corrected.
+
+Antonio Grimaldi: Insurers have started moving in the right directions, but I think much more can and should be done. For example, we see insurers working with customers on adapting to climate change. That means increasing resilience of their infrastructures, facilities, or supply chains. Much more should be done because climate change simply means that many of the technical insurance capabilities will need to evolve. Underwriting is a fascinating example.
+
+In the space of underwriting, clearly new hazards will emerge, requiring new products and new underwriting solutions. Traditional models and, more broadly, past loss experience will not be predictive of the future, and that needs to be corrected. Obligations will change, requiring new techniques for portfolio management. And there will be more nonlinear effects at play. For example, what is the correlation between more frequent floods and the economic activity in a given region, making the work of underwriters even more complex? In a way, underwriting will need to become even more strategic.
+
+Kurt Strovink: Kia, what about investment strategies? What kind of evolution are we seeing there, or changes in the insurance response?
+
+Kia Javanmardian: One is literally their investment portfolio on the asset side of the balance sheet. We’re starting to see a bit of thinking in terms of what they’re willing to put money behind, partly reputationally, partly as an ESG measure. So seeing some movement there. I think it is more pronounced in Europe than in the US, given the regulatory environment.
+
+On the broader investment question, we’re seeing three major themes. One, as Antonio mentioned, is getting greater sophistication on underwriting.
+
+Tranche two is a refresh in terms of: what markets do we want to double down and plan? So if you look at our portfolio, where do we feel more vulnerable? If you were to play some scenarios out in the future, does that have an implication of how we want to rebalance that portfolio accordingly?
+
+And then the third is, how do insurers play beyond risk transfer? There are a couple very prominent examples of carriers that are in the risk transfer business—but equally, if not more so, in the risk mitigation business, preventing things from happening. We’re seeing a lot more dialogue on that, and we think it’s a question of broadening the relevance of the industry beyond just pricing and transferring risk, but actually changing outcomes—whether it’s at the front end or, when bad things do happen, what’s the way to get recovery quickly and as seamlessly as possible?
+
+The other one that does give us hope is the private-public partnership angle. What is that intersection between how carriers work with municipalities, regulators, and policy makers to create a sustainable model?
+
+Kurt Strovink: Maybe on that point Kia just mentioned, any perspectives you’d offer, not just from an insurance perspective but, more broadly, the climate intent of regulators in this space in the next several years?
+
+Dickon Pinner: I think that there is an ever-increasing drive toward transparency and disclosure. Because things are changing—it sounds so trite at first—but because the climate is changing, your previous estimation of your risk exposure is probably wrong. Right now, what we’re seeing—and I think some of this comes up from the regulation of the Bank of England initially, but through the TCFD, which asks for disclosure of transition risk, which actually is quite easy to calculate—we’re beginning to see the transition risk as a result of that is quite well priced in. Physical risk, by contrast, is actually very hard to price in because the translation from hazard to exposure to damage and the manifestation of that in cash flows is just hard to model. It actually requires quite a bit of judgment in terms of the second, third, and fourth orders.
+
+There will be a kind of ongoing push for transparency from the regulator. We may also see, in the case of transition risk—and I get back to the point that Kia mentioned—we are in a world where risk is just increasing day over day because more carbon is going into the system, so just transferring that risk is insufficient. In fact, at a macro scale, this is about massive capital allocation and reallocation. Thinking through the price signals that the insurers can send to divert capital that currently is going into risky assets that further promote risky behavior, to burn down that risk, versus just transfer it, is actually critical because the rising tide of risk means the transferring it doesn’t solve the problem.
+
+There are some unfortunate examples where you can see why the regulators made the move they have. If you’re on the West Coast, I think there’s some regulation that says the insurers could not drop insurance for coverage for a year and could not price on a forward-looking basis but just on a historical basis. I think what that would mean is, after that period is over, a lot of insurers will exit the state. That doesn’t seem like an effective response, but these are inherently connected to political systems, as well. I think we do need some more price signals, either from the insurers themselves or the regulator to help redirect that capital to a way that promotes the right behavior.
+
+Kurt Strovink: I want to talk a bit more about the risks being quite different in different countries. We know that the tyranny of averages lies, but particularly here, there’s a lot of difference across different regions of the world and yet some common themes. Antonio, I’m wondering if you could comment from a European perspective: how do you see the nature of the risks evolving, and maybe by different regions even within Europe?
+
+## Would you like to learn more about our Financial Services Practice?
+
+Antonio Grimaldi: Europe seems to be most affected by heat and drought. The five hottest years ever recorded in history were the past five years. In 2018 and 2019, Europe experienced two consecutive summers of severe drought. This was unprecedented in the past 250 years. What I think is more concerning, though, is that in common insurance terms, we would have called these events one-in-250-years events, but the changing nature of climate risk means that the likelihood of these events actually repeating in central Europe over the next 50 years will increase sevenfold. And this really makes us all think about how important addressing climate change is.
+
+Clearly, different parts of Europe are exposed differently. We’re talking about flood in the UK, winds in Italy. We observe that insurers have increasingly become more aware of the problem that lies ahead, Europe particularly. We have some of the most sophisticated global specialty insurers and reinsurers. This insurance needs to lead the way in terms of how we tackle climate risk. Many of the largest European insurance groups actually are making fighting climate change a core part of their ESG strategies.
+
+And finally, regulators, particularly in the UK, are building greater awareness and facilitating the announcement of these capabilities. Earlier this year, for example, the Bank of England was very clear that there was a gap in capabilities, and it requested firms and issuers to act. This means really taking a more strategic approach to climate risk. This means conducting assessments on the physical side and the transition side, but also considering different scenarios and running stress testing under both to understand the impact.
+
+Taking a different spin to what Dickon said earlier, I would say that insurers, to some extent, are particularly familiar with natural events and physical risk, but actually, transition risk may be a blind spot for them. Therefore, building capabilities in understanding the implications of transition risk, both on the asset sides and the liabilities sides, would be also as important.
+
+Dickon Pinner: I would maybe just add on this topic of transition risk because, clearly, physical risk is a huge issue in closing the protection gap. But on the transition risk, if I step back and think through the macro problem, it’s actually about: how do you transition the installed base of the economy—which is today, by definition, high carbon—in an orderly fashion from brown to greener to green?
+
+As I mentioned earlier, the good news is that transition risk is beginning to get priced in. The bad news, to some extent, is that transition risk is getting priced in, and the pendulum might swing so much, such that it may be difficult from an embarrassment reason or a reputation reason to get insurance for these fossil-based assets as they transition from brown to green. That would be a challenge because you don’t want those assets that are currently in the public eye to go private, for example, and into a kind of opaque environment. I think there needs to be mechanisms to allow insurers to continue to insure the real economy of good actors who are trying to transition and not just abandon some of the assets that are going through that transition, or that would lead to socioeconomic dislocation and the more disorderly approach and rapid repricing.
+
+Kurt Strovink: I want to add a dimension to this, maybe just following on last point there, Dickon. Are there examples in other industries that you think would be either provocative or suggestive for executives who are thinking about transition in the way that you’re describing it? Where is the debate and dialogue?
+
+Dickon Pinner: One of the things we’re seeing in other industries is we’re seeing the industry self-convene. We see it in particularly the ones that have perhaps known the transition was going to be a bigger problem for them—so the oil and gas sector, the power sector, many of the different industries. And they self-convene to try and understand where they can collaborate, where they need to define standards, and what role the regulators should play. I think we’re even beginning to see that now in the banking sector. On the topic of climate, they’re trying to understand which areas of data, for example, should be commonly shared across banks versus becoming a source of competitive advantage.
+
+We’re also seeing in, say, asset management, you see lots of groups associated with becoming net-zero investors. You’ve got trillions of dollars of assets under management saying—if this is the direction of travel, what does it look like to get from A to B? We’re beginning to see the same thing in banking. Again, given the critical role that insurance plays in providing those signals to direct and redirect capital, that might be another interesting thing to consider, if it doesn’t already exist.
+
+Kurt Strovink: Let me raise another angle to this problem. Obviously, this is one that has many different facets. What about the concept of the demand from different stakeholders—whether they’re employees, customers, or other partners—around making climate change progress in various ways? I’m thinking here about the E in ESG and the degree to which the next generation of employees wants to work for a firm that is doing something in this space that’s innovative, etc. How much do we think this will be an increasing requirement for firms that get out in front of this for their own employees, and stakeholders generally, and partners with whom they collaborate?
+
+Dickon Pinner: Just across industries, we see, in general, a kind of multistakeholder approach taking grip now—so across the shareholders, the regulator, the customer, the employer. On the employee side, we’re definitely seeing this across industries as becoming a part of the war for talent, but I’ll let others comment specifically on this sector.
+
+Antonio Grimaldi: In Europe, it is an increasing topic. Several insurers are increasingly thinking about ESG, and how can they become responsible underwriters? How can they become responsible investors? And what is the obligation that the industry has with regard to employees and shareholders, but actually to the world itself? So I think this is, in my mind, one of the very interesting angles that the industry could utilize in order to overcome some of the short term-ism that the industry might have, given the annual policy cycle.
+
+Kia Javanmardian: And Antonio, on that I think one of the angles we’ve been talking to executives about is: how can you use the notion of climate change and the role of the industry in effecting that as a source of inspiration and meaning for employees today, but also in new sources of talent? What that could mean to the new generation of talent and how you can reframe it: We’re not an insurance company. We’re here to protect livelihoods. We’re here to protect the economy. We’re here to protect the Earth. And we’re not just risk transferring; we’re convening and doing something that is going to move the needle because we control capital. There is likely an angle there that has not fully been realized that does, as a practice, give inspiration and energy.
+
+Kurt Strovink: Who are the actors in the companies that we think we’re talking to in this conversation? Who are the executives? What roles do they play? How broadly across the senior team is this area of concern? Who are the folks that should be having these discussions and dialogues over the next 12 to 24 months in a greater and greater way?
+
+Kia Javanmardian: We think if the CEO is not involved in the conversation, it’s probably not this conversation. The reason we say that is this is a fundamental role of carriers: how they add value to clients, where they play, how they allocate capital. So you look at that at a headline view, and it is very much a corporate strategy and kind of direction of travel for a company.
+
+The ESG angle, while very important, is just a part of this. When you really peel it back, this conversation should be an existential one of: where are we going to thrive, how are we going to add value, and what do we have to do to shift where we deliver for our clients?
+
+Dickon Pinner: I get back to Kia’s point. To address this problem, it’s about capital allocation and reallocation. And so by definition, this is a CEO-level topic. Specifically, where we’re seeing it manifest itself in different industries: in the banking sector, in Europe, it’s through the CRO—the chief risk officer—but it’s increasingly becoming a commercial opportunity to deploy new sustainable infrastructure, so there’s a big commercial lens to this. In the energy sectors, this goes straight through the businesses.
+
+Sector by sector, we typically see one or two companies with a sort of outsized voice and the CEOs who really get it leaning forward and trying to define the future path for the industry because they know: one, the industry or the sector is at threat if they do nothing; and two, they realize there’s a competitive advantage if they get ahead of it. So I think this is a top-team issue, and if it’s not being dealt with at that level, it’s hard to get the right level of action and activity around such an important thing.
+
+Antonio Grimaldi: I fully agree—this is a top-team discussion. But I also want to call out explicitly the fact that the implications are profound throughout all the levels of an insurer. It is very hard to identify a function within insurance that is not affected by climate risk. We talked extensively about underwriting and pricing. Claims needs to evolve from paying financially, compensating financially, to actually rebuilding and further building resilience and risk mitigation to capital management, reserving actuarial propositions for employees.  It is a profound change for the whole industry.
+
+Kurt Strovink: What do we think about collaboration opportunities more broadly, as insurance executives work maybe even with public sector in these areas that are going to be increasingly important? What’s the outlook on that? If I’m an insurance executive that’s looking at this in an innovative way, what kinds of collaboration should I expect to see or shape, even with the public sectors as part of this? Kia, do you have a perspective on that?
+
+Kia Javanmardian: The opportunities are for the taking. Given the nature of this systemic risk we’re talking about, it is not carrier specific. We absolutely think there is a conversation to be had or executives at insurance companies working in partnership with one another and public sector to think through: what is the future policy that will help shape how risk is built up? Just a simple example of building codes, where and how to build for resiliency so we don’t keep falling into the same trap, is a massive opportunity for the industry and one that will require cooperation.
+
+The second part of it is one of relevance. If you look at the total risks in the world and the percentage that insurance covers, it has been on a steep decline. You think about cyber; you think about a lot of these long-tail, hard-to-underwrite risks. And so it’s not just one of upside; it’s one of also ensuring the value and relevance of the industry, which will require some cooperation.
+
+Antonio Grimaldi: In terms of public-private partnerships, this can be quite deep. Clearly, there are some risk-transfer solutions. For example, in the UK, there’s Flood Re, and the government in the US has been working for many years on Florida flood protection. But this can be done more systematically across all climate-exposed countries, especially in the emerging markets. I think this is an opportunity that some insurers are looking at first and foremost.
+
+Secondly, there is a risk mitigation opportunity. So we could envisage insurers driving resilience in the climate-vulnerable countries, working with governments and local authorities where assets should be developed, and where assets should not be developed. How dwellings should be designed and with what standards. There are a number of different solutions where the industry could collaborate actively with governments to remove risk from the equation, as opposed to transferring it.
+
+Kurt Strovink: Dickon, maybe you could share kind of the last word on this as we think about public partnerships of various kinds.
+
+Dickon Pinner: I think the general framing is that the risk in the system is just going up over time and will continue to go up. If you don’t have a successful or a good collaboration between private sector insurance and the public sector, there are two sets of folks who hold the risk: it’s the consumer and the government. I think understanding what actions can happen by virtue of public-private partnership to not be those two stakeholders that end up holding the risk would be very beneficial.
+
+You’ve got the physical risk gap. We’ve also got the transition piece. And then the third one, which was alluded to earlier, is the disaster response. Is there a way to pre-fund some of those, such that the poorest areas of the world, where lots of this physical risk often manifests itself, don’t then have to go around, cap in hand, post an event. Even days’ or weeks’ notice of an upcoming event, you can make a material difference if you can prepare for it, but that does require a public-private partnership. So a big role to play on such a complicated topic.
+
+Kurt Strovink: Well, I think we’ll leave it there. Dickon, Kia, Antonio, thank you very much for joining us as part of this Reimagine Insurance series. I know you’re available for any follow-up questions that our listeners may have on these topics. This is an area that has multiple aspects to it but is a very important one for innovation for the category, maybe one we have a rightful role as an insurance category in. If we think about the signals for capital reallocation that’s coming, some of the points of view of the relevance of the industry, as Kia mentioned. And if we think about that, this is a preeminent concern for many, many people inside of insurance companies today at all levels of function roles, as Antonio pointed out.
+
+Thank you for joining us today. We will look forward to following up with you in future sessions on Reimagine Insurance. Please do tune in. Thank you.
+
+## How relevant and useful is this article for you?
+
+## About the author(s)
+
+Antonio Grimaldi is a partner in McKinsey’s London office, Kia Javanmardian is a senior partner in the Chicago office, Dickon Pinner is a senior partner in the San Francisco office, and Kurt Strovink is a senior partner in the New York office.
+
+## Explore a career with us
+
+## Related Articles
+
+## Climate change and P&C insurance: The threat and opportunity
+
+## Future of insurance: Unleashing growth through new business building
+
+## The future of life insurance: Reimagining the industry for the decade ahead","{""publication_date"": ""January 6, 2021"", ""word_count"": 4458, ""reading_time_minutes"": 22}",2025-03-14 11:53:07.685561
