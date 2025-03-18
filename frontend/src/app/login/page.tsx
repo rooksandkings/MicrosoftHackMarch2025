@@ -1,10 +1,22 @@
+"use client"
+
+import type React from "react"
+
 import Link from "next/link"
+import { useRouter } from "next/navigation"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { TrendingUp } from "lucide-react"
 
 export default function Login() {
+  const router = useRouter()
+
+  const handleLogin = (e: React.FormEvent) => {
+    e.preventDefault()
+    router.push("/dashboard")
+  }
+
   return (
     <div className="min-h-screen bg-[#F0F4EF] flex flex-col">
       <header className="bg-[#344966] text-white py-4">
@@ -25,7 +37,7 @@ export default function Login() {
               <p className="text-[#344966] mt-2">Log in to access your ROI calculator</p>
             </div>
 
-            <form className="space-y-6">
+            <form className="space-y-6" onSubmit={handleLogin}>
               <div className="space-y-2">
                 <Label htmlFor="email" className="text-[#0D1821]">
                   Email

@@ -11,7 +11,7 @@ export default function Home() {
             <TrendingUp className="h-6 w-6" />
             <h1 className="text-xl font-bold">ROI Calculator</h1>
           </div>
-          <Link href="/login">
+          <Link href="/dashboard">
             <Button className="bg-[#BFC994] hover:bg-[#a8b27e] text-[#0D1821]">Login</Button>
           </Link>
         </div>
@@ -33,7 +33,7 @@ export default function Home() {
                     Get Started
                     <ArrowRight className="ml-2 h-4 w-4" />
                   </Button>
-                  <Link href="/login">
+                  <Link href="/dashboard">
                     <Button variant="outline" className="border-[#344966] text-[#344966]">
                       Login
                     </Button>
@@ -97,7 +97,7 @@ export default function Home() {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button className="bg-[#344966] hover:bg-[#2a3b54] text-white px-8 py-6 text-lg">Get Started Now</Button>
-              <Link href="/login">
+              <Link href="/dashboard">
                 <Button variant="outline" className="border-[#344966] text-[#344966] px-8 py-6 text-lg">
                   Login
                 </Button>
