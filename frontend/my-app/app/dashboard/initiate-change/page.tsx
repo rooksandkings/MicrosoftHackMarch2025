@@ -88,17 +88,6 @@ export default function InitiateChange() {
                     </Select>
                   </div>
 
-                  <div className="space-y-2 md:col-span-2">
-                    <Label htmlFor="short-description" className="text-[#0D1821]">
-                      Short Description
-                    </Label>
-                    <Textarea
-                      id="short-description"
-                      placeholder="Briefly describe the change initiative..."
-                      className="border-[#B4CDED] focus:border-[#344966] focus:ring-[#344966]"
-                    />
-                  </div>
-
                   <div className="space-y-2">
                     <Label htmlFor="services" className="text-[#0D1821]">
                       What services do you provide?
