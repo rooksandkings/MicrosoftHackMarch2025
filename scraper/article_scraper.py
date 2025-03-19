@@ -17,6 +17,8 @@ from selenium.webdriver.support import expected_conditions as EC
 from sqlalchemy import select
 from database_utils import get_session, Article, ArticleContent
 import re  # Add this to the imports at the top
+import concurrent.futures
+from selenium.webdriver import Chrome
 
 # Setup logging
 logging.basicConfig(
@@ -544,4 +546,101 @@ def export_content_to_csv(filename='articles_content.csv'):
         return db_export(filename)
     except Exception as e:
         logger.error(f"Error exporting content to CSV: {e}")
-        return False 
+        return False
+
+def scrape_articles_parallel(limit=None, max_workers=4):
+    """
+    Scrape multiple articles in parallel using multiple workers.
+    
+    Args:
+        limit (int, optional): Maximum number of articles to scrape.
+        max_workers (int, optional): Number of parallel workers. Defaults to 4.
+        
+    Returns:
+        int: Number of articles successfully scraped.
+    """
+    try:
+        # Get unscrapped articles
+        articles = get_unscrapped_articles(limit)
+        
+        if not articles:
+            logger.info("No unscrapped articles found")
+            return 0
+            
+        logger.info(f"Preparing to scrape {len(articles)} articles with {max_workers} workers")
+        
+        # Create a thread pool
+        with concurrent.futures.ThreadPoolExecutor(max_workers=max_workers) as executor:
+            # Create a separate webdriver for each worker
+            futures = []
+            
+            # Submit tasks to the executor
+            for article in articles:
+                futures.append(
+                    executor.submit(
+                        scrape_single_article_with_driver,
+                        article['id'],
+                        article['title'],
+                        article['url']
+                    )
+                )
+            
+            # Collect results
+            successful = 0
+            for future in concurrent.futures.as_completed(futures):
+                try:
+                    result = future.result()
+                    if result:
+                        successful += 1
+                except Exception as e:
+                    logger.error(f"Error in worker thread: {e}")
+        
+        logger.info(f"Parallel scraping completed. Successfully scraped {successful} out of {len(articles)} articles")
+        return successful
+        
+    except Exception as e:
+        logger.error(f"Error in parallel scraping: {e}")
+        return 0
+
+def scrape_single_article_with_driver(article_id, title, url):
+    """
+    Scrape a single article with its own webdriver instance.
+    
+    Args:
+        article_id (int): Article ID.
+        title (str): Article title.
+        url (str): Article URL.
+        
+    Returns:
+        bool: True if successful, False otherwise.
+    """
+    driver = None
+    try:
+        # Create a new driver for this thread
+        from mckinsey_scraper import create_webdriver
+        driver = create_webdriver()
+        
+        if not driver:
+            logger.error(f"Failed to create WebDriver for article ID {article_id}")
+            return False
+        
+        # Create an article dictionary as expected by scrape_article_content
+        article = {
+            'id': article_id,
+            'title': title,
+            'url': url
+        }
+        
+        # Scrape the article
+        success = scrape_article_content(driver, article)
+        return success
+    except Exception as e:
+        logger.error(f"Error scraping article ID {article_id}: {e}")
+        return False
+    finally:
+        # Clean up resources
+        if driver:
+            try:
+                driver.quit()
+            except Exception as e:
+                logger.warning(f"Error closing WebDriver: {e}") 

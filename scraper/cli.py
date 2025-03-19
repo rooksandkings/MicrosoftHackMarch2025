@@ -55,6 +55,8 @@ def create_parser():
                                                help='Scrape full content of articles')
     scrape_content_parser.add_argument('--limit', type=int, default=5,
                                     help='Maximum number of articles to scrape (0 for unlimited)')
+    scrape_content_parser.add_argument('--workers', type=int, default=1,
+                                    help='Number of parallel workers for content scraping (default: 1)')
     
     # Export command
     export_parser = subparsers.add_parser('export', help='Export articles to CSV')
@@ -149,7 +151,7 @@ def main():
             logger.error(f"Error exporting content to CSV: {e}")
     
     elif args.command == 'scrape-content':
-        logger.info(f"Scraping content for up to {args.limit} articles")
+        logger.info(f"Scraping content for up to {args.limit} articles with {args.workers} workers")
         driver = None
         try:
             # Create a WebDriver instance
@@ -162,8 +164,13 @@ def main():
             # Scrape article content
             limit = args.limit if args.limit > 0 else None
             
-            # Use the multiple article scraper instead of the single article one
-            count = scrape_multiple_articles(driver, limit)
+            if args.workers > 1:
+                # Use parallel processing with multiple workers
+                from article_scraper import scrape_articles_parallel
+                count = scrape_articles_parallel(limit, args.workers)
+            else:
+                # Use the multiple article scraper instead of the single article one
+                count = scrape_multiple_articles(driver, limit)
             
             logger.info(f"Successfully scraped content for {count} articles")
         except Exception as e:
