@@ -1,5 +1,7 @@
 "use client"
 
+import type React from "react"
+
 import Link from "next/link"
 import { useState } from "react"
 import { Button } from "@/components/ui/button"
@@ -11,9 +13,93 @@ import { ArrowLeft, Calendar, DollarSign, Settings, Users } from "lucide-react"
 import { DashboardNav } from "@/components/dashboard-nav"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Slider } from "@/components/ui/slider"
+import { toast } from "@/hooks/use-toast"
 
 export default function InitiateChange() {
-  const [employeeMorale, setEmployeeMorale] = useState(5)
+  // Form state
+  const [formData, setFormData] = useState({
+    initiativeName: "",
+    shortDescription: "",
+    industry: "",
+    services: "",
+    department: "",
+    startDate: "",
+    endDate: "",
+    budgetMin: "",
+    budgetMax: "",
+    businessGoals: "",
+    retrainingPercentage: "",
+    affectedEmployees: "",
+    employeeMorale: 5,
+  })
+
+  const [isSubmitting, setIsSubmitting] = useState(false)
+
+  // Handle input changes
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { id, value } = e.target
+    setFormData((prev) => ({
+      ...prev,
+      [id]: value,
+    }))
+  }
+
+  // Handle select changes
+  const handleSelectChange = (id: string, value: string) => {
+    setFormData((prev) => ({
+      ...prev,
+      [id]: value,
+    }))
+  }
+
+  // Handle slider changes
+  const handleSliderChange = (value: number[]) => {
+    setFormData((prev) => ({
+      ...prev,
+      employeeMorale: value[0],
+    }))
+  }
+
+  // Handle form submission
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault()
+    setIsSubmitting(true)
+
+    try {
+      // Replace with your actual backend endpoint
+      const response = await fetch("/api/calculate-roi", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      })
+
+      if (!response.ok) {
+        throw new Error("Failed to calculate ROI")
+      }
+
+      const data = await response.json()
+      toast({
+        title: "ROI Calculation Successful",
+        description: "Your ROI has been calculated successfully.",
+      })
+
+      // You could redirect to a results page here
+      // router.push(`/dashboard/roi-results/${data.id}`)
+
+      console.log("Success:", data)
+    } catch (error) {
+      console.error("Error:", error)
+      toast({
+        title: "Error",
+        description: "Failed to calculate ROI. Please try again.",
+        variant: "destructive",
+      })
+    } finally {
+      setIsSubmitting(false)
+    }
+  }
 
   return (
     <div className="flex min-h-screen bg-[#F0F4EF]">
@@ -54,16 +140,18 @@ export default function InitiateChange() {
               <CardDescription>Provide information about your change initiative</CardDescription>
             </CardHeader>
             <CardContent>
-              <form className="space-y-6">
+              <form className="space-y-6" onSubmit={handleSubmit}>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div className="space-y-2">
-                    <Label htmlFor="initiative-name" className="text-[#0D1821]">
+                    <Label htmlFor="initiativeName" className="text-[#0D1821]">
                       Change Initiative Name
                     </Label>
                     <Input
-                      id="initiative-name"
+                      id="initiativeName"
                       placeholder="e.g., CRM Implementation"
                       className="border-[#B4CDED] focus:border-[#344966] focus:ring-[#344966]"
+                      value={formData.initiativeName}
+                      onChange={handleChange}
                     />
                   </div>
 
@@ -71,7 +159,7 @@ export default function InitiateChange() {
                     <Label htmlFor="industry" className="text-[#0D1821]">
                       What industry does your business operate in?
                     </Label>
-                    <Select>
+                    <Select onValueChange={(value) => handleSelectChange("industry", value)}>
                       <SelectTrigger className="border-[#B4CDED] focus:border-[#344966] focus:ring-[#344966]">
                         <SelectValue placeholder="Select industry" />
                       </SelectTrigger>
@@ -88,6 +176,19 @@ export default function InitiateChange() {
                     </Select>
                   </div>
 
+                  <div className="space-y-2 md:col-span-2">
+                    <Label htmlFor="shortDescription" className="text-[#0D1821]">
+                      Short Description
+                    </Label>
+                    <Textarea
+                      id="shortDescription"
+                      placeholder="Briefly describe the change initiative..."
+                      className="border-[#B4CDED] focus:border-[#344966] focus:ring-[#344966]"
+                      value={formData.shortDescription}
+                      onChange={handleChange}
+                    />
+                  </div>
+
                   <div className="space-y-2">
                     <Label htmlFor="services" className="text-[#0D1821]">
                       What services do you provide?
@@ -96,14 +197,16 @@ export default function InitiateChange() {
                       id="services"
                       placeholder="e.g., Software Development, Consulting"
                       className="border-[#B4CDED] focus:border-[#344966] focus:ring-[#344966]"
+                      value={formData.services}
+                      onChange={handleChange}
                     />
                   </div>
 
                   <div className="space-y-2">
                     <Label htmlFor="department" className="text-[#0D1821]">
-                      Department
+                      Department Affected
                     </Label>
-                    <Select>
+                    <Select onValueChange={(value) => handleSelectChange("department", value)}>
                       <SelectTrigger className="border-[#B4CDED] focus:border-[#344966] focus:ring-[#344966]">
                         <SelectValue placeholder="Select department" />
                       </SelectTrigger>
@@ -119,101 +222,119 @@ export default function InitiateChange() {
                   </div>
 
                   <div className="space-y-2">
-                    <Label htmlFor="start-date" className="text-[#0D1821]">
+                    <Label htmlFor="startDate" className="text-[#0D1821]">
                       Start Date
                     </Label>
                     <div className="relative">
                       <Input
-                        id="start-date"
+                        id="startDate"
                         type="date"
                         className="border-[#B4CDED] focus:border-[#344966] focus:ring-[#344966]"
+                        value={formData.startDate}
+                        onChange={handleChange}
                       />
                       <Calendar className="absolute right-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-[#344966] pointer-events-none" />
                     </div>
                   </div>
 
                   <div className="space-y-2">
-                    <Label htmlFor="end-date" className="text-[#0D1821]">
+                    <Label htmlFor="endDate" className="text-[#0D1821]">
                       Expected Completion Date
                     </Label>
                     <div className="relative">
                       <Input
-                        id="end-date"
+                        id="endDate"
                         type="date"
                         className="border-[#B4CDED] focus:border-[#344966] focus:ring-[#344966]"
+                        value={formData.endDate}
+                        onChange={handleChange}
                       />
                       <Calendar className="absolute right-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-[#344966] pointer-events-none" />
                     </div>
                   </div>
 
-                  <div className="space-y-2">
-                    <Label htmlFor="budget-min" className="text-[#0D1821]">
-                      Realistic Budget Range (Min)
-                    </Label>
-                    <div className="relative">
-                      <Input
-                        id="budget-min"
-                        type="number"
-                        placeholder="0.00"
-                        className="border-[#B4CDED] focus:border-[#344966] focus:ring-[#344966] pl-8"
-                      />
-                      <DollarSign className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-[#344966]" />
-                    </div>
-                  </div>
-
-                  <div className="space-y-2">
-                    <Label htmlFor="budget-max" className="text-[#0D1821]">
-                      Realistic Budget Range (Max)
-                    </Label>
-                    <div className="relative">
-                      <Input
-                        id="budget-max"
-                        type="number"
-                        placeholder="0.00"
-                        className="border-[#B4CDED] focus:border-[#344966] focus:ring-[#344966] pl-8"
-                      />
-                      <DollarSign className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-[#344966]" />
+                  <div className="space-y-4">
+                    <Label className="text-[#0D1821]">Realistic Budget Range</Label>
+                    <div className="grid grid-cols-2 gap-4">
+                      <div className="relative">
+                        <Label htmlFor="budgetMin" className="text-[#0D1821] text-sm">
+                          Minimum ($)
+                        </Label>
+                        <div className="relative mt-1">
+                          <Input
+                            id="budgetMin"
+                            type="number"
+                            placeholder="0.00"
+                            className="border-[#B4CDED] focus:border-[#344966] focus:ring-[#344966] pl-8"
+                            value={formData.budgetMin}
+                            onChange={handleChange}
+                          />
+                          <DollarSign className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-[#344966]" />
+                        </div>
+                      </div>
+                      <div className="relative">
+                        <Label htmlFor="budgetMax" className="text-[#0D1821] text-sm">
+                          Maximum ($)
+                        </Label>
+                        <div className="relative mt-1">
+                          <Input
+                            id="budgetMax"
+                            type="number"
+                            placeholder="0.00"
+                            className="border-[#B4CDED] focus:border-[#344966] focus:ring-[#344966] pl-8"
+                            value={formData.budgetMax}
+                            onChange={handleChange}
+                          />
+                          <DollarSign className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-[#344966]" />
+                        </div>
+                      </div>
                     </div>
                   </div>
 
                   <div className="space-y-2 md:col-span-2">
-                    <Label htmlFor="business-goals" className="text-[#0D1821]">
+                    <Label htmlFor="businessGoals" className="text-[#0D1821]">
                       What business goals will this initiative address?
                     </Label>
                     <Textarea
-                      id="business-goals"
+                      id="businessGoals"
                       placeholder="Describe the specific business goals this change will help achieve..."
                       className="border-[#B4CDED] focus:border-[#344966] focus:ring-[#344966]"
+                      value={formData.businessGoals}
+                      onChange={handleChange}
                     />
                   </div>
 
                   <div className="space-y-2">
-                    <Label htmlFor="retraining-percentage" className="text-[#0D1821]">
+                    <Label htmlFor="retrainingPercentage" className="text-[#0D1821]">
                       Percentage of employees needing retraining
                     </Label>
                     <div className="relative">
                       <Input
-                        id="retraining-percentage"
+                        id="retrainingPercentage"
                         type="number"
                         min="0"
                         max="100"
                         placeholder="0"
                         className="border-[#B4CDED] focus:border-[#344966] focus:ring-[#344966] pr-8"
+                        value={formData.retrainingPercentage}
+                        onChange={handleChange}
                       />
                       <span className="absolute right-3 top-1/2 transform -translate-y-1/2 text-[#344966]">%</span>
                     </div>
                   </div>
 
                   <div className="space-y-2">
-                    <Label htmlFor="affected-employees" className="text-[#0D1821]">
+                    <Label htmlFor="affectedEmployees" className="text-[#0D1821]">
                       Number of Affected Employees
                     </Label>
                     <div className="relative">
                       <Input
-                        id="affected-employees"
+                        id="affectedEmployees"
                         type="number"
                         placeholder="0"
                         className="border-[#B4CDED] focus:border-[#344966] focus:ring-[#344966] pl-8"
+                        value={formData.affectedEmployees}
+                        onChange={handleChange}
                       />
                       <Users className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-[#344966]" />
                     </div>
@@ -223,11 +344,11 @@ export default function InitiateChange() {
                     <Label className="text-[#0D1821]">Employee Morale (1-10)</Label>
                     <div className="space-y-3">
                       <Slider
-                        value={[employeeMorale]}
+                        value={[formData.employeeMorale]}
                         min={1}
                         max={10}
                         step={1}
-                        onValueChange={(value) => setEmployeeMorale(value[0])}
+                        onValueChange={handleSliderChange}
                         className="w-full"
                       />
                       <div className="flex justify-between text-sm text-[#344966]">
@@ -242,16 +363,18 @@ export default function InitiateChange() {
                         <span>9</span>
                         <span>10</span>
                       </div>
-                      <div className="text-center font-medium text-[#344966]">Selected: {employeeMorale}</div>
+                      <div className="text-center font-medium text-[#344966]">Selected: {formData.employeeMorale}</div>
                     </div>
                   </div>
                 </div>
 
                 <div className="flex justify-end gap-4 pt-4">
-                  <Button variant="outline" className="border-[#344966] text-[#344966]">
+                  <Button type="button" variant="outline" className="border-[#344966] text-[#344966]">
                     Save as Draft
                   </Button>
-                  <Button className="bg-[#344966] hover:bg-[#2a3b54] text-white">Calculate ROI</Button>
+                  <Button type="submit" className="bg-[#344966] hover:bg-[#2a3b54] text-white" disabled={isSubmitting}>
+                    {isSubmitting ? "Calculating..." : "Calculate ROI"}
+                  </Button>
                 </div>
               </form>
             </CardContent>
