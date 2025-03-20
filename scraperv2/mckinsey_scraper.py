@@ -4,14 +4,14 @@ McKinsey scraper for extracting article information from search results.
 
 import time
 import sqlite3
+from concurrent.futures import ThreadPoolExecutor
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.by import By
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
-from selenium.common.exceptions import TimeoutException, NoSuchElementException
 import argparse
 import sys
+import random
+import math
 
 # Import utilities
 from cookie_handler import handle_cookies
@@ -19,7 +19,7 @@ from link_extractor import extract_article_links, extract_authors, extract_date
 
 def setup_database():
     """Set up SQLite database for storing articles."""
-    conn = sqlite3.connect('mckinsey_articles.db')
+    conn = sqlite3.connect('mckinsey_articles.db', check_same_thread=False)
     cursor = conn.cursor()
     cursor.execute('''
     CREATE TABLE IF NOT EXISTS articles (
@@ -67,33 +67,49 @@ def configure_webdriver():
     
     return chrome_options
 
-def scrape_page(page_number, shared_driver=None):
-    """Scrape McKinsey search results for a specific page."""
-    print(f"Starting scrape for page {page_number}", flush=True)
-    
+def get_page_url(page_number):
+    """Generate the URL for a specific page number."""
+    base_url = "https://www.mckinsey.com/search?q=change+management&pageFilter=all&sort=default"
+    if page_number > 1:
+        return f"{base_url}&start={page_number}"
+    return base_url
+
+def initialize_driver():
+    """Initialize a new WebDriver with stealth settings."""
     chrome_options = configure_webdriver()
+    driver = webdriver.Chrome(options=chrome_options)
     
-    # Create a new driver if not provided
-    close_driver = False
-    if shared_driver is None:
-        driver = webdriver.Chrome(options=chrome_options)
-        
-        # Inject stealth script
-        driver.execute_cdp_cmd("Page.addScriptToEvaluateOnNewDocument", {
-            "source": """
-                Object.defineProperty(navigator, 'webdriver', {
-                    get: () => undefined
-                });
-            """
-        })
-        close_driver = True
-    else:
-        driver = shared_driver
+    # Inject stealth script
+    driver.execute_cdp_cmd("Page.addScriptToEvaluateOnNewDocument", {
+        "source": """
+            Object.defineProperty(navigator, 'webdriver', {
+                get: () => undefined
+            });
+        """
+    })
     
-    current_url = driver.current_url
-    print(f"Scraping URL: {current_url}", flush=True)
+    # Initial visit to handle cookies once
+    driver.get("https://www.mckinsey.com")
+    handle_cookies(driver)
+    
+    # Clear storage to start fresh but keep the session
+    driver.execute_script("localStorage.clear(); sessionStorage.clear();")
+    
+    return driver
+
+def scrape_page(page_number, driver):
+    """Scrape McKinsey search results for a specific page using provided driver."""
+    print(f"Scraping page {page_number} with reused driver", flush=True)
     
     try:
+        # Navigate to the specific page
+        page_url = get_page_url(page_number)
+        print(f"Navigating to URL: {page_url}", flush=True)
+        driver.get(page_url)
+        
+        # Allow time for page to fully load
+        time.sleep(random.uniform(1.5, 3))
+        
         # Try finding article containers with various selectors
         selectors = [
             ".search-result", 
@@ -175,52 +191,177 @@ def scrape_page(page_number, shared_driver=None):
     except Exception as e:
         print(f"Error scraping page {page_number}: {str(e)}", flush=True)
         return []
+
+def worker_process(worker_id, page_list, conn, verbose=False):
+    """Worker function to process multiple pages with a single WebDriver."""
+    print(f"Worker {worker_id} starting, assigned pages: {page_list}", flush=True)
+    
+    # Create a single WebDriver for this worker
+    driver = initialize_driver()
+    
+    results = []
+    
+    try:
+        for page_number in page_list:
+            print(f"Worker {worker_id}: Processing page {page_number}", flush=True)
+            
+            # Scrape the page
+            page_results = scrape_page(page_number, driver)
+            
+            # Save to database
+            if page_results:
+                save_to_database(conn, page_results)
+                
+            # Record results
+            results.append({
+                "page": page_number,
+                "count": len(page_results),
+                "status": "success" if page_results else "no_results"
+            })
+            
+            # Random delay between pages (shorter since we're using the same session)
+            if page_number != page_list[-1]:  # If not the last page
+                sleep_time = random.uniform(1, 2.5)
+                print(f"Worker {worker_id}: Waiting {sleep_time:.1f}s before next page...", flush=True)
+                time.sleep(sleep_time)
         
+        print(f"Worker {worker_id} completed all assigned pages", flush=True)
+        return results
+    
+    except Exception as e:
+        print(f"Worker {worker_id} encountered an error: {str(e)}", flush=True)
+        return results
+    
     finally:
-        if close_driver:
+        # Always close the driver
+        try:
             driver.quit()
+            print(f"Worker {worker_id}: WebDriver closed", flush=True)
+        except:
+            pass
+
+def divide_pages(start_page, end_page, num_workers):
+    """Divide pages among workers evenly."""
+    pages = list(range(start_page, end_page + 1))
+    total_pages = len(pages)
+    
+    # If we have more workers than pages, limit workers
+    actual_workers = min(num_workers, total_pages)
+    
+    # Calculate pages per worker
+    pages_per_worker = math.ceil(total_pages / actual_workers)
+    
+    # Divide pages among workers
+    page_assignments = []
+    for i in range(actual_workers):
+        start_idx = i * pages_per_worker
+        end_idx = min(start_idx + pages_per_worker, total_pages)
+        if start_idx < total_pages:
+            page_assignments.append(pages[start_idx:end_idx])
+    
+    return page_assignments
 
 def main(start_page=1, end_page=1, max_workers=1, verbose=False):
-    """Main function to run the scraper."""
-    print(f"Starting McKinsey scraper on page {start_page}", flush=True)
+    """Main function with efficient WebDriver reuse."""
+    print(f"Starting McKinsey scraper with settings:", flush=True)
+    print(f"  Start page: {start_page}", flush=True)
+    print(f"  End page: {end_page}", flush=True)
+    print(f"  Workers: {max_workers}", flush=True)
     
     # Set up database
     conn = setup_database()
     
-    # Configure and initialize WebDriver
-    chrome_options = configure_webdriver()
-    driver = webdriver.Chrome(options=chrome_options)
-    driver.execute_cdp_cmd("Page.addScriptToEvaluateOnNewDocument", {
-        "source": """
-            Object.defineProperty(navigator, 'webdriver', {
-                get: () => undefined
-            });
-        """
-    })
-    
     try:
-        # Construct search URL
-        search_url = f"https://www.mckinsey.com/search?q=change+management&pageFilter=all&sort=default"
-        if start_page > 1:
-            search_url += f"&start={start_page}"
+        # Single-threaded mode
+        if max_workers == 1 or start_page == end_page:
+            print("Running in single-threaded mode", flush=True)
+            
+            # Initialize single driver
+            driver = initialize_driver()
+            
+            try:
+                results = []
+                
+                # Process each page
+                for page in range(start_page, end_page + 1):
+                    print(f"\n===== PROCESSING PAGE {page} =====", flush=True)
+                    
+                    # Scrape page
+                    page_results = scrape_page(page, driver)
+                    
+                    # Save results
+                    save_to_database(conn, page_results)
+                    
+                    results.append({
+                        "page": page,
+                        "count": len(page_results),
+                        "status": "success" if page_results else "no_results"
+                    })
+                    
+                    # Sleep between pages
+                    if page < end_page:
+                        sleep_time = random.uniform(1.5, 3)
+                        print(f"Waiting {sleep_time:.1f} seconds before next page...", flush=True)
+                        time.sleep(sleep_time)
+                
+                # Print summary
+                print("\n===== SCRAPING SUMMARY =====", flush=True)
+                print(f"Total pages processed: {len(results)}", flush=True)
+                print(f"Total articles extracted: {sum(r['count'] for r in results)}", flush=True)
+                print("============================", flush=True)
+                
+            finally:
+                # Always close the driver
+                driver.quit()
+                print("WebDriver closed", flush=True)
         
-        print(f"Navigating to: {search_url}", flush=True)
-        driver.get(search_url)
-        
-        # Handle cookies if they appear
-        handle_cookies(driver)
-        
-        # Process the page
-        result = scrape_page(start_page, driver)
-        
-        # Save results
-        save_to_database(conn, result)
-        
-        print(f"Scraping summary: Found {len(result)} articles on page {start_page}", flush=True)
+        # Multi-threaded mode
+        else:
+            print(f"Running in multi-threaded mode with {max_workers} workers", flush=True)
+            
+            # Divide pages among workers
+            page_assignments = divide_pages(start_page, end_page, max_workers)
+            actual_workers = len(page_assignments)
+            
+            print(f"Page assignments: {page_assignments}", flush=True)
+            print(f"Using {actual_workers} workers", flush=True)
+            
+            all_results = []
+            
+            # Create thread pool
+            with ThreadPoolExecutor(max_workers=actual_workers) as executor:
+                # Submit worker tasks
+                future_to_worker = {
+                    executor.submit(worker_process, i+1, pages, conn, verbose): i+1 
+                    for i, pages in enumerate(page_assignments)
+                }
+                
+                # Process results
+                for future in future_to_worker:
+                    worker_id = future_to_worker[future]
+                    try:
+                        worker_results = future.result()
+                        all_results.extend(worker_results)
+                        worker_total = sum(r['count'] for r in worker_results)
+                        print(f"Worker {worker_id} completed with {worker_total} total articles", flush=True)
+                    except Exception as e:
+                        print(f"Worker {worker_id} failed: {str(e)}", flush=True)
+            
+            # Print summary
+            successful = sum(1 for r in all_results if r['status'] == 'success')
+            no_results = sum(1 for r in all_results if r['status'] == 'no_results')
+            total_articles = sum(r['count'] for r in all_results)
+            
+            print("\n===== SCRAPING SUMMARY =====", flush=True)
+            print(f"Total pages processed: {len(all_results)}", flush=True)
+            print(f"Pages with results: {successful}", flush=True)
+            print(f"Pages without results: {no_results}", flush=True)
+            print(f"Total articles extracted: {total_articles}", flush=True)
+            print("============================", flush=True)
     
     finally:
-        driver.quit()
         conn.close()
+        print("Database connection closed", flush=True)
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description='Scrape McKinsey articles.')
