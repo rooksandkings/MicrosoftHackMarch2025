@@ -1,0 +1,17 @@
+{
+    "name": "mckinsey_prompt_flow",
+    "description": "Prompt Flow for mckinsey_data.jsonl",
+    "data": {
+        "name": "mckinsey_data_jsonl",
+        "type": "uri_file",
+        "uri": "azureml://datastores/workspaceblobstore/paths/mckinsey_data_jsonl"
+    },
+    "model": {
+        "name": "TestModel",
+        "type": "text"  
+    },
+    "parameters": {
+        "batch_size": 32,
+        "learning_rate": 0.001
+    }
+}
