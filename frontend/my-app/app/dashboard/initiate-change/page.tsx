@@ -15,6 +15,19 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Slider } from "@/components/ui/slider"
 import { toast } from "@/hooks/use-toast"
 
+const departments = [
+  { label: "Sales", value: "sales" },
+  { label: "Marketing", value: "marketing" },
+  { label: "Operations", value: "operations" },
+  { label: "IT", value: "it" },
+  { label: "Human Resources", value: "hr" },
+  { label: "Finance", value: "finance" },
+  { label: "Customer Service", value: "customer-service" },
+  { label: "Research & Development", value: "r-and-d" },
+  { label: "Legal", value: "legal" },
+  { label: "Product", value: "product" },
+]
+
 export default function InitiateChange() {
   // Form state
   const [formData, setFormData] = useState({
@@ -22,7 +35,7 @@ export default function InitiateChange() {
     shortDescription: "",
     industry: "",
     services: "",
-    department: "",
+    departments: [] as string[],
     startDate: "",
     endDate: "",
     budgetMin: "",
@@ -60,35 +73,29 @@ export default function InitiateChange() {
     }))
   }
 
+  // Replace the handleSubmit function with this updated version that mocks the API response
+  // instead of making a real network request
+
   // Handle form submission
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setIsSubmitting(true)
 
     try {
-      // Replace with your actual backend endpoint
-      const response = await fetch("/api/calculate-roi", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(formData),
+      // Mock API response instead of making a real network request
+      await new Promise((resolve) => setTimeout(resolve, 1000)) // Simulate network delay
+
+      // Log the form data with departments highlighted
+      console.log("Form data submitted:", {
+        ...formData,
+        departments: formData.departments, // Highlight the departments array
       })
 
-      if (!response.ok) {
-        throw new Error("Failed to calculate ROI")
-      }
-
-      const data = await response.json()
+      // Mock successful response
       toast({
         title: "ROI Calculation Successful",
-        description: "Your ROI has been calculated successfully.",
+        description: `Your ROI has been calculated with ${formData.departments.length} departments selected.`,
       })
-
-      // You could redirect to a results page here
-      // router.push(`/dashboard/roi-results/${data.id}`)
-
-      console.log("Success:", data)
     } catch (error) {
       console.error("Error:", error)
       toast({
@@ -203,22 +210,37 @@ export default function InitiateChange() {
                   </div>
 
                   <div className="space-y-2">
-                    <Label htmlFor="department" className="text-[#0D1821]">
-                      Department Affected
+                    <Label htmlFor="departments" className="text-[#0D1821]">
+                      Departments Affected (Select multiple)
                     </Label>
-                    <Select onValueChange={(value) => handleSelectChange("department", value)}>
-                      <SelectTrigger className="border-[#B4CDED] focus:border-[#344966] focus:ring-[#344966]">
-                        <SelectValue placeholder="Select department" />
-                      </SelectTrigger>
-                      <SelectContent>
-                        <SelectItem value="sales">Sales</SelectItem>
-                        <SelectItem value="marketing">Marketing</SelectItem>
-                        <SelectItem value="operations">Operations</SelectItem>
-                        <SelectItem value="it">IT</SelectItem>
-                        <SelectItem value="hr">Human Resources</SelectItem>
-                        <SelectItem value="finance">Finance</SelectItem>
-                      </SelectContent>
-                    </Select>
+                    <div className="grid grid-cols-2 gap-2">
+                      {departments.map((department) => (
+                        <div key={department.value} className="flex items-center space-x-2">
+                          <input
+                            type="checkbox"
+                            id={`dept-${department.value}`}
+                            checked={formData.departments.includes(department.value)}
+                            onChange={(e) => {
+                              if (e.target.checked) {
+                                setFormData((prev) => ({
+                                  ...prev,
+                                  departments: [...prev.departments, department.value],
+                                }))
+                              } else {
+                                setFormData((prev) => ({
+                                  ...prev,
+                                  departments: prev.departments.filter((d) => d !== department.value),
+                                }))
+                              }
+                            }}
+                            className="h-4 w-4 rounded border-[#B4CDED] text-[#344966] focus:ring-[#344966]"
+                          />
+                          <label htmlFor={`dept-${department.value}`} className="text-sm text-[#0D1821]">
+                            {department.label}
+                          </label>
+                        </div>
+                      ))}
+                    </div>
                   </div>
 
                   <div className="space-y-2">
@@ -258,7 +280,7 @@ export default function InitiateChange() {
                     <div className="grid grid-cols-2 gap-4">
                       <div className="relative">
                         <Label htmlFor="budgetMin" className="text-[#0D1821] text-sm">
-                          Minimum ($)
+                          Min ($)
                         </Label>
                         <div className="relative mt-1">
                           <Input
@@ -274,7 +296,7 @@ export default function InitiateChange() {
                       </div>
                       <div className="relative">
                         <Label htmlFor="budgetMax" className="text-[#0D1821] text-sm">
-                          Maximum ($)
+                          Max ($)
                         </Label>
                         <div className="relative mt-1">
                           <Input
