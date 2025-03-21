@@ -374,7 +374,21 @@ export default function ROIResults() {
               </div>
               <div className="p-0">
                 <div className="h-[400px]">
-                  <ChatInterface />
+                  <ChatInterface formData={{
+                    change_initiative_name: searchParams.get('change_initiative_name') || '',
+                    industry: searchParams.get('industry') || '',
+                    services_provided: searchParams.get('services_provided') || '',
+                    department: searchParams.get('department')?.split(',') || [],
+                    start_date: searchParams.get('start_date') || '',
+                    end_date: searchParams.get('end_date') || '',
+                    min_budget: searchParams.get('min_budget') || '',
+                    max_budget: searchParams.get('max_budget') || '',
+                    targeted_business_goals: searchParams.get('targeted_business_goals') || '',
+                    employee_retraining_percent: searchParams.get('employee_retraining_percent') || '',
+                    num_affected_employees: searchParams.get('num_affected_employees') || '',
+                    employee_morale: Number(searchParams.get('employee_morale')) || 5,
+                    change_details: searchParams.get('change_details') || ''
+                  }} />
                 </div>
               </div>
             </Card>

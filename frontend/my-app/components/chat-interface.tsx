@@ -5,6 +5,8 @@ import { Send, Bot, User, Loader2 } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { cn } from "@/lib/utils"
+import ReactMarkdown from 'react-markdown'
+import type { Components } from 'react-markdown'
 
 type Message = {
   id: string
@@ -13,18 +15,46 @@ type Message = {
   timestamp: Date
 }
 
-export function ChatInterface() {
-  const [messages, setMessages] = useState<Message[]>([
-    {
-      id: "welcome",
-      content:
-        "Hello! I'm your ROI assistant. I can help you understand your calculation results and answer questions about the variables and formulas used. What would you like to know?",
-      role: "assistant",
-      timestamp: new Date(),
-    },
-  ])
+type FormData = {
+  change_initiative_name: string;
+  industry: string;
+  services_provided: string;
+  department: string[];
+  start_date: string;
+  end_date: string;
+  min_budget: string;
+  max_budget: string;
+  targeted_business_goals: string;
+  employee_retraining_percent: string;
+  num_affected_employees: string;
+  employee_morale: number;
+  change_details: string;
+}
+
+const markdownComponents: Components = {
+  p: ({ children }) => <p className="mb-2">{children}</p>,
+  ul: ({ children }) => <ul className="list-disc pl-4 mb-2">{children}</ul>,
+  ol: ({ children }) => <ol className="list-decimal pl-4 mb-2">{children}</ol>,
+  li: ({ children }) => <li className="mb-1">{children}</li>,
+  h1: ({ children }) => <h1 className="text-lg font-bold mb-2">{children}</h1>,
+  h2: ({ children }) => <h2 className="text-base font-bold mb-2">{children}</h2>,
+  h3: ({ children }) => <h3 className="text-sm font-bold mb-2">{children}</h3>,
+  code: ({ children }) => (
+    <code className="bg-black/20 px-1 py-0.5 rounded text-sm font-mono">
+      {children}
+    </code>
+  ),
+  pre: ({ children }) => (
+    <pre className="bg-black/20 p-2 rounded mb-2 overflow-x-auto">
+      {children}
+    </pre>
+  ),
+}
+
+export function ChatInterface({ formData }: { formData: FormData }) {
+  const [messages, setMessages] = useState<Message[]>([])
   const [input, setInput] = useState("")
-  const [isLoading, setIsLoading] = useState(false)
+  const [isLoading, setIsLoading] = useState(true)
   const messagesEndRef = useRef<HTMLDivElement>(null)
 
   // Auto-scroll to bottom when messages change
@@ -32,46 +62,48 @@ export function ChatInterface() {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" })
   }, [messages])
 
-  // Mock function to simulate AI response
-  const getAIResponse = async (userMessage: string): Promise<string> => {
-    // Simulate network delay
-    await new Promise((resolve) => setTimeout(resolve, 1500))
+  // Get initial message from LLM
+  useEffect(() => {
+    const getInitialMessage = async () => {
+      try {
+        const response = await fetch('/api/chat', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ 
+            messages: [],
+            formData 
+          }),
+        });
 
-    // Simple response logic based on keywords in the user message
-    const lowerCaseMessage = userMessage.toLowerCase()
+        if (!response.ok) {
+          throw new Error('Failed to get response');
+        }
 
-    if (lowerCaseMessage.includes("roi")) {
-      return "ROI (Return on Investment) is calculated by comparing the cost of implementing a change versus the cost of not implementing it. A positive ROI indicates that the change is financially beneficial."
-    } else if (lowerCaseMessage.includes("cost of change")) {
-      return "The Cost of Change includes all expenses related to implementing your initiative, such as software costs, training expenses, and any impact on employee morale or productivity during the transition."
-    } else if (lowerCaseMessage.includes("cost of no change")) {
-      return "The Cost of No Change represents the ongoing expenses or opportunity costs if you don't implement the change. This often includes inefficiencies, lost opportunities, or continuing problems that the change would address."
-    } else if (lowerCaseMessage.includes("variable")) {
-      return "You can adjust any variable in the calculator by changing its value in the input fields. The ROI will automatically recalculate based on your changes."
-    } else if (lowerCaseMessage.includes("formula") || lowerCaseMessage.includes("equation")) {
-      return "You can view the exact formulas used in the calculation by clicking the 'View Calculation Formula' dropdown under each section. These formulas show exactly how each variable contributes to the final calculation."
-    } else if (lowerCaseMessage.includes("hello") || lowerCaseMessage.includes("hi")) {
-      return "Hello! How can I help you understand your ROI calculation today?"
-    } else if (lowerCaseMessage.includes("improve roi")) {
-      return "To improve your ROI, focus on reducing the Cost of Change by optimizing training costs and implementation duration. You can also look for ways to better quantify the Cost of No Change, as many organizations underestimate ongoing inefficiencies."
-    } else if (lowerCaseMessage.includes("explain") && lowerCaseMessage.includes("result")) {
-      return (
-        "Your current calculation shows a " +
-        (0 >= 0 ? "positive" : "negative") +
-        " ROI of $" +
-        (0).toFixed(2) +
-        ". This means the change " +
-        (0 >= 0 ? "is financially beneficial" : "may need reconsideration") +
-        ". The Cost of Change is $" +
-        (0).toFixed(2) +
-        " while the Cost of No Change is $" +
-        (0).toFixed(2) +
-        "."
-      )
-    } else {
-      return "I'm not sure I understand your question. Could you ask about specific aspects of the ROI calculation, such as the cost of change, cost of no change, or how to interpret the results?"
+        const data = await response.json();
+        const initialMessage: Message = {
+          id: "initial",
+          content: data.content,
+          role: "assistant",
+          timestamp: new Date(),
+        }
+        setMessages([initialMessage])
+      } catch (error) {
+        console.error("Error getting initial AI response:", error)
+        setMessages([{
+          id: "initial",
+          content: "Hello! I'm your ROI assistant. I can help you understand your calculation results and answer questions about the variables and formulas used. What would you like to know?",
+          role: "assistant",
+          timestamp: new Date(),
+        }])
+      } finally {
+        setIsLoading(false)
+      }
     }
-  }
+
+    getInitialMessage()
+  }, [formData])
 
   const handleSendMessage = async () => {
     if (!input.trim()) return
@@ -88,13 +120,32 @@ export function ChatInterface() {
     setIsLoading(true)
 
     try {
-      // Get AI response
-      const response = await getAIResponse(input)
+      // Convert messages to the format expected by the API, including the current user message
+      const apiMessages = [...messages, userMessage].map(msg => ({
+        role: msg.role,
+        content: msg.content
+      }));
 
-      // Add AI message
+      // Get AI response from our API route
+      const response = await fetch('/api/chat', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ 
+          messages: apiMessages,
+          formData 
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to get response');
+      }
+
+      const data = await response.json();
       const aiMessage: Message = {
         id: (Date.now() + 1).toString(),
-        content: response,
+        content: data.content,
         role: "assistant",
         timestamp: new Date(),
       }
@@ -136,13 +187,15 @@ export function ChatInterface() {
             </div>
             <div
               className={cn(
-                "rounded-lg px-3 py-2 max-w-[80%]",
+                "rounded-lg px-3 py-2 max-w-[80%] prose prose-sm dark:prose-invert",
                 message.role === "assistant"
                   ? "bg-[#344966] text-white"
-                  : "bg-[#BFC994] text-[#0D1821] ml-auto",
+                  : "bg-[#BFC994] bg-opacity-50 text-[#0D1821] ml-auto",
               )}
             >
-              {message.content}
+              <ReactMarkdown components={markdownComponents}>
+                {message.content}
+              </ReactMarkdown>
             </div>
           </div>
         ))}
@@ -151,7 +204,7 @@ export function ChatInterface() {
             <div className="flex-shrink-0 rounded-full p-1.5 bg-[#344966] text-white">
               <Bot className="h-4 w-4" />
             </div>
-            <div className="rounded-lg px-3 py-2 bg-[#B4CDED] bg-opacity-20 text-[#0D1821]">
+            <div className="rounded-lg px-3 py-2 bg-[#344966] text-white">
               <Loader2 className="h-4 w-4 animate-spin" />
             </div>
           </div>
