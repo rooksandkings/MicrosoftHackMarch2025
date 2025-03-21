@@ -214,7 +214,7 @@ export default function InitiateChange() {
                     </Label>
                     <Textarea
                       id="change_details"
-                      placeholder="Briefly describe the change initiative..."
+                      placeholder="Briefly describe the change initiative. Provide potential subscription costs, etc."
                       className="border-[#B4CDED] focus:border-[#344966] focus:ring-[#344966]"
                       value={formData.change_details}
                       onChange={handleChange}
