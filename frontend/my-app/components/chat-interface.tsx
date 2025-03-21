@@ -139,7 +139,7 @@ export function ChatInterface() {
                 "rounded-lg px-3 py-2 max-w-[80%]",
                 message.role === "assistant"
                   ? "bg-[#344966] text-white"
-                  : "bg-[#BFC994] bg-opacity-50 text-[#0D1821] ml-auto",
+                  : "bg-[#BFC994] text-[#0D1821] ml-auto",
               )}
             >
               {message.content}
