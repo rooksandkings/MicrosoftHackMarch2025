@@ -14,6 +14,7 @@ import { DashboardNav } from "@/components/dashboard-nav"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Slider } from "@/components/ui/slider"
 import { toast } from "@/hooks/use-toast"
+import { useRouter } from "next/navigation"
 
 const departments = [
   { label: "Sales", value: "sales" },
@@ -29,21 +30,22 @@ const departments = [
 ]
 
 export default function InitiateChange() {
+  const router = useRouter()
   // Form state
   const [formData, setFormData] = useState({
-    initiativeName: "",
-    shortDescription: "",
+    change_initiative_name: "",
+    change_details: "",
     industry: "",
-    services: "",
-    departments: [] as string[],
-    startDate: "",
-    endDate: "",
-    budgetMin: "",
-    budgetMax: "",
-    businessGoals: "",
-    retrainingPercentage: "",
-    affectedEmployees: "",
-    employeeMorale: 5,
+    services_provided: "",
+    department: [] as string[],
+    start_date: "",
+    end_date: "",
+    min_budget: "",
+    max_budget: "",
+    targeted_business_goals: "",
+    employee_retraining_percent: "",
+    num_affected_employees: "",
+    employee_morale: 5,
   })
 
   const [isSubmitting, setIsSubmitting] = useState(false)
@@ -69,44 +71,67 @@ export default function InitiateChange() {
   const handleSliderChange = (value: number[]) => {
     setFormData((prev) => ({
       ...prev,
-      employeeMorale: value[0],
+      employee_morale: value[0],
     }))
   }
 
-  // Replace the handleSubmit function with this updated version that mocks the API response
-  // instead of making a real network request
-
-  // Handle form submission
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setIsSubmitting(true)
-
+  
     try {
-      // Mock API response instead of making a real network request
-      await new Promise((resolve) => setTimeout(resolve, 1000)) // Simulate network delay
-
-      // Log the form data with departments highlighted
-      console.log("Form data submitted:", {
-        ...formData,
-        departments: formData.departments, // Highlight the departments array
-      })
-
-      // Mock successful response
+      const response = await fetch('/api/roi', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData)
+      });
+  
+      if (!response.ok) {
+        throw new Error(`Request failed with status code ${response.status}`);
+      }
+  
+      const result = await response.json();
+      console.log("ROI calculation response:", result);
+      
       toast({
         title: "ROI Calculation Successful",
-        description: `Your ROI has been calculated with ${formData.departments.length} departments selected.`,
-      })
+        description: "Your ROI calculation is complete.",
+      });
+
+      // Create URL parameters from the API response
+      const params = new URLSearchParams();
+      Object.entries(result).forEach(([key, value]) => {
+        if (Array.isArray(value)) {
+          // Handle arrays (cocvar and concvar)
+          value.forEach((item, index) => {
+            if (Array.isArray(item)) {
+              item.forEach((subItem, subIndex) => {
+                params.append(`${key}[${index}][${subIndex}]`, String(subItem));
+              });
+            }
+          });
+        } else {
+          // Handle other values
+          params.append(key, String(value));
+        }
+      });
+
+      // Navigate to ROI results page with the response data
+      router.push(`/dashboard/roi-results?${params.toString()}`);
+      
     } catch (error) {
-      console.error("Error:", error)
+      console.error("Error:", error);
       toast({
         title: "Error",
         description: "Failed to calculate ROI. Please try again.",
         variant: "destructive",
-      })
+      });
     } finally {
-      setIsSubmitting(false)
+      setIsSubmitting(false);
     }
-  }
+  };
 
   return (
     <div className="flex min-h-screen bg-[#F0F4EF]">
@@ -150,14 +175,14 @@ export default function InitiateChange() {
               <form className="space-y-6" onSubmit={handleSubmit}>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div className="space-y-2">
-                    <Label htmlFor="initiativeName" className="text-[#0D1821]">
+                    <Label htmlFor="change_initiative_name" className="text-[#0D1821]">
                       Change Initiative Name
                     </Label>
                     <Input
-                      id="initiativeName"
+                      id="change_initiative_name"
                       placeholder="e.g., CRM Implementation"
                       className="border-[#B4CDED] focus:border-[#344966] focus:ring-[#344966]"
-                      value={formData.initiativeName}
+                      value={formData.change_initiative_name}
                       onChange={handleChange}
                     />
                   </div>
@@ -184,33 +209,33 @@ export default function InitiateChange() {
                   </div>
 
                   <div className="space-y-2 md:col-span-2">
-                    <Label htmlFor="shortDescription" className="text-[#0D1821]">
+                    <Label htmlFor="change_details" className="text-[#0D1821]">
                       Short Description
                     </Label>
                     <Textarea
-                      id="shortDescription"
+                      id="change_details"
                       placeholder="Briefly describe the change initiative..."
                       className="border-[#B4CDED] focus:border-[#344966] focus:ring-[#344966]"
-                      value={formData.shortDescription}
+                      value={formData.change_details}
                       onChange={handleChange}
                     />
                   </div>
 
                   <div className="space-y-2">
-                    <Label htmlFor="services" className="text-[#0D1821]">
+                    <Label htmlFor="services_provided" className="text-[#0D1821]">
                       What services do you provide?
                     </Label>
                     <Input
-                      id="services"
+                      id="services_provided"
                       placeholder="e.g., Software Development, Consulting"
                       className="border-[#B4CDED] focus:border-[#344966] focus:ring-[#344966]"
-                      value={formData.services}
+                      value={formData.services_provided}
                       onChange={handleChange}
                     />
                   </div>
 
                   <div className="space-y-2">
-                    <Label htmlFor="departments" className="text-[#0D1821]">
+                    <Label htmlFor="department" className="text-[#0D1821]">
                       Departments Affected (Select multiple)
                     </Label>
                     <div className="grid grid-cols-2 gap-2">
@@ -219,17 +244,17 @@ export default function InitiateChange() {
                           <input
                             type="checkbox"
                             id={`dept-${department.value}`}
-                            checked={formData.departments.includes(department.value)}
+                            checked={formData.department.includes(department.value)}
                             onChange={(e) => {
                               if (e.target.checked) {
                                 setFormData((prev) => ({
                                   ...prev,
-                                  departments: [...prev.departments, department.value],
+                                  department: [...prev.department, department.value],
                                 }))
                               } else {
                                 setFormData((prev) => ({
                                   ...prev,
-                                  departments: prev.departments.filter((d) => d !== department.value),
+                                  department: prev.department.filter((d: string) => d !== department.value),
                                 }))
                               }
                             }}
@@ -244,15 +269,15 @@ export default function InitiateChange() {
                   </div>
 
                   <div className="space-y-2">
-                    <Label htmlFor="startDate" className="text-[#0D1821]">
+                    <Label htmlFor="start_date" className="text-[#0D1821]">
                       Start Date
                     </Label>
                     <div className="relative">
                       <Input
-                        id="startDate"
+                        id="start_date"
                         type="date"
                         className="border-[#B4CDED] focus:border-[#344966] focus:ring-[#344966]"
-                        value={formData.startDate}
+                        value={formData.start_date}
                         onChange={handleChange}
                       />
                       <Calendar className="absolute right-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-[#344966] pointer-events-none" />
@@ -260,15 +285,15 @@ export default function InitiateChange() {
                   </div>
 
                   <div className="space-y-2">
-                    <Label htmlFor="endDate" className="text-[#0D1821]">
+                    <Label htmlFor="end_date" className="text-[#0D1821]">
                       Expected Completion Date
                     </Label>
                     <div className="relative">
                       <Input
-                        id="endDate"
+                        id="end_date"
                         type="date"
                         className="border-[#B4CDED] focus:border-[#344966] focus:ring-[#344966]"
-                        value={formData.endDate}
+                        value={formData.end_date}
                         onChange={handleChange}
                       />
                       <Calendar className="absolute right-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-[#344966] pointer-events-none" />
@@ -279,32 +304,32 @@ export default function InitiateChange() {
                     <Label className="text-[#0D1821]">Realistic Budget Range</Label>
                     <div className="grid grid-cols-2 gap-4">
                       <div className="relative">
-                        <Label htmlFor="budgetMin" className="text-[#0D1821] text-sm">
+                        <Label htmlFor="min_budget" className="text-[#0D1821] text-sm">
                           Min ($)
                         </Label>
                         <div className="relative mt-1">
                           <Input
-                            id="budgetMin"
+                            id="min_budget"
                             type="number"
                             placeholder="0.00"
                             className="border-[#B4CDED] focus:border-[#344966] focus:ring-[#344966] pl-8"
-                            value={formData.budgetMin}
+                            value={formData.min_budget}
                             onChange={handleChange}
                           />
                           <DollarSign className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-[#344966]" />
                         </div>
                       </div>
                       <div className="relative">
-                        <Label htmlFor="budgetMax" className="text-[#0D1821] text-sm">
+                        <Label htmlFor="max_budget" className="text-[#0D1821] text-sm">
                           Max ($)
                         </Label>
                         <div className="relative mt-1">
                           <Input
-                            id="budgetMax"
+                            id="max_budget"
                             type="number"
                             placeholder="0.00"
                             className="border-[#B4CDED] focus:border-[#344966] focus:ring-[#344966] pl-8"
-                            value={formData.budgetMax}
+                            value={formData.max_budget}
                             onChange={handleChange}
                           />
                           <DollarSign className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-[#344966]" />
@@ -314,31 +339,31 @@ export default function InitiateChange() {
                   </div>
 
                   <div className="space-y-2 md:col-span-2">
-                    <Label htmlFor="businessGoals" className="text-[#0D1821]">
+                    <Label htmlFor="targeted_business_goals" className="text-[#0D1821]">
                       What business goals will this initiative address?
                     </Label>
                     <Textarea
-                      id="businessGoals"
+                      id="targeted_business_goals"
                       placeholder="Describe the specific business goals this change will help achieve..."
                       className="border-[#B4CDED] focus:border-[#344966] focus:ring-[#344966]"
-                      value={formData.businessGoals}
+                      value={formData.targeted_business_goals}
                       onChange={handleChange}
                     />
                   </div>
 
                   <div className="space-y-2">
-                    <Label htmlFor="retrainingPercentage" className="text-[#0D1821]">
+                    <Label htmlFor="employee_retraining_percent" className="text-[#0D1821]">
                       Percentage of employees needing retraining
                     </Label>
                     <div className="relative">
                       <Input
-                        id="retrainingPercentage"
+                        id="employee_retraining_percent"
                         type="number"
                         min="0"
                         max="100"
                         placeholder="0"
                         className="border-[#B4CDED] focus:border-[#344966] focus:ring-[#344966] pr-8"
-                        value={formData.retrainingPercentage}
+                        value={formData.employee_retraining_percent}
                         onChange={handleChange}
                       />
                       <span className="absolute right-3 top-1/2 transform -translate-y-1/2 text-[#344966]">%</span>
@@ -346,16 +371,16 @@ export default function InitiateChange() {
                   </div>
 
                   <div className="space-y-2">
-                    <Label htmlFor="affectedEmployees" className="text-[#0D1821]">
+                    <Label htmlFor="num_affected_employees" className="text-[#0D1821]">
                       Number of Affected Employees
                     </Label>
                     <div className="relative">
                       <Input
-                        id="affectedEmployees"
+                        id="num_affected_employees"
                         type="number"
                         placeholder="0"
                         className="border-[#B4CDED] focus:border-[#344966] focus:ring-[#344966] pl-8"
-                        value={formData.affectedEmployees}
+                        value={formData.num_affected_employees}
                         onChange={handleChange}
                       />
                       <Users className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-[#344966]" />
@@ -366,7 +391,7 @@ export default function InitiateChange() {
                     <Label className="text-[#0D1821]">Employee Morale (1-10)</Label>
                     <div className="space-y-3">
                       <Slider
-                        value={[formData.employeeMorale]}
+                        value={[formData.employee_morale]}
                         min={1}
                         max={10}
                         step={1}
@@ -385,7 +410,7 @@ export default function InitiateChange() {
                         <span>9</span>
                         <span>10</span>
                       </div>
-                      <div className="text-center font-medium text-[#344966]">Selected: {formData.employeeMorale}</div>
+                      <div className="text-center font-medium text-[#344966]">Selected: {formData.employee_morale}</div>
                     </div>
                   </div>
                 </div>
