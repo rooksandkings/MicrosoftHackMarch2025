@@ -17,6 +17,11 @@
     "@radix-ui/react-slot": "^1.1.2",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
+<<<<<<< Updated upstream
+=======
+    "cmdk": "^1.1.1",
+    "katex": "^0.16.21",
+>>>>>>> Stashed changes
     "lucide-react": "^0.483.0",
     "next": "15.2.3",
     "react": "^19.0.0",
