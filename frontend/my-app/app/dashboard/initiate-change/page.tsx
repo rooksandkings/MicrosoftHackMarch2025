@@ -73,17 +73,13 @@ export default function InitiateChange() {
     }))
   }
 
-  // Replace the handleSubmit function with this updated version that mocks the API response
-  // instead of making a real network request
-
-  // Handle form submission
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setIsSubmitting(true)
   
     try {
-      // Update the API route path - remove the .ts extension
-      const response = await fetch('/api', {
+      // Update the API route path to use the new endpoint
+      const response = await fetch('/api/roi', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
