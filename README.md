@@ -6,23 +6,23 @@ An end-to-end solution for extracting, analyzing, and visualizing change managem
 
 ## 📋 Table of Contents
 
-- [Overview](#overview)
-- [Features](#features)
-- [System Architecture](#system-architecture)
-- [Installation](#installation)
+- [Overview](#-overview)
+- [Features](#-features)
+- [System Architecture](#-system-architecture)
+- [Installation](#-installation)
 - [Backend: Web Scraper](#backend-web-scraper)
 - [Frontend: ROI Calculator](#frontend-roi-calculator)
 - [AI-Powered Features](#ai-powered-features)
 - [Database Structure](#database-structure)
-- [Azure Integration](#azure-integration)
-- [Troubleshooting](#troubleshooting)
+- [Azure Integration](#-azure-integration)
+- [AI Fairness Considerations](#-ai-fairness-considerations)
+- [Data Democratization for Change Management](#-data-democratization-for-change-management)
+- [Troubleshooting](#-troubleshooting)
 - [Future Plans](#future-plans)
-- [Contributors](#contributors)
-- [Acknowledgements](#acknowledgements)
-- [License](#license)
-- [Disclaimer](#disclaimer)
-- [AI Fairness Considerations](#ai-fairness-considerations)
-- [Data Democratization for Change Management](#data-democratization-for-change-management)
+- [Contributors](#-contributors)
+- [Acknowledgements](#-acknowledgements)
+- [License](#-license)
+- [Disclaimer](#-disclaimer)
 
 ## 🔍 Overview
 
@@ -71,7 +71,7 @@ As part of our commitment to comprehensive fairness, we're exploring ways to mak
 
 A critical challenge in the AI-driven change management landscape is what we call "data disenfranchisement." This phenomenon occurs when:
 
-- **Premium Knowledge Paywalls**: Most high-quality change management case studies, research, and frameworks are locked behind expensive paywalls (like McKinsey, Deloitte, BCG)
+- **Premium Knowledge Paywalls**: Most high-quality change management case studies, research, and frameworks are locked behind expensive paywalls (like McKinsey, Deloitte, BCG, Harvard Business Review, etc.)
 - **Proprietary Case Logs**: Organizations that can afford consultancies accumulate valuable proprietary case logs that aren't accessible to smaller entities
 - **Data Advantage Gap**: This creates a widening gap where resource-rich organizations build increasingly powerful AI agents while others fall further behind
 
