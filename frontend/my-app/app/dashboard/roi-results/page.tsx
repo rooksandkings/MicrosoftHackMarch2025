@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react"
 import { useRouter, useSearchParams } from "next/navigation"
 import Link from "next/link"
-import { ArrowLeft, Calculator, DollarSign, Settings } from "lucide-react"
+import { ArrowLeft, Calculator, DollarSign, Settings, MessageCircle } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
@@ -11,25 +11,7 @@ import { Label } from "@/components/ui/label"
 import { DashboardNav } from "@/components/dashboard-nav"
 import { Separator } from "@/components/ui/separator"
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
-
-// Mock payload - in a real app, this would come from an API
-const payload = {
-  coceqn:
-    "(Jira_Cost_Per_User * Number_of_users * Implementation_Duration_Months) + (Training_Percentage/100 * Number_of_users * Training_Cost_Per_Employee) + Employee_Morale_Cost",
-  cocvar: [
-    ["Number_of_users", "The number of affected employees who will use Jira", "12"],
-    ["Jira_Cost_Per_User", "The cost of using Jira per user per month in USD", "4.50"],
-    ["Training_Percentage", "The percentage of employees needing retraining", "20"],
-    ["Training_Cost_Per_Employee", "The cost of retraining each employee in USD", "200"],
-    ["Implementation_Duration_Months", "Duration of the implementation in months", "4"],
-    ["Employee_Morale_Cost", "The cost associated with impacting employee morale during the change", "5"],
-  ],
-  conceqn: "(Collaboration_Issues_Cost_Monthly * Implementation_Duration_Months)",
-  concvar: [
-    ["Collaboration_Issues_Cost_Monthly", "The estimated cost of collaboration issues per month in USD", "1000"],
-    ["Implementation_Duration_Months", "Duration of the implementation in months", "4"],
-  ],
-}
+import { ChatInterface } from "@/components/chat-interface"
 
 interface ROIPayload {
   coceqn: string;
@@ -380,6 +362,21 @@ export default function ROIResults() {
                   </AccordionItem>
                 </Accordion>
               </CardContent>
+            </Card>
+          </div>
+          <div className="mt-8">
+            <Card className="border-[#B4CDED] overflow-hidden py-0">
+              <div className="bg-[#344966] text-white px-6 py-4">
+                <h3 className="text-xl font-semibold">ROI Assistant</h3>
+                <p className="text-gray-200 text-sm mt-1">
+                  Ask questions about your ROI calculation or how to interpret the results
+                </p>
+              </div>
+              <div className="p-0">
+                <div className="h-[400px]">
+                  <ChatInterface />
+                </div>
+              </div>
             </Card>
           </div>
         </main>
