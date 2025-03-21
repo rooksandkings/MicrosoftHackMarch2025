@@ -18,7 +18,7 @@ An end-to-end solution for extracting, analyzing, and visualizing change managem
 - [AI Fairness Considerations](#-ai-fairness-considerations)
 - [Data Democratization for Change Management](#-data-democratization-for-change-management)
 - [Troubleshooting](#-troubleshooting)
-- [Future Plans](#future-plans)
+- [Future Plans](#-future-plans)
 - [Contributors](#-contributors)
 - [Acknowledgements](#-acknowledgements)
 - [License](#-license)
