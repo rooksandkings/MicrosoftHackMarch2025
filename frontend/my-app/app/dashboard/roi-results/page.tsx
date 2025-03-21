@@ -234,14 +234,14 @@ export default function ROIResults() {
 
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-8">
             {/* Results Summary Card */}
-            <Card className="border-[#B4CDED] lg:col-span-3">
-              <CardHeader className="bg-[#344966] text-white rounded-t-lg">
-                <CardTitle>ROI Summary</CardTitle>
-                <CardDescription className="text-gray-200">
+            <Card className="border-[#B4CDED] lg:col-span-3 overflow-hidden py-0">
+              <div className="bg-[#344966] text-white px-6 py-4">
+                <h3 className="text-xl font-semibold">ROI Summary</h3>
+                <p className="text-gray-200 text-sm mt-1">
                   Based on your inputs, here's the calculated return on investment
-                </CardDescription>
-              </CardHeader>
-              <CardContent className="p-6">
+                </p>
+              </div>
+              <div className="p-6">
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                   <div className="bg-[#B4CDED] bg-opacity-20 p-4 rounded-lg">
                     <h3 className="text-sm font-medium text-[#344966] mb-1">Cost of Change</h3>
@@ -257,17 +257,15 @@ export default function ROIResults() {
                       {costOfNoChange.toLocaleString("en-US", { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
                     </div>
                   </div>
-                  <div className={`p-4 rounded-lg ${roi >= 0 ? "bg-green-100" : "bg-red-100"}`}>
+                  <div className={`p-4 rounded-lg ${roi >= 0 ? "bg-green-50" : "bg-red-50"}`}>
                     <h3 className="text-sm font-medium text-[#344966] mb-1">Net ROI</h3>
-                    <div
-                      className={`text-2xl font-bold flex items-center ${roi >= 0 ? "text-green-700" : "text-red-700"}`}
-                    >
-                      <DollarSign className="h-5 w-5 mr-1" />
+                    <div className={`text-2xl font-bold flex items-center ${roi >= 0 ? "text-green-700" : "text-red-700"}`}>
+                      <DollarSign className={`h-5 w-5 mr-1 ${roi >= 0 ? "text-green-600" : "text-red-600"}`} />
                       {roi.toLocaleString("en-US", { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
                     </div>
                   </div>
                 </div>
-              </CardContent>
+              </div>
             </Card>
 
             {/* Cost of Change Variables */}
