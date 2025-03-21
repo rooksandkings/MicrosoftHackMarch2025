@@ -102,6 +102,17 @@ export default function InitiateChange() {
 
       // Create URL parameters from the API response
       const params = new URLSearchParams();
+      
+      // Add form data to URL parameters
+      Object.entries(formData).forEach(([key, value]) => {
+        if (Array.isArray(value)) {
+          params.append(key, value.join(','));
+        } else {
+          params.append(key, String(value));
+        }
+      });
+
+      // Add API response data
       Object.entries(result).forEach(([key, value]) => {
         if (Array.isArray(value)) {
           // Handle arrays (cocvar and concvar)
