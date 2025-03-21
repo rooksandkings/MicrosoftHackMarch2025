@@ -14,6 +14,7 @@ import { DashboardNav } from "@/components/dashboard-nav"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Slider } from "@/components/ui/slider"
 import { toast } from "@/hooks/use-toast"
+import { useRouter } from "next/navigation"
 
 const departments = [
   { label: "Sales", value: "sales" },
@@ -29,6 +30,7 @@ const departments = [
 ]
 
 export default function InitiateChange() {
+  const router = useRouter()
   // Form state
   const [formData, setFormData] = useState({
     change_initiative_name: "",
@@ -78,7 +80,6 @@ export default function InitiateChange() {
     setIsSubmitting(true)
   
     try {
-      // Update the API route path to use the new endpoint
       const response = await fetch('/api/roi', {
         method: 'POST',
         headers: {
@@ -98,6 +99,27 @@ export default function InitiateChange() {
         title: "ROI Calculation Successful",
         description: "Your ROI calculation is complete.",
       });
+
+      // Create URL parameters from the API response
+      const params = new URLSearchParams();
+      Object.entries(result).forEach(([key, value]) => {
+        if (Array.isArray(value)) {
+          // Handle arrays (cocvar and concvar)
+          value.forEach((item, index) => {
+            if (Array.isArray(item)) {
+              item.forEach((subItem, subIndex) => {
+                params.append(`${key}[${index}][${subIndex}]`, String(subItem));
+              });
+            }
+          });
+        } else {
+          // Handle other values
+          params.append(key, String(value));
+        }
+      });
+
+      // Navigate to ROI results page with the response data
+      router.push(`/dashboard/roi-results?${params.toString()}`);
       
     } catch (error) {
       console.error("Error:", error);

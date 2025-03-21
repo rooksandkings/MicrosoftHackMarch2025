@@ -1,7 +1,7 @@
 "use client"
 
 import { useState, useEffect } from "react"
-import { useRouter } from "next/navigation"
+import { useRouter, useSearchParams } from "next/navigation"
 import Link from "next/link"
 import { ArrowLeft, Calculator, DollarSign, Settings } from "lucide-react"
 import { Button } from "@/components/ui/button"
@@ -13,7 +13,7 @@ import { Separator } from "@/components/ui/separator"
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
 
 // Mock payload - in a real app, this would come from an API
-const mockPayload = {
+const payload = {
   coceqn:
     "(Jira_Cost_Per_User * Number_of_users * Implementation_Duration_Months) + (Training_Percentage/100 * Number_of_users * Training_Cost_Per_Employee) + Employee_Morale_Cost",
   cocvar: [
@@ -29,6 +29,13 @@ const mockPayload = {
     ["Collaboration_Issues_Cost_Monthly", "The estimated cost of collaboration issues per month in USD", "1000"],
     ["Implementation_Duration_Months", "Duration of the implementation in months", "4"],
   ],
+}
+
+interface ROIPayload {
+  coceqn: string;
+  cocvar: [string, string, string][];
+  conceqn: string;
+  concvar: [string, string, string][];
 }
 
 // Function to safely evaluate a mathematical expression
@@ -85,23 +92,76 @@ function formatEquation(equation: string): string {
 
 export default function ROIResults() {
   const router = useRouter()
-  const [payload, setPayload] = useState(mockPayload)
+  const searchParams = useSearchParams()
+  const [payload, setPayload] = useState<ROIPayload | null>(null)
   const [variables, setVariables] = useState<Record<string, number>>({})
   const [costOfChange, setCostOfChange] = useState<number>(0)
   const [costOfNoChange, setCostOfNoChange] = useState<number>(0)
   const [roi, setRoi] = useState<number>(0)
 
+  // Initialize payload from URL parameters
+  useEffect(() => {
+    const fetchPayload = () => {
+      try {
+        // Convert URL parameters back to payload structure
+        const payloadData: ROIPayload = {
+          coceqn: searchParams.get('coceqn') || '',
+          cocvar: [],
+          conceqn: searchParams.get('conceqn') || '',
+          concvar: []
+        };
+
+        // Process cocvar array
+        const cocvarEntries = Array.from(searchParams.entries())
+          .filter(([key]) => key.startsWith('cocvar['))
+          .reduce((acc: any[], [key, value]) => {
+            const matches = key.match(/cocvar\[(\d+)\]\[(\d+)\]/);
+            if (matches) {
+              const [, index, subIndex] = matches;
+              if (!acc[Number(index)]) acc[Number(index)] = [];
+              acc[Number(index)][Number(subIndex)] = value;
+            }
+            return acc;
+          }, []);
+
+        // Process concvar array
+        const concvarEntries = Array.from(searchParams.entries())
+          .filter(([key]) => key.startsWith('concvar['))
+          .reduce((acc: any[], [key, value]) => {
+            const matches = key.match(/concvar\[(\d+)\]\[(\d+)\]/);
+            if (matches) {
+              const [, index, subIndex] = matches;
+              if (!acc[Number(index)]) acc[Number(index)] = [];
+              acc[Number(index)][Number(subIndex)] = value;
+            }
+            return acc;
+          }, []);
+
+        payloadData.cocvar = cocvarEntries;
+        payloadData.concvar = concvarEntries;
+
+        setPayload(payloadData);
+      } catch (error) {
+        console.error("Error parsing payload from URL:", error);
+      }
+    };
+
+    fetchPayload();
+  }, [searchParams]);
+
   // Initialize variables from payload
   useEffect(() => {
+    if (!payload) return;
+
     const initialVariables: Record<string, number> = {}
 
     // Process cost of change variables
-    payload.cocvar.forEach(([name, _, defaultValue]) => {
+    payload.cocvar.forEach(([name, _, defaultValue]: [string, string, string]) => {
       initialVariables[name] = Number.parseFloat(defaultValue)
     })
 
     // Process cost of no change variables
-    payload.concvar.forEach(([name, _, defaultValue]) => {
+    payload.concvar.forEach(([name, _, defaultValue]: [string, string, string]) => {
       initialVariables[name] = Number.parseFloat(defaultValue)
     })
 
@@ -114,11 +174,11 @@ export default function ROIResults() {
 
     try {
       // Calculate cost of change
-      const cocResult = evaluateExpression(payload.coceqn, variables)
+      const cocResult = evaluateExpression(payload?.coceqn || "", variables)
       setCostOfChange(cocResult)
 
       // Calculate cost of no change
-      const concResult = evaluateExpression(payload.conceqn, variables)
+      const concResult = evaluateExpression(payload?.conceqn || "", variables)
       setCostOfNoChange(concResult)
 
       // Calculate ROI
@@ -223,7 +283,7 @@ export default function ROIResults() {
               </CardHeader>
               <CardContent>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  {payload.cocvar.map(([name, description, defaultValue]) => (
+                  {payload?.cocvar.map(([name, description, defaultValue]: [string, string, string]) => (
                     <div key={name} className="space-y-2">
                       <Label htmlFor={name} className="text-[#0D1821] flex justify-between">
                         <span>{name.replace(/_/g, " ")}</span>
@@ -255,7 +315,7 @@ export default function ROIResults() {
                       <div className="p-3 bg-[#F0F4EF] rounded-md font-mono text-sm overflow-x-auto">
                         <div
                           className="text-[#0D1821] leading-relaxed"
-                          dangerouslySetInnerHTML={{ __html: formatEquation(payload.coceqn) }}
+                          dangerouslySetInnerHTML={{ __html: formatEquation(payload?.coceqn || "") }}
                         />
                       </div>
                       <p className="text-xs text-[#344966] mt-2 italic">
@@ -280,14 +340,14 @@ export default function ROIResults() {
               </CardHeader>
               <CardContent>
                 <div className="grid grid-cols-1 gap-4">
-                  {payload.concvar.map(([name, description, defaultValue]) => (
+                  {payload?.concvar.map(([name, description, defaultValue]: [string, string, string]) => (
                     <div key={name} className="space-y-2">
-                      <Label htmlFor={`nc-${name}`} className="text-[#0D1821] flex justify-between">
+                      <Label htmlFor={name} className="text-[#0D1821] flex justify-between">
                         <span>{name.replace(/_/g, " ")}</span>
                       </Label>
                       <div className="relative">
                         <Input
-                          id={`nc-${name}`}
+                          id={name}
                           type="number"
                           step="any"
                           value={variables[name] || ""}
@@ -312,7 +372,7 @@ export default function ROIResults() {
                       <div className="p-3 bg-[#F0F4EF] rounded-md font-mono text-sm overflow-x-auto">
                         <div
                           className="text-[#0D1821] leading-relaxed"
-                          dangerouslySetInnerHTML={{ __html: formatEquation(payload.conceqn) }}
+                          dangerouslySetInnerHTML={{ __html: formatEquation(payload?.conceqn || "") }}
                         />
                       </div>
                       <p className="text-xs text-[#344966] mt-2 italic">
@@ -324,20 +384,8 @@ export default function ROIResults() {
               </CardContent>
             </Card>
           </div>
-
-          <div className="flex justify-end gap-4">
-            <Button
-              variant="outline"
-              className="border-[#344966] text-[#344966]"
-              onClick={() => router.push("/dashboard")}
-            >
-              Back to Dashboard
-            </Button>
-            <Button className="bg-[#344966] hover:bg-[#2a3b54] text-white">Save Results</Button>
-          </div>
         </main>
       </div>
     </div>
   )
 }
-
