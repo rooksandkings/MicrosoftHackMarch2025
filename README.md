@@ -8,7 +8,7 @@ An end-to-end solution for extracting, analyzing, and visualizing change managem
 
 - [Overview](#-overview)
 - [Features](#-features)
-- [System Architecture](#-system-architecture)
+- [System Architecture](#system-architecture)
 - [Installation](#-installation)
 - [Backend: Web Scraper](#backend-web-scraper)
 - [Frontend: ROI Calculator](#frontend-roi-calculator)
