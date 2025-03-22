@@ -17,6 +17,7 @@ An end-to-end solution for extracting, analyzing, and visualizing change managem
 - [Backend: Web Scraper](#-backend-web-scraper)
 - [Frontend: ROI Calculator](#-frontend-roi-calculator)
 - [AI-Powered Features](#-ai-powered-features)
+- [Functionalities](#-functionalities)
 - [Database Structure](#-database-structure)
 - [Azure Integration](#-azure-integration)
 - [AI Fairness Considerations](#-ai-fairness-considerations)
@@ -256,6 +257,14 @@ Create a `.env` file with:
 AZURE_LLM_KEY=your_azure_llm_key_here
 AZURE_API_KEY=your_azure_api_key_here
 ```
+
+## 💡 Functionalities 
+
+- Dynamic analysis, taking in business context and leveraging a fine-tuned AI model with exceptional consulting knowledge.
+- Interactive variable editing for seeing cost of change vs cost of no change.
+- Visual dashboard containing bar chart + pie chart for analysis breakdown.
+- Live chat feature with pre-built context to allow for actionable insights, data references, and future steps.
+
 
 ## 🤖 AI-Powered Features
 
