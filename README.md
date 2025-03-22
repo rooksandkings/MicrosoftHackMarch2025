@@ -11,13 +11,13 @@ An end-to-end solution for extracting, analyzing, and visualizing change managem
 ## 📋 Table of Contents
 
 - [Overview](#-overview)
+- [Functionalities](#-functionalities)
 - [Features](#-features)
 - [System Architecture](#-system-architecture)
 - [Installation](#-installation)
 - [Backend: Web Scraper](#-backend-web-scraper)
 - [Frontend: ROI Calculator](#-frontend-roi-calculator)
 - [AI-Powered Features](#-ai-powered-features)
-- [Functionalities](#-functionalities)
 - [Database Structure](#-database-structure)
 - [Azure Integration](#-azure-integration)
 - [AI Fairness Considerations](#-ai-fairness-considerations)
