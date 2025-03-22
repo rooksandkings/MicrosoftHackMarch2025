@@ -348,11 +348,11 @@ Several components are planned for future implementation:
 
 ## 👥 Contributors
 
-[Sarvesh Gade](https://www.linkedin.com/in/sarvesh-gade/)
-[Christine Ine](https://www.linkedin.com/in/christine-ine/)
-[Sambhav Mattoo](https://www.linkedin.com/in/sambhav-mattoo/)
-[Kai Ouyang](https://www.linkedin.com/in/kai-ouyang/)
-[Vijay Sithambaram](https://www.linkedin.com/in/vijay-sithambaram/)
+- [Sarvesh Gade](https://www.linkedin.com/in/sarvesh-gade/)
+- [Christine Ine](https://www.linkedin.com/in/christine-ine/)
+- [Sambhav Mattoo](https://www.linkedin.com/in/sambhav-mattoo/)
+- [Kai Ouyang](https://www.linkedin.com/in/kai-ouyang/)
+- [Vijay Sithambaram](https://www.linkedin.com/in/vijay-sithambaram/)
 
 ## 👏 Acknowledgements
 
