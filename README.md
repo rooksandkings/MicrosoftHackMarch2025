@@ -8,16 +8,16 @@ An end-to-end solution for extracting, analyzing, and visualizing change managem
 
 - [Overview](#-overview)
 - [Features](#-features)
-- [System Architecture](#system-architecture)
+- [System Architecture](#-system-architecture)
 - [Installation](#-installation)
 - [Backend: Web Scraper](#-backend-web-scraper)
 - [Frontend: ROI Calculator](#-frontend-roi-calculator)
 - [AI-Powered Features](#-ai-powered-features)
-- [Database Structure](#database-structure)
-- [Azure Integration](#azure-integration)
+- [Database Structure](#-database-structure)
+- [Azure Integration](#-azure-integration)
 - [AI Fairness Considerations](#-ai-fairness-considerations)
 - [Data Democratization for Change Management](#-data-democratization-for-change-management)
-- [Troubleshooting](#troubleshooting)
+- [Troubleshooting](#-troubleshooting)
 - [Future Plans](#-future-plans)
 - [Contributors](#-contributors)
 - [Acknowledgements](#-acknowledgements)
@@ -130,7 +130,7 @@ By adhering to these fairness principles, we aim to create a system that provide
   - AI-based decision support for change impact analysis
   - Automated approval workflows using Azure AI
 
-## 🏗️ System Architecture
+## 🔨 System Architecture
 
 The platform is built on a cloud-native architecture utilizing Microsoft Azure services:
 
@@ -270,7 +270,7 @@ AZURE_API_KEY=your_azure_api_key_here
 - Automated detection of key success factors in change initiatives
 - Comparison with industry benchmarks extracted from McKinsey articles
 
-## 🗃️ Database Structure
+## 📁 Database Structure
 
 ### mckinsey_articles.db
 - **Table**: `articles`
@@ -291,7 +291,7 @@ AZURE_API_KEY=your_azure_api_key_here
   - `page_number`: Search page number (copy)
   - `content`: Full article text content
 
-## ☁️ Azure Integration
+## ⛅ Azure Integration
 
 The platform integrates with several Azure services:
 
@@ -307,7 +307,7 @@ The platform integrates with several Azure services:
 2. Update environment variables with your Azure credentials
 3. Deploy the application using GitHub Actions workflow
 
-## ⚠️ Troubleshooting
+## ⚡ Troubleshooting
 
 ### WebDriver Issues
 - Ensure Chrome version matches ChromeDriver version
