@@ -6,7 +6,7 @@ An end-to-end solution for extracting, analyzing, and visualizing change managem
 
 ## 📊 Presentation
 
-[View our project presentation](TransformX Presentation.pptx)
+[View our project presentation](TransformX%20Presentation.pdf)
 
 ## 📋 Table of Contents
 
