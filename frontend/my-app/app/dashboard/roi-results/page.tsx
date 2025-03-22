@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useEffect } from "react"
+import { useState, useEffect, useMemo } from "react"
 import { useRouter, useSearchParams } from "next/navigation"
 import Link from "next/link"
 import { ArrowLeft, Calculator, DollarSign, Settings, MessageCircle } from "lucide-react"
@@ -12,6 +12,7 @@ import { DashboardNav } from "@/components/dashboard-nav"
 import { Separator } from "@/components/ui/separator"
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
 import { ChatInterface } from "@/components/chat-interface"
+import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, CartesianGrid, PieChart, Pie, Cell, Legend } from "recharts";
 
 interface ROIPayload {
   coceqn: string;
@@ -34,7 +35,7 @@ function evaluateExpression(expression: string, variables: Record<string, number
   }
 
   // Clean up the expression and make it safe to evaluate
-  calculableExpression = calculableExpression.replace(/[^-()\d/*+.]/g, "")
+  calculableExpression = calculableExpression.replace(/[^-()\d/*+.\s]/g, "")
 
   try {
     // Use Function constructor to evaluate the expression safely
@@ -43,6 +44,65 @@ function evaluateExpression(expression: string, variables: Record<string, number
     console.error("Error evaluating expression:", error)
     return 0
   }
+}
+
+function splitEquation(equation: string): { name: string; expression: string }[] {
+  let parts: { name: string; expression: string }[] = [];
+  let current = "";
+  let depth = 0;
+  
+  for (let i = 0; i < equation.length; i++) {
+    const char = equation[i];
+    if (char === "(") depth++;
+    else if (char === ")") depth--;
+    
+    if (char === "+" && depth === 0) {
+      // Look ahead to find variable name if possible
+      let expressionPart = current.trim();
+      let name = expressionPart;
+      
+      // Extract a meaningful name from the expression if possible
+      if (expressionPart.includes("*")) {
+        // Try to get the first part of a multiplication as the name
+        name = expressionPart.split("*")[0].trim();
+      } else if (expressionPart.match(/[a-zA-Z_]+/)) {
+        // Or use the first variable name
+        const match = expressionPart.match(/[a-zA-Z_]+/);
+        if (match) name = match[0];
+      }
+      
+      name = name.replace(/_/g, " ");
+      
+      parts.push({
+        name: name.charAt(0).toUpperCase() + name.slice(1),
+        expression: expressionPart
+      });
+      current = "";
+    } else {
+      current += char;
+    }
+  }
+  
+  if (current.trim()) {
+    let expressionPart = current.trim();
+    let name = expressionPart;
+    
+    if (expressionPart.includes("*")) {
+      name = expressionPart.split("*")[0].trim();
+    } else if (expressionPart.match(/[a-zA-Z_]+/)) {
+      const match = expressionPart.match(/[a-zA-Z_]+/);
+      if (match) name = match[0];
+    }
+    
+    name = name.replace(/_/g, " ");
+    
+    parts.push({
+      name: name.charAt(0).toUpperCase() + name.slice(1),
+      expression: expressionPart
+    });
+  }
+  
+  return parts;
 }
 
 // Function to format equation for display
@@ -80,6 +140,11 @@ export default function ROIResults() {
   const [costOfChange, setCostOfChange] = useState<number>(0)
   const [costOfNoChange, setCostOfNoChange] = useState<number>(0)
   const [roi, setRoi] = useState<number>(0)
+  const chartData = [
+    { name: "Cost of Change", value: costOfChange },
+    { name: "Cost of No Change", value: costOfNoChange },
+    { name: "Net ROI", value: roi }
+  ];
 
   // Initialize payload from URL parameters
   useEffect(() => {
@@ -180,6 +245,33 @@ export default function ROIResults() {
     }))
   }
 
+  const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042'];
+
+  const pieData = useMemo(() => {
+    if (!payload?.coceqn) return [];
+    
+    const parts = splitEquation(payload.coceqn);
+    return parts.map(part => ({
+      name: part.name,
+      value: Math.abs(evaluateExpression(part.expression, variables)),
+      // Store the original expression for reference
+      expression: part.expression
+    }));
+  }, [payload?.coceqn, variables]);
+  
+  const pieDataNoChange = useMemo(() => {
+    if (!payload?.conceqn) return [];
+    
+    const parts = splitEquation(payload.conceqn);
+    return parts.map(part => ({
+      name: part.name,
+      value: Math.abs(evaluateExpression(part.expression, variables)),
+      // Store the original expression for reference
+      expression: part.expression
+    }));
+  }, [payload?.conceqn, variables]);
+
+
   return (
     <div className="flex min-h-screen bg-[#F0F4EF]">
       {/* Sidebar */}
@@ -248,7 +340,20 @@ export default function ROIResults() {
                   </div>
                 </div>
               </div>
+              <div className="mt-6 h-64 w-full">
+                <ResponsiveContainer width="100%" height="100%">
+                  <BarChart data={chartData}>
+                    <CartesianGrid strokeDasharray="3 3" />
+                    <XAxis dataKey="name" stroke="#344966" />
+                    <YAxis stroke="#344966" />
+                    <Tooltip />
+                    <Bar dataKey="value" fill="#4F759B" />
+                  </BarChart>
+                </ResponsiveContainer>
+              </div>
             </Card>
+            
+
 
             {/* Cost of Change Variables */}
             <Card className="border-[#B4CDED] lg:col-span-2">
@@ -364,6 +469,78 @@ export default function ROIResults() {
               </CardContent>
             </Card>
           </div>
+          <div className="mt-6 grid grid-cols-1 lg:grid-cols-2 gap-6">
+  <Card className="border-[#B4CDED]">
+    <CardHeader>
+      <CardTitle className="flex items-center">
+        <Calculator className="h-5 w-5 mr-2 text-[#344966]" />
+        Cost of Change Breakdown
+      </CardTitle>
+      <CardDescription>
+        Visualization of the components that make up your total cost of change
+      </CardDescription>
+    </CardHeader>
+    <CardContent>
+      <div className="h-64 w-full">
+        <ResponsiveContainer width="100%" height="100%">
+          <PieChart>
+            <Pie 
+              data={pieData} 
+              dataKey="value" 
+              nameKey="name" 
+              cx="50%" 
+              cy="50%" 
+              outerRadius={80} 
+              label={({name, percent}) => `${name}: ${(percent * 100).toFixed(0)}%`}
+            >
+              {pieData.map((entry, index) => (
+                <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
+              ))}
+            </Pie>
+            <Tooltip formatter={(value) => `$${value.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`} />
+            <Legend />
+          </PieChart>
+        </ResponsiveContainer>
+      </div>
+    </CardContent>
+  </Card>
+
+  <Card className="border-[#B4CDED]">
+    <CardHeader>
+      <CardTitle className="flex items-center">
+        <Calculator className="h-5 w-5 mr-2 text-[#344966]" />
+        Cost of No Change Breakdown
+      </CardTitle>
+      <CardDescription>
+        Visualization of the components that make up your total cost of no change
+      </CardDescription>
+    </CardHeader>
+    <CardContent>
+      <div className="h-64 w-full">
+        <ResponsiveContainer width="100%" height="100%">
+          <PieChart>
+            <Pie 
+              data={pieDataNoChange} 
+              dataKey="value" 
+              nameKey="name" 
+              cx="50%" 
+              cy="50%" 
+              outerRadius={80} 
+              label={({name, percent}) => `${name}: ${(percent * 100).toFixed(0)}%`}
+            >
+              {pieDataNoChange.map((entry, index) => (
+                <Cell key={`cell-nochange-${index}`} fill={COLORS[index % COLORS.length]} />
+              ))}
+            </Pie>
+            <Tooltip formatter={(value) => `$${value.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`} />
+            <Legend />
+          </PieChart>
+        </ResponsiveContainer>
+      </div>
+    </CardContent>
+  </Card>
+</div>
+
           <div className="mt-8">
             <Card className="border-[#B4CDED] overflow-hidden py-0">
               <div className="bg-[#344966] text-white px-6 py-4">
