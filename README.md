@@ -11,6 +11,7 @@ An end-to-end solution for extracting, analyzing, and visualizing change managem
 ## 📋 Table of Contents
 
 - [Overview](#-overview)
+- [Functionalities](#-functionalities)
 - [Features](#-features)
 - [System Architecture](#-system-architecture)
 - [Installation](#-installation)
@@ -33,6 +34,16 @@ An end-to-end solution for extracting, analyzing, and visualizing change managem
 This platform combines powerful web scraping capabilities with Azure AI services to help change management professionals assess ROI and make data-driven decisions. The system extracts articles from McKinsey's website, processes the content, and provides an AI-enhanced interface for analyzing change management strategies. The platform leverages Azure's AI capabilities to automate workflows and provide intelligent insights.
 
 While this demonstration is trained on McKinsey change management content, the underlying architecture and methodology are designed to be fully generalizable to other domains, industries, and content sources. The same approach can be applied to extract insights from any specialized knowledge base.
+
+## 💡 Functionalities 
+
+![Simple dashboard viz](ezgif-1a25f0cb5d256a.gif)
+
+- Dynamic analysis, taking in business context and leveraging a fine-tuned AI model with exceptional consulting knowledge.
+- Interactive variable editing for seeing cost of change vs cost of no change.
+- Generates calculation for cost of change vs cost of no change formula along with net ROI **dynamically** based off of user inputs and situations.
+- Visual dashboard containing bar chart + pie chart for analysis breakdown, also generated dynamically off the COC vs CONC formula.
+- Live chat feature with pre-built context to allow for actionable insights, data references, and future steps.
 
 ## 🤝 AI Fairness Considerations
 
