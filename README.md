@@ -35,6 +35,16 @@ This platform combines powerful web scraping capabilities with Azure AI services
 
 While this demonstration is trained on McKinsey change management content, the underlying architecture and methodology are designed to be fully generalizable to other domains, industries, and content sources. The same approach can be applied to extract insights from any specialized knowledge base.
 
+## 💡 Functionalities 
+
+![Simple dashboard viz](image.png)
+
+- Dynamic analysis, taking in business context and leveraging a fine-tuned AI model with exceptional consulting knowledge.
+- Interactive variable editing for seeing cost of change vs cost of no change.
+- Generates calculation for cost of change vs cost of no change formula along with net ROI **dynamically** based off of user inputs and situations.
+- Visual dashboard containing bar chart + pie chart for analysis breakdown, also generated dynamically off the COC vs CONC formula.
+- Live chat feature with pre-built context to allow for actionable insights, data references, and future steps.
+
 ## 🤝 AI Fairness Considerations
 
 Our platform has been developed with careful consideration of the AI Fairness Checklist framework developed by Madaio et al. Here's how we've approached fairness throughout our development process:
@@ -257,14 +267,6 @@ Create a `.env` file with:
 AZURE_LLM_KEY=your_azure_llm_key_here
 AZURE_API_KEY=your_azure_api_key_here
 ```
-
-## 💡 Functionalities 
-
-- Dynamic analysis, taking in business context and leveraging a fine-tuned AI model with exceptional consulting knowledge.
-- Interactive variable editing for seeing cost of change vs cost of no change.
-- Visual dashboard containing bar chart + pie chart for analysis breakdown.
-- Live chat feature with pre-built context to allow for actionable insights, data references, and future steps.
-
 
 ## 🤖 AI-Powered Features
 
