@@ -1,4 +1,4 @@
-# McKinsey Change Management AI Platform
+# TransformX Change Management AI Platform
 
 An end-to-end solution for extracting, analyzing, and visualizing change management insights using Azure AI Services, featuring a powerful web scraper backend and an interactive AI-driven ROI calculator frontend.
 

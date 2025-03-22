@@ -55,16 +55,29 @@ export function ChatInterface({ formData }: { formData: FormData }) {
   const [messages, setMessages] = useState<Message[]>([])
   const [input, setInput] = useState("")
   const [isLoading, setIsLoading] = useState(true)
+  const [initialMessageLoaded, setInitialMessageLoaded] = useState(false)
   const messagesEndRef = useRef<HTMLDivElement>(null)
+  const abortControllerRef = useRef<AbortController | null>(null)
 
   // Auto-scroll to bottom when messages change
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" })
   }, [messages])
 
-  // Get initial message from LLM
+  // Get initial message from LLM - only once when component mounts
   useEffect(() => {
+    // Skip if we've already loaded the initial message
+    if (initialMessageLoaded) return;
+    
     const getInitialMessage = async () => {
+      // Cancel any in-progress requests
+      if (abortControllerRef.current) {
+        abortControllerRef.current.abort();
+      }
+      
+      // Create a new AbortController for this request
+      abortControllerRef.current = new AbortController();
+      
       try {
         const response = await fetch('/api/chat', {
           method: 'POST',
@@ -75,6 +88,7 @@ export function ChatInterface({ formData }: { formData: FormData }) {
             messages: [],
             formData 
           }),
+          signal: abortControllerRef.current.signal
         });
 
         if (!response.ok) {
@@ -89,24 +103,45 @@ export function ChatInterface({ formData }: { formData: FormData }) {
           timestamp: new Date(),
         }
         setMessages([initialMessage])
+        setInitialMessageLoaded(true);
       } catch (error) {
-        console.error("Error getting initial AI response:", error)
-        setMessages([{
-          id: "initial",
-          content: "Hello! I'm your ROI assistant. I can help you understand your calculation results and answer questions about the variables and formulas used. What would you like to know?",
-          role: "assistant",
-          timestamp: new Date(),
-        }])
+        // Only log and show error if it's not an abort error
+        if (error instanceof Error && error.name !== 'AbortError') {
+          console.error("Error getting initial AI response:", error)
+          setMessages([{
+            id: "initial",
+            content: "Hello! I'm your ROI assistant. I can help you understand your calculation results and answer questions about the variables and formulas used. What would you like to know?",
+            role: "assistant",
+            timestamp: new Date(),
+          }])
+          setInitialMessageLoaded(true);
+        }
       } finally {
         setIsLoading(false)
+        abortControllerRef.current = null;
       }
     }
 
     getInitialMessage()
-  }, [formData])
+    
+    // Cleanup function to abort any pending requests when component unmounts
+    return () => {
+      if (abortControllerRef.current) {
+        abortControllerRef.current.abort();
+      }
+    };
+  }, [formData, initialMessageLoaded])
 
   const handleSendMessage = async () => {
-    if (!input.trim()) return
+    if (!input.trim() || isLoading) return;
+
+    // Cancel any in-progress requests
+    if (abortControllerRef.current) {
+      abortControllerRef.current.abort();
+    }
+    
+    // Create a new AbortController for this request
+    abortControllerRef.current = new AbortController();
 
     // Add user message
     const userMessage: Message = {
@@ -136,6 +171,7 @@ export function ChatInterface({ formData }: { formData: FormData }) {
           messages: apiMessages,
           formData 
         }),
+        signal: abortControllerRef.current.signal
       });
 
       if (!response.ok) {
@@ -151,18 +187,22 @@ export function ChatInterface({ formData }: { formData: FormData }) {
       }
       setMessages((prev) => [...prev, aiMessage])
     } catch (error) {
-      console.error("Error getting AI response:", error)
+      // Only log and show error if it's not an abort error
+      if (error instanceof Error && error.name !== 'AbortError') {
+        console.error("Error getting AI response:", error)
 
-      // Add error message
-      const errorMessage: Message = {
-        id: (Date.now() + 1).toString(),
-        content: "Sorry, I encountered an error. Please try again.",
-        role: "assistant",
-        timestamp: new Date(),
+        // Add error message
+        const errorMessage: Message = {
+          id: (Date.now() + 1).toString(),
+          content: "Sorry, I encountered an error. Please try again.",
+          role: "assistant",
+          timestamp: new Date(),
+        }
+        setMessages((prev) => [...prev, errorMessage])
       }
-      setMessages((prev) => [...prev, errorMessage])
     } finally {
       setIsLoading(false)
+      abortControllerRef.current = null;
     }
   }
 
@@ -239,4 +279,3 @@ export function ChatInterface({ formData }: { formData: FormData }) {
     </div>
   )
 }
-
