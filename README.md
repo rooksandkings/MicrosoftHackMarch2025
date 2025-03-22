@@ -2,7 +2,7 @@
 
 An end-to-end solution for extracting, analyzing, and visualizing change management insights using Azure AI Services, featuring a powerful web scraper backend and an interactive AI-driven ROI calculator frontend.
 
-![Project Banner](https://via.placeholder.com/800x200?text=McKinsey+Change+Management+Platform)
+![Project Banner](logo.JPG)
 
 ## 📋 Table of Contents
 
@@ -348,7 +348,11 @@ Several components are planned for future implementation:
 
 ## 👥 Contributors
 
-This project is maintained by the Change Management AI Team. Contributions are welcome to enhance automation and AI capabilities.
+[Sarvesh Gade](https://www.linkedin.com/in/sarvesh-gade/)
+[Christine Ine](https://www.linkedin.com/in/christine-ine/)
+[Sambhav Mattoo](https://www.linkedin.com/in/sambhav-mattoo/)
+[Kai Ouyang](https://www.linkedin.com/in/kai-ouyang/)
+[Vijay Sithambaram](https://www.linkedin.com/in/vijay-sithambaram/)
 
 ## 👏 Acknowledgements
 
