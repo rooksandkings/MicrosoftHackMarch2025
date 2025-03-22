@@ -37,7 +37,7 @@ While this demonstration is trained on McKinsey change management content, the u
 
 ## 💡 Functionalities 
 
-![Simple dashboard viz](image.png)
+![Simple dashboard viz](ezgif-1a25f0cb5d256a.gif)
 
 - Dynamic analysis, taking in business context and leveraging a fine-tuned AI model with exceptional consulting knowledge.
 - Interactive variable editing for seeing cost of change vs cost of no change.
