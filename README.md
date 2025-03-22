@@ -295,12 +295,13 @@ AZURE_API_KEY=your_azure_api_key_here
 
 The platform integrates with several Azure services:
 
-1. **Azure Web App**: Hosts the frontend and backend applications
-2. **Azure Functions**: Processes ROI calculations and document analysis
-3. **Azure OpenAI**: Powers the AI chat assistant and document processing
+1. **Azure AI Foundry Fine Tuning**: Fine tune the LLM using scrapped McKinsey Data 
+2. **Azure AI Foundry Prompt Flow**: Processes ROI calculations and document analysis
+3. **Azure AI Foundry gtp-4o**: Powers the AI chat assistant and document processing
 4. **Azure Key Vault**: Secures API keys and credentials
 5. **Azure Blob Storage**: Stores processed documents and AI outputs
 6. **Azure SQL DataWarehouse**: Manages structured data (demo on GitHub)
+7. **Azure Document Inteligence**: Powers the AI document processing
 
 ### Setup
 1. Create Azure resources using the Azure Portal or CLI
