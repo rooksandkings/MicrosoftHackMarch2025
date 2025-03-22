@@ -9,7 +9,7 @@ export default function Home() {
         <div className="container mx-auto px-4 flex justify-between items-center">
           <div className="flex items-center gap-2">
             <TrendingUp className="h-6 w-6" />
-            <h1 className="text-xl font-bold">ROI Calculator</h1>
+            <h1 className="text-xl font-bold">TransformX</h1>
           </div>
           <Link href="/dashboard">
             <Button className="bg-[#BFC994] hover:bg-[#a8b27e] text-[#0D1821]">Login</Button>
@@ -112,7 +112,7 @@ export default function Home() {
           <div className="flex flex-col md:flex-row justify-between items-center">
             <div className="flex items-center gap-2 mb-4 md:mb-0">
               <TrendingUp className="h-5 w-5" />
-              <span className="font-bold">ROI Calculator</span>
+              <span className="font-bold">TransformX</span>
             </div>
             <div className="text-sm text-gray-400">
               © {new Date().getFullYear()} ROI Calculator for Change Management. All rights reserved.

@@ -20,13 +20,13 @@ const departments = [
   { label: "Sales", value: "sales" },
   { label: "Marketing", value: "marketing" },
   { label: "Operations", value: "operations" },
-  { label: "IT", value: "it" },
+  { label: "Engineering", value: "engineering" },
   { label: "Human Resources", value: "hr" },
   { label: "Finance", value: "finance" },
   { label: "Customer Service", value: "customer-service" },
   { label: "Research & Development", value: "r-and-d" },
-  { label: "Legal", value: "legal" },
   { label: "Product", value: "product" },
+  { label: "Other", value: "other" },
 ]
 
 export default function InitiateChange() {

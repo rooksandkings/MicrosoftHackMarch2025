@@ -30,7 +30,7 @@ function evaluateExpression(expression: string, variables: Record<string, number
   const variableNames = Object.keys(variables).sort((a, b) => b.length - a.length)
 
   for (const varName of variableNames) {
-    const regex = new RegExp(varName, "g")
+    const regex = new RegExp(`\\b${varName}\\b`, "g")
     calculableExpression = calculableExpression.replace(regex, variables[varName].toString())
   }
 
@@ -342,7 +342,7 @@ export default function ROIResults() {
               </div>
               <div className="mt-6 h-64 w-full">
                 <ResponsiveContainer width="100%" height="100%">
-                  <BarChart data={chartData}>
+                  <BarChart data={chartData} margin={{ top: 20, right: 30, left: 20, bottom: 5 }}>
                     <CartesianGrid strokeDasharray="3 3" />
                     <XAxis dataKey="name" stroke="#344966" />
                     <YAxis stroke="#344966" />
@@ -380,11 +380,8 @@ export default function ROIResults() {
                           step="any"
                           value={variables[name] || ""}
                           onChange={(e) => handleVariableChange(name, e.target.value)}
-                          className="border-[#B4CDED] focus:border-[#344966] focus:ring-[#344966] pl-8"
+                          className="border-[#B4CDED] focus:border-[#344966] focus:ring-[#344966] pl-2"
                         />
-                        {name.toLowerCase().includes("cost") || name.toLowerCase().includes("per") ? (
-                          <DollarSign className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-[#344966]" />
-                        ) : null}
                       </div>
                       <p className="text-xs text-[#344966]">{description}</p>
                     </div>
@@ -437,11 +434,8 @@ export default function ROIResults() {
                           step="any"
                           value={variables[name] || ""}
                           onChange={(e) => handleVariableChange(name, e.target.value)}
-                          className="border-[#B4CDED] focus:border-[#344966] focus:ring-[#344966] pl-8"
+                          className="border-[#B4CDED] focus:border-[#344966] focus:ring-[#344966] pl-2"
                         />
-                        {name.toLowerCase().includes("cost") || name.toLowerCase().includes("per") ? (
-                          <DollarSign className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-[#344966]" />
-                        ) : null}
                       </div>
                       <p className="text-xs text-[#344966]">{description}</p>
                     </div>

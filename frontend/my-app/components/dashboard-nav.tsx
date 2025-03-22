@@ -15,17 +15,7 @@ export function DashboardNav() {
       icon: Home,
     },
     {
-      title: "Changes",
-      href: "/dashboard/changes",
-      icon: FileText,
-    },
-    {
-      title: "Analytics",
-      href: "/dashboard/analytics",
-      icon: BarChart3,
-    },
-    {
-      title: "Team",
+      title: "Share",
       href: "/dashboard/team",
       icon: Users,
     },
@@ -41,7 +31,7 @@ export function DashboardNav() {
       <div className="p-4 border-b border-[#B4CDED]">
         <Link href="/" className="flex items-center gap-2">
           <TrendingUp className="h-6 w-6 text-[#344966]" />
-          <span className="font-bold text-[#0D1821]">ROI Calculator</span>
+          <span className="font-bold text-[#0D1821]">TransformX</span>
         </Link>
       </div>
       <div className="p-4">

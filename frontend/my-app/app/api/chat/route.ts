@@ -51,6 +51,10 @@ Keep your responses clear and well-structured.`;
             role: "system",
             content: systemPrompt
           },
+          {
+            role: "user",
+            content: "Display actionable insights based off of this knowledge."
+          },
           ...messages
         ],
         max_tokens: 4096,

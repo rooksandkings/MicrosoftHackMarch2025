@@ -39,7 +39,7 @@ export default function Dashboard() {
           </div>
 
           {/* Stats Overview */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
             <Card className="border-[#B4CDED]">
               <CardHeader className="flex flex-row items-center justify-between pb-2">
                 <CardTitle className="text-sm font-medium text-[#344966]">Active Changes</CardTitle>
@@ -58,16 +58,6 @@ export default function Dashboard() {
               <CardContent>
                 <div className="text-2xl font-bold text-[#0D1821]">$245,000</div>
                 <p className="text-xs text-[#344966] mt-1">+12% from last quarter</p>
-              </CardContent>
-            </Card>
-            <Card className="border-[#B4CDED]">
-              <CardHeader className="flex flex-row items-center justify-between pb-2">
-                <CardTitle className="text-sm font-medium text-[#344966]">Team Adoption</CardTitle>
-                <Users className="h-4 w-4 text-[#344966]" />
-              </CardHeader>
-              <CardContent>
-                <div className="text-2xl font-bold text-[#0D1821]">78%</div>
-                <p className="text-xs text-[#344966] mt-1">+5% from last month</p>
               </CardContent>
             </Card>
           </div>
