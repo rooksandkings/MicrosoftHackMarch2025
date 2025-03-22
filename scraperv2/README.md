@@ -132,6 +132,36 @@ Recommended worker counts:
 - For scraping: 3-5 workers
 - For parsing: 4-8 workers
 
+## Frontend
+
+The project includes a comprehensive frontend built with Next.js, providing a user-friendly interface for change management ROI calculation and analysis.
+
+### Tech Stack
+
+- **Next.js**: React framework for server-rendered applications
+- **TypeScript**: Type-safe JavaScript
+- **Tailwind CSS**: Utility-first CSS framework
+- **Radix UI**: Accessible UI components
+
+### Features
+
+- **Dashboard**: Overview of active change initiatives, ROI metrics, and employee statistics
+- **Change Initiative Form**: Detailed form to input change management parameters
+- **ROI Calculator**: Calculates and visualizes return on investment for change initiatives
+- **AI-powered Chat**: Integrated assistant to answer questions about ROI calculations
+- **Responsive Design**: Optimized for various screen sizes
+
+### API Integration
+
+- **Azure OpenAI**: Integration with Azure's AI models for chat capabilities
+- **Custom API Routes**: Next.js API routes for processing ROI calculations
+
+### Environment Configuration
+
+The frontend requires the following environment variables:
+- `AZURE_LLM_KEY`: API key for Azure OpenAI
+- `AZURE_API_KEY`: API key for ROI calculation services
+
 ## Notes
 
 - The scraper respects website limitations by implementing random delays
@@ -140,3 +170,7 @@ Recommended worker counts:
 - Each run of the parser only processes previously unprocessed articles
 - Content is normalized for CSV export with proper character handling
 - Large content fields are truncated for Excel compatibility by default
+
+## Acknowledgements
+
+We extend our gratitude to Microsoft for organizing and hosting this Hackathon AI challenge. Their commitment to fostering diversity and innovation in the tech industry has provided us with a valuable opportunity to showcase our skills and develop impactful solutions. We appreciate their support and dedication to empowering individuals and communities through technology.
