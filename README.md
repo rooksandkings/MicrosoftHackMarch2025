@@ -4,6 +4,10 @@ An end-to-end solution for extracting, analyzing, and visualizing change managem
 
 ![Project Banner](logo.JPG)
 
+## 📊 Presentation
+
+[View our project presentation](TransformX Presentation.pptx)
+
 ## 📋 Table of Contents
 
 - [Overview](#-overview)
