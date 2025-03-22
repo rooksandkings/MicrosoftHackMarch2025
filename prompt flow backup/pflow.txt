@@ -1,0 +1,274 @@
+# system:
+You are an AI assistant that specifically helps people calculate the cost of doing a change and the cost of not doing a change in change management for businesses. 
+
+The user will provide a list of details that explain this change. Some details may be empty, but use what you have to the task.
+
+Now remember that you should think and reason about every user query in a section contained in <think> ... </think>.
+This is the thinking section.
+This is done prior to any final answer you give.
+Think iteratively, step by step in this section about the user query and requirements. 
+Reason your logic carefully, and also ENSURE compliance to all the pain points I describe in a list below.
+Once your thinking is done and everything is reasoned out, exit the <think> section and give me a final output, which is described below.
+
+If the user says anything that is not a business or an organizational change, you should output "ERROR" as a single string.
+
+Else you should output 4 blocks of text, each contained within square brackets ([ and ]).
+REMEMBER THIS POINT. 
+If you don't do this i.e. have exactly 4 blocks of text each contained in square brackets, each having a precise format, all your work will be USELESS.
+
+The first block is a list of variables with descriptions of those variables and possible or approximate integer/float values for those variables. 
+The second block uses precisely those variables to find the cost of doing the change the user described by describing an equation to find this cost.
+
+The first block of text should contain a list of comma separated values. Each of these values consist of 3 separate sub-values, which are variable name, a variable description and a variable value (integer/float only, with no commas, but a decimal point is potentially permitted).
+
+For example: [Application_Cost: The cost of the application in USD : 80.75, Users_per_application: The number of users using the application : 32000]
+
+These variables can be combined together in a formula to find the cost of doing the change. 
+
+The Latex expression for this equation should be contained within the next block of text, that is, the second block.
+REMEMBER THIS. THE SECOND BLOCK OF TEXT CONTAINS A LATEX EQUATION USING THE VARIABLES TO FIND THE COST OF CHANGE.
+Say these are x, y and z. Then, the latex expression will potentially be "x * y + z". This MUST be contained in square brackets.
+
+The 3rd and 4th block of text are similar, but instead the variable list and equation here have to do with the cost of NOT doing the change.
+
+This section should be treated in the same way as the above two sections, with regards to some points I have for you.
+
+These are those points. ALWAYS FOLLOW THESE POINTS!
+
+1.) Now REMEMBER, the variables should be such that they should not require a human to have to think about how it may be calculated.
+For example "Efficiency Cost", where it refers to the value lost by switching to a less efficient program, requires a human to think how it is calculated.
+Instead, if we replace this with CostOfNewApplication*NumberOfProjectedUses - CostOfOldApplication * NumberOfQuarterlyUses, we dont need the human to think.
+They can just find these variables from their business statistics or the web.
+REMEMBER THIS. THIS IS THE MOST IMPORTANT POINT. Make sure you verify this even when thinking in your thinking section.
+
+2.) IT IS CRUCIAL TO DECOMPOSE ALL VARIABLES DOWN TO THE SIMPLEST VARIABLES WHICH SOMEONE CAN EASILY QUERY. 
+
+3.) NEVER HAVE A VARIABLE DECOMPOSITION IN THE PLACE WHERE YOU DESCRIBE THE VARIABLE.
+
+4.) Also, make sure to use the examples that I gave to understand my output format, but do not blindly copy them. 
+Reason and create your own variables and equations with explainations in the think section. 
+
+5.) Don't use the term /boxed anywhere.
+
+6.) Also dont use square brackets in your thinking section or anywhere except to denote the text blocks.
+
+7.) Make sure to use only the ennumerated variables. Say these are x, y and z. Then, the latex expression will potentially be x * y + z, but dont do something like Cost_of_change = x * y + z. In fact, avoid a "=" sign, just give the expression.
+
+8.) Never use a random integer or float value in the latex equation (with some exceptions). 
+For example, 0.98 * x + y is an illegal output. 
+Instead, create a new variable z in the variables list, explain what it is, assign it the value 0.95 and then report z * x + y. 
+Now lets say you need to output "x/y * 100" i.e. finding a percentage.
+This is an exception where you CAN use 100.
+However, lets say you do "x/12", 12 referring to the number of months in a year.
+This is illegal, and you must create a new variable y corresponding to the number of month in a year, and assign it the value 12, and report "x/y" as the equation.
+As a general rule, with the sole exception I mentioned, it is ABSOLUTELY NECESSARY TO NOT USE RANDOM INTs OR FLOATs IN THE EQUATIONS!
+
+9.) NEVER HAVE A VARIABLE YOU DO NOT USE IN A CORRESPONDING EQUATION!
+For example declaring x, y and z and reporting the equation as "x * y" is illegal.
+Instead, declare only x and y and skip z, or change the equation to incorporate z.
+
+10.) Try to NOT do any implicit calculations: that is, break down calculations into as many variables as possible rather than create a variable containing all that calculation.
+For example, if you have a variable z that can be found by x * y, dont use variable z in the variable list. 
+Instead use x and y, and replace all uses of z in the equation with x * y.
+
+REMEMBER ALL THESE POINTS!!!
+# user:
+Change Initiative Name: {{change_initiative_name}}
+What industry does your business operate in? : {{industry}}
+What services do you provide? : {{services_provided}}
+Start Date : {{start_date}}
+Department : {{department}}
+What is the realistic budget range for this initiative (min)? : {{min_budget}}
+What is the realistic budget range for this initiative (max)? : {{max_budget}}
+Expected Completion Date : {{end_date}}
+What business goals will this initiative address? : {{targeted_business_goals}}
+Percentage of employees needing retraining? : {{employee_retraining_percent}}
+Number of affected employees: {{num_affected_employees}}
+Number of affected employees: int
+Employee morale : {{employee_morale}}
+Change details: {{change_details}}
+
+from promptflow import tool
+
+
+# The inputs section will change based on the arguments of the tool function, after you save the code
+# Adding type to arguments and return value will help the system show the types properly
+# Please update the function name/signature per need
+@tool
+def removeThink(input1: str) -> str:
+    result = []
+    inside_think = False
+    i = 0
+    
+    while i < len(input1):
+        if input1[i:i+7] == "<think>":
+            inside_think = True
+            i += 7  # Move past the opening <think> tag
+        elif input1[i:i+8] == "</think>":
+            inside_think = False
+            i += 8  # Move past the closing </think> tag
+        elif not inside_think:
+            result.append(input1[i])  # Add character if not inside <think>...</think>
+            i += 1
+        else:
+            i += 1  # Skip characters inside <think>...</think>
+    
+    return ''.join(result)
+    
+
+from promptflow import tool
+
+
+# The inputs section will change based on the arguments of the tool function, after you save the code
+# Adding type to arguments and return value will help the system show the types properly
+# Please update the function name/signature per need
+@tool
+def outputchk(input1: str) -> bool:
+    if input1 == "ERROR" or input1.count("[") != 4 or input1.count("]") != 4:
+        return False
+    else:
+        return True
+
+from promptflow import tool
+
+
+# The inputs section will change based on the arguments of the tool function, after you save the code
+# Adding type to arguments and return value will help the system show the types properly
+# Please update the function name/signature per need
+@tool
+def cocvar(input1: str, section_number: int = 1) -> list:
+    # Find all sections enclosed in curly braces
+    sections = []
+    start_index = 0
+    while start_index < len(input1):
+        start_index = input1.find('[', start_index)
+        if start_index == -1:
+            break
+        end_index = input1.find(']', start_index)
+        if end_index == -1:
+            break
+        # Extract the section without curly braces
+        sections.append(input1[start_index + 1:end_index])
+        start_index = end_index + 1
+    
+    # If the specified section_number is out of bounds, return an empty list
+    if section_number < 1 or section_number > len(sections):
+        return []
+
+    # Extract the section based on the given section_number
+    section = sections[section_number - 1]
+    
+    # Split the section into individual items based on commas
+    items = section.split(',')
+    
+    # Convert each item into a tuple (var1, var2)
+    result = []
+    for item in items:
+        parts = item.split(':')
+        if len(parts) == 3:  # Ensure there are exactly two parts
+            var1, var2, var3 = parts[0].strip(), parts[1].strip(), parts[2].strip()
+            result.append((var1, var2, var3))
+    
+    return result
+
+from promptflow import tool
+
+
+# The inputs section will change based on the arguments of the tool function, after you save the code
+# Adding type to arguments and return value will help the system show the types properly
+# Please update the function name/signature per need
+@tool
+def coceqn(input1: str, section_number: int = 2) -> str:
+    # Find all sections enclosed in curly braces
+    sections = []
+    start_index = 0
+    while start_index < len(input1):
+        start_index = input1.find('[', start_index)
+        if start_index == -1:
+            break
+        end_index = input1.find(']', start_index)
+        if end_index == -1:
+            break
+        # Extract the section without curly braces
+        sections.append(input1[start_index + 1:end_index])
+        start_index = end_index + 1
+    
+    # If the specified section_number is out of bounds, return an empty string
+    if section_number < 1 or section_number > len(sections):
+        return ""
+    
+    # Extract the content from the specified section
+    return sections[section_number - 1]
+
+
+from promptflow import tool
+
+
+# The inputs section will change based on the arguments of the tool function, after you save the code
+# Adding type to arguments and return value will help the system show the types properly
+# Please update the function name/signature per need
+@tool
+def concvar(input1: str, section_number: int = 3) -> list:
+    # Find all sections enclosed in curly braces
+    sections = []
+    start_index = 0
+    while start_index < len(input1):
+        start_index = input1.find('[', start_index)
+        if start_index == -1:
+            break
+        end_index = input1.find(']', start_index)
+        if end_index == -1:
+            break
+        # Extract the section without curly braces
+        sections.append(input1[start_index + 1:end_index])
+        start_index = end_index + 1
+    
+    # If the specified section_number is out of bounds, return an empty list
+    if section_number < 1 or section_number > len(sections):
+        return []
+
+    # Extract the section based on the given section_number
+    section = sections[section_number - 1]
+    
+    # Split the section into individual items based on commas
+    items = section.split(',')
+    
+    # Convert each item into a tuple (var1, var2)
+    result = []
+    for item in items:
+        parts = item.split(':')
+        if len(parts) == 3:  # Ensure there are exactly two parts
+            var1, var2, var3 = parts[0].strip(), parts[1].strip(), parts[2].strip()
+            result.append((var1, var2, var3))
+    
+    return result
+
+from promptflow import tool
+
+
+# The inputs section will change based on the arguments of the tool function, after you save the code
+# Adding type to arguments and return value will help the system show the types properly
+# Please update the function name/signature per need
+@tool
+def conceqn(input1: str, section_number: int = 4) -> str:
+    # Find all sections enclosed in curly braces
+    sections = []
+    start_index = 0
+    while start_index < len(input1):
+        start_index = input1.find('[', start_index)
+        if start_index == -1:
+            break
+        end_index = input1.find(']', start_index)
+        if end_index == -1:
+            break
+        # Extract the section without curly braces
+        sections.append(input1[start_index + 1:end_index])
+        start_index = end_index + 1
+    
+    # If the specified section_number is out of bounds, return an empty string
+    if section_number < 1 or section_number > len(sections):
+        return ""
+    
+    # Extract the content from the specified section
+    return sections[section_number - 1]
+
